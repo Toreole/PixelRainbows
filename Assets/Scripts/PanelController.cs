@@ -69,7 +69,9 @@ namespace PixelRainbows.Prototyping
             currentPanel ++;
             continueButton.interactable = true;
             returnButton.interactable = true;
+            target.GetChild(currentPanel-1).gameObject.BroadcastMessage("WakeUp", SendMessageOptions.DontRequireReceiver);
         }
+
         IEnumerator GoBackOnePanel()
         {
             Vector2 startPos = target.position;
