@@ -33,6 +33,9 @@ namespace PixelRainbows.Editing
             panelList = serializedObject.FindProperty("panels");
             panelPrefabProperty = serializedObject.FindProperty("blankPanelPrefab");
             panelParentProperty = serializedObject.FindProperty("panelParent");
+
+            panelIndex = manager.lastEditedPanel;
+
             //initialize the selectedPanel properties.
             if(panelList.arraySize > 0)
             {
@@ -64,9 +67,11 @@ namespace PixelRainbows.Editing
             }
             else 
             {
+                //Clear the list with the panel data.
                 if(GUILayout.Button("Clear Panel Data"))
                 {
-                    panelList.ClearArray();
+                    panelList.ClearArray(); //clean the array.
+                    //block of just resets.
                     panelTransform = null;
                     panelRenderer = null;
                     panelTransitionTime = null;
@@ -74,26 +79,13 @@ namespace PixelRainbows.Editing
                     panelPlacement = null;
                     panelIndex = 0;
                     serializedObject.ApplyModifiedProperties();
+                    //force the editor to refresh.
                     Repaint();
                     return;
                 }
                 
-                //Draw the box around the selected panel editor.
-                EditorGUILayout.BeginVertical(EditorStyles.helpBox);
-                EditorGUI.indentLevel++;
-                
-                foldout = EditorGUILayout.Foldout(foldout, $"Current Panel: {panelIndex}");
-                if(foldout)
-                {
-                    EditorGUILayout.PropertyField(panelTransform);
-                    EditorGUILayout.PropertyField(panelRenderer);
-                    EditorGUILayout.PropertyField(panelTransitionTime);
-                    EditorGUILayout.PropertyField(panelTransitionCurve);
-                    EditorGUILayout.PropertyField(panelPlacement);
-                }
-                
-                EditorGUI.indentLevel--;
-                EditorGUILayout.EndVertical();
+                EditSelectedPanel();
+
                 if(foldout) //The buttons should only show with the foldout being active, otherwise they are kind of pointless.
                 {
                     //Navigation.
@@ -101,14 +93,17 @@ namespace PixelRainbows.Editing
                     if(panelIndex > 0 && GUILayout.Button("Previous"))
                     {
                         panelIndex--;
+                        manager.lastEditedPanel = panelIndex;
                         FindRelativeProperties(panelList.GetArrayElementAtIndex(panelIndex));
                     }
                     if(panelIndex < panelList.arraySize-1 && GUILayout.Button("Next"))
                     {
                         panelIndex++;
+                        manager.lastEditedPanel = panelIndex;
                         FindRelativeProperties(panelList.GetArrayElementAtIndex(panelIndex));
                     }
                     EditorGUILayout.EndHorizontal();
+                    //TODO: swapping panels?
                     //Adding and removing panels.
                     EditorGUILayout.BeginHorizontal();
                     Color defaultColor = GUI.backgroundColor;
@@ -121,10 +116,57 @@ namespace PixelRainbows.Editing
                     GUI.backgroundColor = defaultColor;
                     EditorGUILayout.EndHorizontal();
                 }
+                if(GUILayout.Button("Auto Arrange Tiles"))
+                {
+                    manager.AutoArrangePanels(false);
+                }
 
             }
             //apply modified properties at the very end.
             serializedObject.ApplyModifiedProperties();
+        }
+
+        private void OnSceneGUI() 
+        {
+            if(panelIndex < panelList.arraySize && panelList.arraySize > 0)
+            {
+                var element = panelList.GetArrayElementAtIndex(panelIndex);
+                Transform t = (Transform)element.FindPropertyRelative("transform").objectReferenceValue;
+                t.position = Handles.PositionHandle(t.position, t.rotation);
+            }
+        }
+
+        ///<summary>Draw the editor box for just the selected panel.</summary>
+        void EditSelectedPanel()
+        {
+            //Draw the box around the selected panel editor.
+            EditorGUILayout.BeginVertical(EditorStyles.helpBox);
+            EditorGUI.indentLevel++;
+            
+            foldout = EditorGUILayout.Foldout(foldout, $"Current Panel: {panelIndex}");
+            if(foldout)
+            {
+                EditorGUILayout.PropertyField(panelTransform); //Add Cached editor for transform component?
+                EditorGUILayout.PropertyField(panelRenderer);
+                EditorGUILayout.PropertyField(panelTransitionTime);
+                EditorGUILayout.PropertyField(panelTransitionCurve);
+                //!!This currently allows for two adjacent panels to have Below and Above, which causes overlap.
+                EditorGUILayout.PropertyField(panelPlacement);
+                if(panelIndex > 0)
+                {
+                    SerializedProperty previous = panelList.GetArrayElementAtIndex(panelIndex-1);
+                    var prePlace = previous.FindPropertyRelative("placement").enumValueIndex;
+                    var panPlace = panelPlacement.enumValueIndex;
+                    //check if we got an Above+Below or Below+Above
+                    if(prePlace == (int)PanelPlacement.Above && panPlace == (int)PanelPlacement.Below ||
+                        prePlace == (int)PanelPlacement.Below && panPlace == (int)PanelPlacement.Above)
+                        //Address the issue.
+                        EditorGUILayout.HelpBox("Two consecutive panels are placed Below and Above the previous. This is not supported.", MessageType.Error);
+                }
+            }
+            
+            EditorGUI.indentLevel--;
+            EditorGUILayout.EndVertical();
         }
 
         void FindRelativeProperties(SerializedProperty panelDataInstanceProperty)
@@ -168,9 +210,10 @@ namespace PixelRainbows.Editing
                                             Vector3.zero, 
                                             Quaternion.identity, 
                                             (Transform)panelParentProperty.objectReferenceValue);
-            panelList.InsertArrayElementAtIndex(insertionIndex+1);
+            panelList.InsertArrayElementAtIndex(insertionIndex);
             var element = panelList.GetArrayElementAtIndex(insertionIndex);
             InitializePanelElementWithDefaults(element, instance.transform);
+            panelList.MoveArrayElement(insertionIndex, insertionIndex+1);
         }
 
         void RemovePanel(int deletionIndex)

@@ -29,6 +29,6 @@ namespace PixelRainbows.Panels
         NextTo, 
         Above,
         Below,
-        FreeForm
+        //FreeForm
     }
 }
