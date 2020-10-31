@@ -482,56 +482,14 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 274356935}
-  - component: {fileID: 274356934}
   - component: {fileID: 274356936}
   m_Layer: 0
-  m_Name: Controller
+  m_Name: Manager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &274356934
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 274356933}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 02e5174110a434a4ea331c55661c34b4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  target: {fileID: 1596690541}
-  panelOffset: -13
-  transitionTime: 0.6
-  continueButton: {fileID: 758880566}
-  returnButton: {fileID: 1584252518}
-  transitionCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 1
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
 --- !u!4 &274356935
 Transform:
   m_ObjectHideFlags: 0
@@ -558,9 +516,151 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f14bd760d36484046818af2d8657df1c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  blankPanelPrefab: {fileID: 0}
-  panels: []
+  blankPanelPrefab: {fileID: 5850014244160152604, guid: 04945be94d69b30498aa59f8510ecd8e,
+    type: 3}
+  panels:
+  - transform: {fileID: 1471615977}
+    spriteRenderer: {fileID: 1471615978}
+    transitionTime: 1
+    transitionCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    placement: 0
+  - transform: {fileID: 63436549}
+    spriteRenderer: {fileID: 63436550}
+    transitionTime: 1
+    transitionCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    placement: 0
+  - transform: {fileID: 134898819}
+    spriteRenderer: {fileID: 134898820}
+    transitionTime: 1
+    transitionCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    placement: 0
+  - transform: {fileID: 1241641655}
+    spriteRenderer: {fileID: 1241641656}
+    transitionTime: 1
+    transitionCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    placement: 0
+  - transform: {fileID: 1826113562}
+    spriteRenderer: {fileID: 1826113563}
+    transitionTime: 1
+    transitionCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    placement: 0
   camera: {fileID: 519420031}
+  panelParent: {fileID: 1596690541}
 --- !u!1 &457030576
 GameObject:
   m_ObjectHideFlags: 0
@@ -1069,7 +1169,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 274356934}
+      - m_Target: {fileID: 0}
         m_MethodName: NextPanel
         m_Mode: 1
         m_Arguments:
@@ -1711,7 +1811,7 @@ RectTransform:
   m_GameObject: {fileID: 1471615976}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.65146583, y: 0.92485553, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 649896305}
   m_Father: {fileID: 1596690541}
@@ -1796,7 +1896,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!212 &1535032496
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1942,7 +2042,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 274356934}
+      - m_Target: {fileID: 0}
         m_MethodName: LastPanel
         m_Mode: 1
         m_Arguments:

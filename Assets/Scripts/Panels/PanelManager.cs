@@ -15,13 +15,13 @@ namespace PixelRainbows.Panels
         private GameObject blankPanelPrefab;
 
         [SerializeField]
-        private List<PanelData> panels;
+        private List<PanelData> panels = new List<PanelData>();
         
         [SerializeField]
         private new Camera camera;
 
         [SerializeField]
-        Transform testTarget;
+        private Transform panelParent;
 #endregion
 
 #region Runtime_Vars
@@ -47,17 +47,59 @@ namespace PixelRainbows.Panels
                 return;
             //figure out the "real" size of the camera with the current screen bounds.
             var bounds = GetCameraBounds();
+            Vector3 cubeSize = bounds * 2f;
 
+            Gizmos.color = Color.blue;
             //draw the camera bounds around each panel so it's easy to see whether it stays within the bounds.
             foreach(var p in panels)
-                Gizmos.DrawWireCube(p.transform.position, new Vector3(bounds.x, bounds.y));
+                Gizmos.DrawWireCube(p.transform.position, cubeSize);
         }
 #endif
 
         //Initialize PanelManager for runtime use. Prepare the panels.
         private void Start() 
         {
+            //the camera bounds are vital for everything else.
             cameraBounds = GetCameraBounds();
+
+            //original positions before adjusting, necessary for FreeForm panel placement to work.
+            Vector3[] prePositions = new Vector3[panels.Count];
+
+            //Adjust the size and position of all panels.
+            for(int i = 0; i < panels.Count; i++)
+            {
+                //the current panel:
+                PanelData current = panels[i];
+                //change the size.
+                SetupPanel(current);
+                //save the original editor position.
+                prePositions[i] = current.transform.position;
+                if(i > 0)
+                {
+                    PanelData previous = panels[i-1];
+                    switch(current.placement)
+                    {
+                        //place the panel to the right side of the last one.
+                        case PanelPlacement.NextTo:
+                            current.transform.position = previous.transform.position + new Vector3(cameraBounds.x*2f, 0f);
+                            break;
+                        case PanelPlacement.Below:
+                            current.transform.position = previous.transform.position - new Vector3(0f, cameraBounds.y);
+                            break;
+                        case PanelPlacement.Above:
+                            current.transform.position = previous.transform.position + new Vector3(0f, cameraBounds.y);
+                            break;
+                        //FreeForm uses the in-editor relative direction from the previous to this panel. 
+                        //This may not be
+                        case PanelPlacement.FreeForm:
+                            Vector3 relative = prePositions[i] - prePositions[i-1];
+                            relative.Normalize();
+                            relative *= cameraBounds.x / relative.x;
+                            current.transform.position = previous.transform.position + relative;
+                            break;
+                    }
+                }
+            }
         }
 
         ///<summary>Get the camera's bounds defined by width and height in worldspace. (orthographic camera)</summary>
@@ -69,16 +111,12 @@ namespace PixelRainbows.Panels
             return new Vector2(width, height);
         }
 
-        void Update() => 
-            SetupPanel(testTarget);
-
-        //Just testing something here. (Making sure the object is on-screen in full)
-        //!For some stupid reason this flickers between two results when run in Update.
-        private void SetupPanel(Transform target)
+        //Scales a Panel to adjust for different screen resolutions. (mobile support basically)
+        //This can be done in a better way probably.
+        private void SetupPanel(PanelData panel)
         {
-            cameraBounds = GetCameraBounds();
-            var sprite = target.GetComponentInChildren<SpriteRenderer>(); //move main renderer component to data type?
-            var spriteSize = sprite.bounds.extents; //width and height of the sprite in the scene.
+            var target = panel.transform;
+            var spriteSize = panel.spriteRenderer.bounds.extents; //width and height of the sprite in the scene.
             //Debug.DrawLine(sprite.bounds.min, sprite.bounds.max, Color.red, 5);
             //auto-scale the sprite.
             float scale = cameraBounds.x/spriteSize.x;
@@ -86,6 +124,5 @@ namespace PixelRainbows.Panels
             if(target.localScale.y > 1) //dont scale up beyond the default.
                 target.localScale = Vector3.one;
         }
-
     }
 }
