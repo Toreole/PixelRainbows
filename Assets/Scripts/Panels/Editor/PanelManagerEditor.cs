@@ -26,6 +26,8 @@ namespace PixelRainbows.Editing
         SerializedProperty panelTransitionCurve;
         SerializedProperty panelPlacement;
 
+        bool autoRefreshArrangement = false;
+
         private void OnEnable() 
         {
             manager = target as PanelManager;
@@ -116,10 +118,14 @@ namespace PixelRainbows.Editing
                     GUI.backgroundColor = defaultColor;
                     EditorGUILayout.EndHorizontal();
                 }
-                if(GUILayout.Button("Auto Arrange Tiles"))
+                //Arranging the panels for preview purposes.
+                EditorGUILayout.BeginHorizontal();
+                if(GUILayout.Button("Arrange Tiles"))
                 {
                     manager.AutoArrangePanels(false);
                 }
+                autoRefreshArrangement = EditorGUILayout.Toggle("Auto Re-Arrange Panels", autoRefreshArrangement);
+                EditorGUILayout.EndHorizontal();
 
             }
             //apply modified properties at the very end.
@@ -150,8 +156,15 @@ namespace PixelRainbows.Editing
                 EditorGUILayout.PropertyField(panelRenderer);
                 EditorGUILayout.PropertyField(panelTransitionTime);
                 EditorGUILayout.PropertyField(panelTransitionCurve);
-                //!!This currently allows for two adjacent panels to have Below and Above, which causes overlap.
+                //temporary buffer
+                var previousPlacement = panelPlacement.enumValueIndex;
                 EditorGUILayout.PropertyField(panelPlacement);
+                //check whether the value has changed, auto refresh if enabled.
+                if(autoRefreshArrangement && previousPlacement != panelPlacement.enumValueIndex)
+                {
+                    serializedObject.ApplyModifiedProperties(); //this is odd but ok
+                    manager.AutoArrangePanels();
+                }
                 if(panelIndex > 0)
                 {
                     SerializedProperty previous = panelList.GetArrayElementAtIndex(panelIndex-1);
