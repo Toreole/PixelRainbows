@@ -52,10 +52,13 @@ namespace PixelRainbows.Panels
             var bounds = GetCameraBounds();
             Vector3 cubeSize = bounds * 2f;
             //print($"camera view: {cubeSize.x}, {cubeSize.y}");
-            Gizmos.color = Color.blue;
             //draw the camera bounds around each panel so it's easy to see whether it stays within the bounds.
-            foreach(var p in panels) //!This Cube does not fully lign up with the camera's own ortho frustum gizmo!
+            for(int i = 0; i < panels.Count; i++)
+            {
+                var p = panels[i];
+                Gizmos.color = (i == lastEditedPanel)? Color.green : Color.blue; //give a different colour to the panel we are currently editing.
                 Gizmos.DrawWireCube(p.transform.position, cubeSize);
+            }
             //???Draw Arrow from this to the next panel?
         }
 #endif
