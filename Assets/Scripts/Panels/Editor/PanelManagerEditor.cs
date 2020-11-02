@@ -28,15 +28,17 @@ namespace PixelRainbows.Editing
 
         bool autoRefreshArrangement = false;
 
+        //initialize the editor.
         private void OnEnable() 
         {
+            //Get the manager as the "real" object in case we need to access it directly.
             manager = target as PanelManager;
             cameraProperty = serializedObject.FindProperty("camera");
             panelList = serializedObject.FindProperty("panels");
             panelPrefabProperty = serializedObject.FindProperty("blankPanelPrefab");
             panelParentProperty = serializedObject.FindProperty("panelParent");
 
-            panelIndex = manager.lastEditedPanel;
+            panelIndex = manager.lastEditedPanel; //Get the panel index from the manager, this guarantees that we're never out of bounds.
 
             //initialize the selectedPanel properties.
             if(panelList.arraySize > 0)
@@ -46,6 +48,7 @@ namespace PixelRainbows.Editing
             }
         }
 
+        //well this draws the editor, nothing special really.
         public override void OnInspectorGUI()
         {
             //the three basic properties.
@@ -72,75 +75,92 @@ namespace PixelRainbows.Editing
                 //Clear the list with the panel data.
                 if(GUILayout.Button("Clear Panel Data"))
                 {
-                    panelList.ClearArray(); //clean the array.
-                    //block of just resets.
-                    panelTransform = null;
-                    panelRenderer = null;
-                    panelTransitionTime = null;
-                    panelTransitionCurve = null;
-                    panelPlacement = null;
-                    panelIndex = 0;
-                    serializedObject.ApplyModifiedProperties();
-                    //force the editor to refresh.
-                    Repaint();
+                    ClearPanelList();
                     return;
                 }
-                
                 EditSelectedPanel();
-
-                if(foldout) //The buttons should only show with the foldout being active, otherwise they are kind of pointless.
-                {
-                    //Navigation.
-                    EditorGUILayout.BeginHorizontal();
-                    if(panelIndex > 0 && GUILayout.Button("Previous"))
-                    {
-                        panelIndex--;
-                        manager.lastEditedPanel = panelIndex;
-                        FindRelativeProperties(panelList.GetArrayElementAtIndex(panelIndex));
-                    }
-                    if(panelIndex < panelList.arraySize-1 && GUILayout.Button("Next"))
-                    {
-                        panelIndex++;
-                        manager.lastEditedPanel = panelIndex;
-                        FindRelativeProperties(panelList.GetArrayElementAtIndex(panelIndex));
-                    }
-                    EditorGUILayout.EndHorizontal();
-                    //TODO: swapping panels?
-                    //Adding and removing panels.
-                    EditorGUILayout.BeginHorizontal();
-                    Color defaultColor = GUI.backgroundColor;
-                    GUI.backgroundColor = Color.red;
-                    if(GUILayout.Button("Remove Selected Panel"))
-                        RemovePanel(panelIndex);
-                    GUI.backgroundColor = Color.green;
-                    if(GUILayout.Button("Add Panel After"))
-                        AddPanel(panelIndex);
-                    GUI.backgroundColor = defaultColor;
-                    EditorGUILayout.EndHorizontal();
-                }
-                //Arranging the panels for preview purposes.
-                EditorGUILayout.BeginHorizontal();
-                if(GUILayout.Button("Arrange Tiles"))
-                {
-                    manager.AutoArrangePanels(false);
-                }
-                autoRefreshArrangement = EditorGUILayout.Toggle("Auto Re-Arrange Panels", autoRefreshArrangement);
-                EditorGUILayout.EndHorizontal();
-
+                ShowPanelControls();
             }
             //apply modified properties at the very end.
             serializedObject.ApplyModifiedProperties();
         }
 
-        private void OnSceneGUI() 
+        //Obsolete code. This wouldve been used for the freeform editing, but that no longer exists so why bother.
+        //private void OnSceneGUI() 
+        //{
+        //    if(panelIndex < panelList.arraySize && panelList.arraySize > 0)
+        //    {
+        //        var element = panelList.GetArrayElementAtIndex(panelIndex);
+        //        Transform t = (Transform)element.FindPropertyRelative("transform").objectReferenceValue;
+        //        t.position = Handles.PositionHandle(t.position, t.rotation);
+        //    }
+        //}
+
+        ///<summary>Clears the panelList and resets the editor references.</summary>
+        void ClearPanelList()
         {
-            if(panelIndex < panelList.arraySize && panelList.arraySize > 0)
-            {
-                var element = panelList.GetArrayElementAtIndex(panelIndex);
-                Transform t = (Transform)element.FindPropertyRelative("transform").objectReferenceValue;
-                t.position = Handles.PositionHandle(t.position, t.rotation);
-            }
+            panelList.ClearArray(); //clean the array.
+            //block of just resets.
+            panelTransform = null;
+            panelRenderer = null;
+            panelTransitionTime = null;
+            panelTransitionCurve = null;
+            panelPlacement = null;
+            panelIndex = 0;
+            serializedObject.ApplyModifiedProperties();
+            //force the editor to refresh.
+            Repaint();
         }
+
+        ///<summary>Shows the UI buttons that control the panel list. Deletion, Creation, Navigation, etc.</summary>
+        void ShowPanelControls()
+        {
+            if(foldout) //The buttons should only show with the foldout being active, otherwise they are kind of pointless.
+            {
+                //Navigation.
+                EditorGUILayout.BeginHorizontal();
+                if(panelIndex > 0 && GUILayout.Button("Previous"))
+                {
+                    panelIndex--;
+                    manager.lastEditedPanel = panelIndex;
+                    FindRelativeProperties(panelList.GetArrayElementAtIndex(panelIndex));
+                }
+                if(panelIndex < panelList.arraySize-1 && GUILayout.Button("Next"))
+                {
+                    panelIndex++;
+                    manager.lastEditedPanel = panelIndex;
+                    FindRelativeProperties(panelList.GetArrayElementAtIndex(panelIndex));
+                }
+                EditorGUILayout.EndHorizontal();
+
+                //TODO: swapping panels?
+
+                //Adding and removing panels. //Yes i am adding {} for readability.
+                EditorGUILayout.BeginHorizontal();
+                {
+                    //Removing panels with red button.
+                    Color defaultColor = GUI.backgroundColor;
+                    GUI.backgroundColor = Color.red;
+                    if(GUILayout.Button("Remove Selected Panel"))
+                        RemovePanel(panelIndex);
+                    //Adding panels with green button.
+                    GUI.backgroundColor = Color.green;
+                    if(GUILayout.Button("Add Panel After"))
+                        AddPanel(panelIndex);
+                    GUI.backgroundColor = defaultColor;
+                }
+                EditorGUILayout.EndHorizontal();
+            }
+            //Arranging the panels for preview purposes.
+            EditorGUILayout.BeginHorizontal();
+            if(GUILayout.Button("Arrange Tiles"))
+            {
+                manager.AutoArrangePanels(false);
+            }
+            autoRefreshArrangement = EditorGUILayout.Toggle("Auto Re-Arrange Panels", autoRefreshArrangement);
+            EditorGUILayout.EndHorizontal();
+        }
+
 
         ///<summary>Draw the editor box for just the selected panel.</summary>
         void EditSelectedPanel()
@@ -152,7 +172,8 @@ namespace PixelRainbows.Editing
             foldout = EditorGUILayout.Foldout(foldout, $"Current Panel: {panelIndex}");
             if(foldout)
             {
-                EditorGUILayout.PropertyField(panelTransform); //Add Cached editor for transform component?
+                //Time for properties yay!!!
+                EditorGUILayout.PropertyField(panelTransform);
                 EditorGUILayout.PropertyField(panelRenderer);
                 EditorGUILayout.PropertyField(panelTransitionTime);
                 EditorGUILayout.PropertyField(panelTransitionCurve);
@@ -182,6 +203,7 @@ namespace PixelRainbows.Editing
             EditorGUILayout.EndVertical();
         }
 
+        ///<summary>Finds all the relative properties of the current element of the panel list and fills the serializedproperty variables with them.</summary>
         void FindRelativeProperties(SerializedProperty panelDataInstanceProperty)
         {
             //find all the properties of the panel.
@@ -192,20 +214,32 @@ namespace PixelRainbows.Editing
             panelPlacement       = panelDataInstanceProperty.FindPropertyRelative("placement");
         }
     
+        ///<summary>Presents the UI to intialize the panel list.</summary>
         void DrawListInitialization()
         {
             EditorGUILayout.HelpBox("Drag an object from the hierarchy into this slot to use its children.", MessageType.Info);
             Transform target = (Transform)EditorGUILayout.ObjectField(null, typeof(Transform), true);
-            if(target && target.childCount > 0)
+            if(target ) //target already has children (those are panels)
             {
                 //override the parent.
                 panelParentProperty.objectReferenceValue = target;
-                foreach(Transform p in target)
+
+                //Fill the panelList with existing panels.
+                if(target.childCount > 0)
+                    foreach(Transform p in target)
+                    {
+                        panelList.InsertArrayElementAtIndex(panelList.arraySize);
+                        var element = panelList.GetArrayElementAtIndex(panelList.arraySize-1);
+                        InitializePanelElementWithDefaults(element, p);
+                    }
+                else //There are no panels yet, instantiate one to begin with.
                 {
-                    panelList.InsertArrayElementAtIndex(panelList.arraySize);
-                    var element = panelList.GetArrayElementAtIndex(panelList.arraySize-1);
-                    InitializePanelElementWithDefaults(element, p);
+                    Transform transform = Instantiate<GameObject>(panelPrefabProperty.objectReferenceValue as GameObject).transform;
+                    panelList.InsertArrayElementAtIndex(0);
+                    var element = panelList.GetArrayElementAtIndex(0);
+                    InitializePanelElementWithDefaults(element, transform);
                 }
+                
                 //Reset the inspector.
                 panelIndex = 0;
                 FindRelativeProperties(panelList.GetArrayElementAtIndex(panelIndex));
@@ -229,8 +263,14 @@ namespace PixelRainbows.Editing
             panelList.MoveArrayElement(insertionIndex, insertionIndex+1);
         }
 
-        void RemovePanel(int deletionIndex)
+        ///<summary>Deletes a panel from the list, and optionally deletes the associated GameObject</summary>
+        void RemovePanel(int deletionIndex, bool deleteObject = true)
         {
+            if(deleteObject)
+            {
+                var element = panelList.GetArrayElementAtIndex(deletionIndex); //yucky long line.
+                DestroyImmediate((element.FindPropertyRelative("transform").objectReferenceValue as Transform).gameObject);
+            }
             panelList.DeleteArrayElementAtIndex(deletionIndex);
             if(panelIndex >= panelList.arraySize)
                 panelIndex = panelList.arraySize -1;
