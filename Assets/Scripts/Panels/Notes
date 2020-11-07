@@ -1,0 +1,5 @@
+some other stuff to consider later:
+- Camera controller
+    > preferred size for bounds. 
+    > we dont want the camera to see more than we intend to on ultra wide
+    > the camera should still be able to show everything when on portrait mode?
