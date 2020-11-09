@@ -182,5 +182,10 @@ namespace PixelRainbows.Panels
             if(target.localScale.y > 1) //dont scale up beyond the default.
                 target.localScale = Vector3.one;
         }
+
+        public PanelData GetPanel(int index)
+            => panels[index];
+
+        public int PanelCount => panels.Count;
     }
 }
