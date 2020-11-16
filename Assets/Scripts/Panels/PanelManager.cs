@@ -127,7 +127,7 @@ namespace PixelRainbows.Panels
         }
 
         ///<summary>Hides all SubPanels besides the 0th. (makes them transparent with 0 alpha)</summary>
-        void HideSubPanels()
+        void HideSubPanels() //!!! This could be made a lot easier by just disabling the renderer instead!
         {
             foreach(PanelData dat in panels)
             {

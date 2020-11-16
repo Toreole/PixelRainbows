@@ -34,8 +34,30 @@ namespace PixelRainbows
 
         void Continue()
         {
-            panelIndex++;
-            StartCoroutine(DoTransition());
+            //check if the panel has subpanels
+            if(lastPanel.HasSubPanels)
+            {
+                //as long as we havent seen the last subpanel yet, we should show the next one.
+                if(lastPanel.SubPanelIndex < lastPanel.SubPanelCount-1)
+                {
+                    lastPanel.SubPanelIndex++;
+                    var sub = lastPanel.GetSubPanel(lastPanel.SubPanelIndex);
+                    var color = sub.color;
+                    color.a = 1;
+                    sub.color = color;
+                    //maybe a short delay between showing subpanels so you cant spam through them by accident?
+                }
+                else 
+                {
+                    panelIndex++;
+                    StartCoroutine(DoTransition());
+                }
+            }
+            else 
+            { //copy pasting feels dirty, but really it needs fewer lines of code than if i were to make a method for this so screw it.
+                panelIndex++;
+                StartCoroutine(DoTransition());
+            }
         }
 
         IEnumerator DoTransition()
