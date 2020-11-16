@@ -16,6 +16,9 @@ namespace PixelRainbows.Panels
 
         [SerializeField]
         private List<PanelData> panels = new List<PanelData>();
+
+        [SerializeField] //the frame sprite is *required* for sub-panels.
+        private Sprite frameSprite;
         
         [SerializeField]
         private new Camera camera;
@@ -70,6 +73,7 @@ namespace PixelRainbows.Panels
             cameraBounds = GetCameraBounds();
 
             AutoArrangePanels();
+            HideSubPanels();
         }
 
         ///<summary>
@@ -119,6 +123,21 @@ namespace PixelRainbows.Panels
                         //    break;
                     }
                 }
+            }
+        }
+
+        ///<summary>Hides all SubPanels besides the 0th. (makes them transparent with 0 alpha)</summary>
+        void HideSubPanels()
+        {
+            foreach(PanelData dat in panels)
+            {
+                if(dat.HasSubPanels)
+                    for(int i = 1; i < dat.SubPanelCount; i++)
+                    {
+                        var rend = dat.GetSubPanel(i);
+                        var color = rend.color; color.a = 0;
+                        rend.color = color;
+                    }
             }
         }
 

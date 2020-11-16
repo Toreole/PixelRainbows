@@ -21,7 +21,19 @@ namespace PixelRainbows.Panels
 
         ///<summary>Where the panel is located relative to the previous one.</summary>
         public PanelPlacement placement = PanelPlacement.NextTo;
+
+        ///<summary>SubPanels are indivudual sprites that can be addressed later and enabled one by one.</summary>
+        public SpriteRenderer[] subPanels; //A thing to consider might be Sound effects when showing different subpanels, but thats too much ig.
 #pragma warning restore CS0649 
+
+        //Does this panel have subpanels?
+        public bool HasSubPanels => subPanels.Length != 0;
+        public int SubPanelCount => subPanels.Length;
+        public SpriteRenderer GetSubPanel(int index)
+            => subPanels[index];
+
+        ///<summary>The index of the currently shown subpanel. Increased at runtime. Used as condition to continue to next panel.</summary>
+        public int SubPanelIndex { get; set; } = 0;
     }
 
     public enum PanelPlacement
