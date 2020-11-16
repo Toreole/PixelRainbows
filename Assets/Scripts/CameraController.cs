@@ -56,6 +56,8 @@ namespace PixelRainbows
             }
             lastPanel = targetPanel;
             EnableButtons();
+            //Optional WakeUp message useful for starting minigames once we transition to their panel.
+            targetPanel.transform.BroadcastMessage("WakeUp", SendMessageOptions.DontRequireReceiver);
         }
 
         void DisableButtons()
