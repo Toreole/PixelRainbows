@@ -14,6 +14,7 @@ namespace PixelRainbows.Editing
         SerializedProperty cameraProperty;
         SerializedProperty panelList;
         SerializedProperty panelPrefabProperty;
+        SerializedProperty frameSpriteProperty;
         SerializedProperty panelParentProperty;
         bool foldout = false;
         int panelIndex;
@@ -25,6 +26,7 @@ namespace PixelRainbows.Editing
         SerializedProperty panelTransitionTime;
         SerializedProperty panelTransitionCurve;
         SerializedProperty panelPlacement;
+        SerializedProperty panelSubPanels;
 
         bool autoRefreshArrangement = false;
 
@@ -37,6 +39,7 @@ namespace PixelRainbows.Editing
             panelList = serializedObject.FindProperty("panels");
             panelPrefabProperty = serializedObject.FindProperty("blankPanelPrefab");
             panelParentProperty = serializedObject.FindProperty("panelParent");
+            frameSpriteProperty = serializedObject.FindProperty("frameSprite");
 
             panelIndex = manager.lastEditedPanel; //Get the panel index from the manager, this guarantees that we're never out of bounds.
 
@@ -55,6 +58,9 @@ namespace PixelRainbows.Editing
             EditorGUILayout.PropertyField(panelPrefabProperty);
             EditorGUILayout.PropertyField(cameraProperty);
             EditorGUILayout.PropertyField(panelParentProperty);
+            EditorGUILayout.PropertyField(frameSpriteProperty);
+            if(!frameSpriteProperty.objectReferenceValue) //Give the message to the designer.
+                EditorGUILayout.HelpBox("A frame sprite is required for the sub-panel workflow", MessageType.Info);
 
             //make sure the camera is assigned before we do anything else
             if(!cameraProperty.objectReferenceValue || !panelPrefabProperty.objectReferenceValue)
@@ -124,12 +130,14 @@ namespace PixelRainbows.Editing
                     panelIndex--;
                     manager.lastEditedPanel = panelIndex;
                     FindRelativeProperties(panelList.GetArrayElementAtIndex(panelIndex));
+                    Selection.activeObject = ((Transform)panelTransform.objectReferenceValue).gameObject;
                 }
                 if(panelIndex < panelList.arraySize-1 && GUILayout.Button("Next"))
                 {
                     panelIndex++;
                     manager.lastEditedPanel = panelIndex;
                     FindRelativeProperties(panelList.GetArrayElementAtIndex(panelIndex));
+                    Selection.activeObject = ((Transform)panelTransform.objectReferenceValue).gameObject;
                 }
                 EditorGUILayout.EndHorizontal();
 
@@ -197,10 +205,75 @@ namespace PixelRainbows.Editing
                         //Address the issue.
                         EditorGUILayout.HelpBox("Two consecutive panels are placed Below and Above the previous. This is not supported.", MessageType.Error);
                 }
+                if(frameSpriteProperty.objectReferenceValue)
+                    ShowSubPanelWorkflow();
             }
             
             EditorGUI.indentLevel--;
             EditorGUILayout.EndVertical();
+        }
+
+        ///<summary>Shows the subpanel workflow options for the current panel.</summary>
+        void ShowSubPanelWorkflow()
+        {
+            //1. check whether it is not a subpanel already.
+            if(panelSubPanels.arraySize == 0)
+            {
+                //1.1. give option to convert it. Change main renderer sprite, instantiate first subpanel being the old panel sprite.
+                if(GUILayout.Button("Set to use Sub-Panels.")) //This shouldnt be displayed, if the panel is a minigame.
+                    ConvertSelectedPanelToMulti();
+            }
+            else 
+            {
+                //2. if its a subpanel holder already
+                EditorGUILayout.LabelField("Sub-Panels:", EditorStyles.boldLabel);
+                EditorGUI.indentLevel++;
+                for(int i = 0; i < panelSubPanels.arraySize; i++)
+                {
+                    //2.1. show the list of subpanels
+                    var element = panelSubPanels.GetArrayElementAtIndex(i);
+                    EditorGUILayout.PropertyField(element);
+                }
+                EditorGUI.indentLevel--;
+                //2.2. add drop-in for new sprites that will auto-create new subpanels.
+                Sprite sprite = null;
+                if(sprite = (Sprite)EditorGUILayout.ObjectField("Add SubPanel from Sprite:", null, typeof(Sprite), false))
+                {
+                    CreateSubPanel(panelSubPanels, sprite);
+                }
+            }
+        }
+
+        ///<summary>Converts the selected panel into one that uses sub-panels.</summary>
+        void ConvertSelectedPanelToMulti()
+        {
+            //1. Get the sprite from the renderer, and the in-scene size.
+            SpriteRenderer mainRenderer = (SpriteRenderer)panelRenderer.objectReferenceValue;
+            Sprite mainSprite = mainRenderer.sprite;
+            //Bounds bounds = mainRenderer.bounds; //Might be a possibility.
+            //2. reset scale if needed
+            mainRenderer.transform.localScale = Vector3.one;
+            //3. instantiate new sprite renderer object, set original sprite
+            CreateSubPanel(panelSubPanels, mainSprite);
+            //4. assign framesprite to main renderer.
+            mainRenderer.drawMode = SpriteDrawMode.Sliced;
+            mainRenderer.sprite = (Sprite)frameSpriteProperty.objectReferenceValue;
+            //re-set the size to how it was before?
+        }
+
+        ///<summary>Creates a SubPanel based on the sprite and the current selected panel, and adds it to the subPanelArray.</summary>
+        void CreateSubPanel(SerializedProperty subPanelArray, Sprite sprite)
+        {
+            Transform parent = (Transform)panelTransform.objectReferenceValue;
+            GameObject subPanel = new GameObject("new Sub-Panel");
+            subPanel.transform.parent = parent;
+            subPanel.transform.position = parent.position;
+            //create the sprite renderer and assign the sprite immediately. who needs temporary variables lmao.
+            var subRenderer = subPanel.AddComponent<SpriteRenderer>();
+            subRenderer.sprite = sprite;
+            //Insert the subRenderer into the subPanelArray. by default at the last position.
+            subPanelArray.InsertArrayElementAtIndex(subPanelArray.arraySize);
+            subPanelArray.GetArrayElementAtIndex(subPanelArray.arraySize-1).objectReferenceValue = subRenderer;
         }
 
         ///<summary>Finds all the relative properties of the current element of the panel list and fills the serializedproperty variables with them.</summary>
@@ -212,6 +285,7 @@ namespace PixelRainbows.Editing
             panelTransitionTime  = panelDataInstanceProperty.FindPropertyRelative("transitionTime");
             panelTransitionCurve = panelDataInstanceProperty.FindPropertyRelative("transitionCurve");
             panelPlacement       = panelDataInstanceProperty.FindPropertyRelative("placement");
+            panelSubPanels       = panelDataInstanceProperty.FindPropertyRelative("subPanels");
         }
     
         ///<summary>Presents the UI to intialize the panel list.</summary>
