@@ -6,9 +6,8 @@ namespace Minigame
 {
     public class BrushTeeth : MinigameBaseClass
     {
-        [Header("Scene References")] [SerializeField]
-        private BoxCollider2D _brushTeethCheckLeft;
-
+        [Header("Scene References")]
+        [SerializeField] private BoxCollider2D _brushTeethCheckLeft;
         [SerializeField] private BoxCollider2D _brushTeethCheckRight;
         [SerializeField] private Animator _anim;
         [SerializeField] private TextMeshProUGUI _tmpUGUI;
@@ -16,15 +15,16 @@ namespace Minigame
         private Rigidbody2D _rigidbody2D;
         private SpriteRenderer _spriteRenderer;
         private Camera _camera;
-
-        private int leftCheck = 0;
-        private int rightCheck = 0;
-
+       
+        // Required amount of collisions
+        [SerializeField] private int _repetitions = 2;
+        
+        // Count for the collisions
+        private int _leftCheck = 0;
+        private int _rightCheck = 0;
+        
         private void Awake()
         {
-            if (_tmpUGUI == null)
-                _tmpUGUI = FindObjectOfType<TextMeshProUGUI>();
-            
             _camera = Camera.main;
             _rigidbody2D = GetComponent<Rigidbody2D>();
             _spriteRenderer = GetComponent<SpriteRenderer>();
@@ -32,8 +32,6 @@ namespace Minigame
 
         public override void WakeUp()
         {
-            if (_tmpUGUI == null)
-                _tmpUGUI = FindObjectOfType<TextMeshProUGUI>();
             _tmpUGUI.text = "Brush your teeth!";
         }
 
@@ -42,45 +40,61 @@ namespace Minigame
             BrushTeethAnim();
         }
 
+        // Moves the object that the player has to move to brush the MC's teeth
         private void OnMouseDrag()
         {
             Vector2 pos = _camera.ScreenToWorldPoint(Input.mousePosition);
             _rigidbody2D.position = pos;
         }
 
+        // Counts the amount of times the player moved the object from side to side
+        // If the player touches one of the colliders, then it will deactivate its collider until the other collider has been touched
         private void OnTriggerEnter2D(Collider2D other)
         {
-
             if (other == _brushTeethCheckLeft)
             {
-                leftCheck += 1;
+                _leftCheck += 1;
                 _tmpUGUI.text = "Back to the right!";
+                
+                _brushTeethCheckLeft.enabled = false;
+                if (_brushTeethCheckRight.enabled == false)
+                {
+                    _brushTeethCheckRight.enabled = true;
+                }
             }
 
             if (other == _brushTeethCheckRight)
             {
-                rightCheck += 1;
+                _rightCheck += 1;
                 _tmpUGUI.text = "Back to the left!";
+                
+                _brushTeethCheckRight.enabled = false;
+                if (_brushTeethCheckLeft.enabled == false)
+                {
+                    _brushTeethCheckLeft.enabled = true;
+                }
             }
         }
 
+        // Plays animation after swiping an n(_repetitions)-amount of times to left and right
+        // After successfully starting the animation, the object will disappear
         private void BrushTeethAnim()
         {
-            if (leftCheck >= 2 && rightCheck >= 2)
+            if (_leftCheck >= _repetitions && _rightCheck >= _repetitions)
             {
                 _tmpUGUI.text = "";
-                _anim.SetBool("BrushTeethReqDone", true);
+                _anim.SetBool(BrushTeethReqDone, true);
                 _spriteRenderer.sprite = null;
                 IsDone = true;
             }
         }
-
+        
         public override void CancelMinigame()
         {
             if (IsDone == false)
             {
-                leftCheck = 0;
-                rightCheck = 0;
+                _leftCheck = 0;
+                _rightCheck = 0;
                 _tmpUGUI.text = "";
             }
             else

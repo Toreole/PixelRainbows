@@ -14,8 +14,8 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/Assets/Scripts/PanelController.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Minigame/MinigameBaseClass.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Minigame/BrushTeeth.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Minigame/MinigameBaseClass.cs" />
       </list>
     </option>
   </component>
@@ -70,6 +70,7 @@
       <workItem from="1603133771217" duration="1803000" />
       <workItem from="1605024212455" duration="601000" />
       <workItem from="1605623600633" duration="5176000" />
+      <workItem from="1605646034166" duration="2709000" />
     </task>
     <servers />
   </component>
