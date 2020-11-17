@@ -14,6 +14,7 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/Assets/Scripts/PanelController.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Minigame/MinigameBaseClass.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Minigame/BrushTeeth.cs" />
       </list>
     </option>
@@ -79,5 +80,11 @@
   <component name="UnityUnitTestConfiguration" currentTestLauncher="EditMode" />
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="727" y="244" key="RiderGenerateDialog" timestamp="1605631078947">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="727" y="244" key="RiderGenerateDialog/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1605631078947" />
   </component>
 </project>

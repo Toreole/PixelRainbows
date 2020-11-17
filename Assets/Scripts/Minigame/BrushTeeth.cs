@@ -4,37 +4,45 @@ using UnityEngine;
 
 namespace Minigame
 {
-    public class BrushTeeth : MonoBehaviour
+    public class BrushTeeth : MinigameBaseClass
     {
-        [Header("Scene References")] 
-        [SerializeField]
+        [Header("Scene References")] [SerializeField]
         private BoxCollider2D _brushTeethCheckLeft;
-        [SerializeField]
-        private BoxCollider2D _brushTeethCheckRight;
-        [SerializeField]
-        private Animator _anim;
-        [SerializeField]
-        private TextMeshProUGUI _tmpUGUI;
-        
+
+        [SerializeField] private BoxCollider2D _brushTeethCheckRight;
+        [SerializeField] private Animator _anim;
+        [SerializeField] private TextMeshProUGUI _tmpUGUI;
+
         private Rigidbody2D _rigidbody2D;
         private SpriteRenderer _spriteRenderer;
         private Camera _camera;
-    
+
         private int leftCheck = 0;
         private int rightCheck = 0;
 
         private void Awake()
         {
-            if(_tmpUGUI  == null)
+            if (_tmpUGUI == null)
                 _tmpUGUI = FindObjectOfType<TextMeshProUGUI>();
-            _tmpUGUI.text = "Brush your teeth!";
             
+            _camera = Camera.main;
             _rigidbody2D = GetComponent<Rigidbody2D>();
             _spriteRenderer = GetComponent<SpriteRenderer>();
-            _camera = Camera.main;
         }
 
-        private void OnMouseDrag() 
+        public override void WakeUp()
+        {
+            if (_tmpUGUI == null)
+                _tmpUGUI = FindObjectOfType<TextMeshProUGUI>();
+            _tmpUGUI.text = "Brush your teeth!";
+        }
+
+        private void Update()
+        {
+            BrushTeethAnim();
+        }
+
+        private void OnMouseDrag()
         {
             Vector2 pos = _camera.ScreenToWorldPoint(Input.mousePosition);
             _rigidbody2D.position = pos;
@@ -42,7 +50,7 @@ namespace Minigame
 
         private void OnTriggerEnter2D(Collider2D other)
         {
-            
+
             if (other == _brushTeethCheckLeft)
             {
                 leftCheck += 1;
@@ -63,12 +71,22 @@ namespace Minigame
                 _tmpUGUI.text = "";
                 _anim.SetBool("BrushTeethReqDone", true);
                 _spriteRenderer.sprite = null;
+                IsDone = true;
             }
         }
 
-        private void Update()
+        public override void CancelMinigame()
         {
-            BrushTeethAnim();
+            if (IsDone == false)
+            {
+                leftCheck = 0;
+                rightCheck = 0;
+                _tmpUGUI.text = "";
+            }
+            else
+            {
+                _tmpUGUI.text = "";
+            }
         }
     }
 }
