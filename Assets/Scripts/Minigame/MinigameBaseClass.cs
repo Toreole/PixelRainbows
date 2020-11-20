@@ -12,7 +12,7 @@ namespace Minigame
         ///<summary>
         /// Bool that will check if the minigame in this panel was already completed by the player.
         /// </summary> 
-        protected bool IsDone {  get; set; } = false;
+        public bool IsDone {  get; protected set; } = false;
 
         ///<summary>
         /// Method to call after switching to a panel with a minigame.

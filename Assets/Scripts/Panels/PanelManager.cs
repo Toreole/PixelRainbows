@@ -127,7 +127,7 @@ namespace PixelRainbows.Panels
         }
 
         ///<summary>Hides all SubPanels besides the 0th. (makes them transparent with 0 alpha)</summary>
-        void HideSubPanels()
+        void HideSubPanels() //!!! This could be made a lot easier by just disabling the renderer instead!
         {
             foreach(PanelData dat in panels)
             {
@@ -171,6 +171,7 @@ namespace PixelRainbows.Panels
 
         //Scales a Panel to adjust for different screen resolutions. (mobile support basically)
         //This can be done in a better way probably.
+        //Since minigames are now a thing, they should be checked for in here.
         private void SetupPanel(PanelData panel)
         {
             var target = panel.transform;
@@ -181,6 +182,13 @@ namespace PixelRainbows.Panels
             target.localScale *= scale;
             if(target.localScale.y > 1) //dont scale up beyond the default.
                 target.localScale = Vector3.one;
+            //Try to get the minigame.
+            panel.Minigame = panel.transform.GetComponentInChildren<Minigame.MinigameBaseClass>();
         }
+
+        public PanelData GetPanel(int index)
+            => panels[index];
+
+        public int PanelCount => panels.Count;
     }
 }

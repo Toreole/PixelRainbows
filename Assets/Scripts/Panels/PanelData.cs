@@ -34,6 +34,8 @@ namespace PixelRainbows.Panels
 
         ///<summary>The index of the currently shown subpanel. Increased at runtime. Used as condition to continue to next panel.</summary>
         public int SubPanelIndex { get; set; } = 0;
+
+        public Minigame.MinigameBaseClass Minigame { get; set; }
     }
 
     public enum PanelPlacement
