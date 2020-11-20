@@ -171,6 +171,7 @@ namespace PixelRainbows.Panels
 
         //Scales a Panel to adjust for different screen resolutions. (mobile support basically)
         //This can be done in a better way probably.
+        //Since minigames are now a thing, they should be checked for in here.
         private void SetupPanel(PanelData panel)
         {
             var target = panel.transform;
@@ -181,6 +182,8 @@ namespace PixelRainbows.Panels
             target.localScale *= scale;
             if(target.localScale.y > 1) //dont scale up beyond the default.
                 target.localScale = Vector3.one;
+            //Try to get the minigame.
+            panel.Minigame = panel.transform.GetComponentInChildren<Minigame.MinigameBaseClass>();
         }
 
         public PanelData GetPanel(int index)

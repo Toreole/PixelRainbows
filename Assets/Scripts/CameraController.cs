@@ -77,9 +77,14 @@ namespace PixelRainbows
                 yield return null;
             }
             lastPanel = targetPanel;
-            EnableButtons();
-            //Optional WakeUp message useful for starting minigames once we transition to their panel.
-            targetPanel.transform.BroadcastMessage("WakeUp", SendMessageOptions.DontRequireReceiver);
+            //EnableButtons();
+            backwardButton.interactable = true;
+            if(lastPanel.Minigame)
+            {
+                lastPanel.Minigame.WakeUp();
+                yield return new WaitUntil(() => lastPanel.Minigame.IsDone);
+                forwardButton.interactable = panelIndex < panelSource.PanelCount-1;
+            }
         }
 
         void DisableButtons()
@@ -88,10 +93,10 @@ namespace PixelRainbows
             forwardButton.interactable = false;
         }
 
-        void EnableButtons()
-        {
-            backwardButton.interactable = panelIndex > 0;
-            forwardButton.interactable = panelIndex < panelSource.PanelCount-1;
-        }
+        //void EnableButtons()
+        //{
+        //    backwardButton.interactable = panelIndex > 0;
+        //    forwardButton.interactable = panelIndex < panelSource.PanelCount-1;
+        //}
     }  
 }
