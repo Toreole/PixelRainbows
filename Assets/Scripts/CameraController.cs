@@ -29,6 +29,8 @@ namespace PixelRainbows
         void Back()
         {
             panelIndex--;
+            if(lastPanel.Minigame)
+                lastPanel.Minigame.CancelMinigame();
             StartCoroutine(DoTransition());
         }
 
@@ -56,7 +58,8 @@ namespace PixelRainbows
             else 
             { //copy pasting feels dirty, but really it needs fewer lines of code than if i were to make a method for this so screw it.
                 panelIndex++;
-                StartCoroutine(DoTransition());
+                if(panelIndex < panelSource.PanelCount)
+                    StartCoroutine(DoTransition());
             }
         }
 
@@ -85,6 +88,8 @@ namespace PixelRainbows
                 yield return new WaitUntil(() => lastPanel.Minigame.IsDone);
                 forwardButton.interactable = panelIndex < panelSource.PanelCount-1;
             }
+            else 
+                forwardButton.interactable = true;
         }
 
         void DisableButtons()
