@@ -28,7 +28,7 @@ namespace PixelRainbows.Editing
         SerializedProperty panelPlacement;
         SerializedProperty panelSubPanels;
 
-        bool autoRefreshArrangement = false;
+        bool autoRefreshArrangement = true;
 
         //initialize the editor.
         private void OnEnable() 
@@ -41,8 +41,8 @@ namespace PixelRainbows.Editing
             panelParentProperty = serializedObject.FindProperty("panelParent");
             frameSpriteProperty = serializedObject.FindProperty("frameSprite");
 
-            panelIndex = manager.lastEditedPanel; //Get the panel index from the manager, this guarantees that we're never out of bounds.
-
+            panelIndex = Mathf.Clamp(manager.lastEditedPanel, 0, panelList.arraySize-1); //Get the panel index from the manager, this guarantees that we're never out of bounds.
+            manager.lastEditedPanel = panelIndex; //set it back just incase
             //initialize the selectedPanel properties.
             if(panelList.arraySize > 0)
             {
@@ -123,24 +123,44 @@ namespace PixelRainbows.Editing
         {
             if(foldout) //The buttons should only show with the foldout being active, otherwise they are kind of pointless.
             {
-                //Navigation.
                 EditorGUILayout.BeginHorizontal();
-                if(panelIndex > 0 && GUILayout.Button("Previous"))
+                GUI.backgroundColor = Color.gray;
+                if(panelIndex > 0)
                 {
-                    panelIndex--;
-                    manager.lastEditedPanel = panelIndex;
-                    FindRelativeProperties(panelList.GetArrayElementAtIndex(panelIndex));
-                    Selection.activeObject = ((Transform)panelTransform.objectReferenceValue).gameObject;
+                    //jump to start of array.
+                    if(GUILayout.Button("<<"))
+                        InitEdit(0);
+                    //previous panel
+                    if(GUILayout.Button("<"))
+                    InitEdit(panelIndex-1);
                 }
-                if(panelIndex < panelList.arraySize-1 && GUILayout.Button("Next"))
+                //calculate start and end index.
+                int maxIndex = panelList.arraySize-1;
+                int remaining = maxIndex - panelIndex; //panels between the current and the last index
+                int minOffset = 4 - Mathf.Clamp(remaining, 0, 2); //the offset from current to the first displayed. when panelIndex is the last, this is 4.
+                int startIndex = Mathf.Max(0, panelIndex-minOffset);
+                int endIndex = Mathf.Min(panelList.arraySize-1, panelIndex+4-(panelIndex-startIndex));
+                //show all the options.
+                for(int i = startIndex; i <= endIndex; i++)
                 {
-                    panelIndex++;
-                    manager.lastEditedPanel = panelIndex;
-                    FindRelativeProperties(panelList.GetArrayElementAtIndex(panelIndex));
-                    Selection.activeObject = ((Transform)panelTransform.objectReferenceValue).gameObject;
+                    if(i == panelIndex) //current selected given highlighting.
+                        GUI.backgroundColor = Color.white;
+                    else
+                        GUI.backgroundColor = Color.gray;
+                    //select the panel i
+                    if(GUILayout.Button(i.ToString()))
+                        InitEdit(i);
+                }
+                if(panelIndex < maxIndex)
+                {
+                    //next panel.
+                    if(GUILayout.Button(">"))
+                        InitEdit(panelIndex+1);
+                    //jump to end of array.
+                    if(GUILayout.Button(">>"))
+                        InitEdit(maxIndex);
                 }
                 EditorGUILayout.EndHorizontal();
-
                 //TODO: swapping panels?
 
                 //Adding and removing panels. //Yes i am adding {} for readability.
@@ -167,8 +187,18 @@ namespace PixelRainbows.Editing
             }
             autoRefreshArrangement = EditorGUILayout.Toggle("Auto Re-Arrange Panels", autoRefreshArrangement);
             EditorGUILayout.EndHorizontal();
+
         }
 
+        ///<summary>Initialize Editing for a panel at the given index</summary>
+        void InitEdit(int index)
+        {
+            panelIndex = index;
+            manager.lastEditedPanel = panelIndex;
+            FindRelativeProperties(panelList.GetArrayElementAtIndex(panelIndex));
+            Selection.activeObject = ((Transform)panelTransform.objectReferenceValue).gameObject;
+            SceneView.lastActiveSceneView.FrameSelected();
+        }
 
         ///<summary>Draw the editor box for just the selected panel.</summary>
         void EditSelectedPanel()
@@ -335,6 +365,13 @@ namespace PixelRainbows.Editing
             var element = panelList.GetArrayElementAtIndex(insertionIndex);
             InitializePanelElementWithDefaults(element, instance.transform);
             panelList.MoveArrayElement(insertionIndex, insertionIndex+1);
+            serializedObject.ApplyModifiedProperties();
+            //refresh the panelIndex and properties.
+            InitEdit(insertionIndex+1);
+            //move the panels to where they belong.
+            if(autoRefreshArrangement)
+                manager.AutoArrangePanels(false);
+
         }
 
         ///<summary>Deletes a panel from the list, and optionally deletes the associated GameObject</summary>
@@ -342,12 +379,12 @@ namespace PixelRainbows.Editing
         {
             if(deleteObject)
             {
-                var element = panelList.GetArrayElementAtIndex(deletionIndex); //yucky long line.
+                var element = panelList.GetArrayElementAtIndex(deletionIndex);
                 DestroyImmediate((element.FindPropertyRelative("transform").objectReferenceValue as Transform).gameObject);
             }
             panelList.DeleteArrayElementAtIndex(deletionIndex);
-            if(panelIndex >= panelList.arraySize)
-                panelIndex = panelList.arraySize -1;
+            serializedObject.ApplyModifiedProperties();
+            InitEdit(Mathf.Clamp(panelIndex-1, 0, panelList.arraySize-1));
         }
 
         ///<summary>Initializes an element in the panelList with default values from the source Transform.</summary>
