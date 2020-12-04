@@ -59,6 +59,7 @@ namespace PixelRainbows.Editing
             EditorGUILayout.PropertyField(cameraProperty);
             EditorGUILayout.PropertyField(panelParentProperty);
             EditorGUILayout.PropertyField(frameSpriteProperty);
+                serializedObject.ApplyModifiedProperties();
             if(!frameSpriteProperty.objectReferenceValue) //Give the message to the designer.
                 EditorGUILayout.HelpBox("A frame sprite is required for the sub-panel workflow", MessageType.Info);
 
