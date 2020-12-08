@@ -16,6 +16,8 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/PanelController.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Minigame/BrushTeeth.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Minigame/MinigameBaseClass.cs" />
+        <option value="$PROJECT_DIR$/Assets/DragBlanket.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Minigame/DragBlanket.cs" />
       </list>
     </option>
   </component>
@@ -71,6 +73,8 @@
       <workItem from="1605024212455" duration="601000" />
       <workItem from="1605623600633" duration="5176000" />
       <workItem from="1605646034166" duration="2709000" />
+      <workItem from="1606830913239" duration="13577000" />
+      <workItem from="1607415933633" duration="808000" />
     </task>
     <servers />
   </component>
@@ -83,9 +87,13 @@
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="727" y="244" key="RiderGenerateDialog" timestamp="1605631078947">
+    <state x="727" y="244" key="RiderGenerateDialog" timestamp="1606830985571">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="727" y="244" key="RiderGenerateDialog/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1605631078947" />
+    <state x="727" y="244" key="RiderGenerateDialog/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1606830985571" />
+    <state x="616" y="240" key="run.anything.popup" timestamp="1606836419859">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="616" y="240" key="run.anything.popup/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1606836419859" />
   </component>
 </project>
