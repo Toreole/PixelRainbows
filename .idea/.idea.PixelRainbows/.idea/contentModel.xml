@@ -11,11 +11,15 @@
         <e p="Scripts" t="Include">
           <e p="Butterfly.cs" t="Include" />
           <e p="ButterflyGame.cs" t="Include" />
+          <e p="CameraController.cs" t="Include" />
+          <e p="Menu" t="Include">
+            <e p="MainMenu.cs" t="Include" />
+          </e>
           <e p="Minigame" t="Include">
             <e p="BrushTeeth.cs" t="Include" />
+            <e p="DragBlanket.cs" t="Include" />
             <e p="MinigameBaseClass.cs" t="Include" />
           </e>
-          <e p="PanelController.cs" t="Include" />
           <e p="Panels" t="Include">
             <e p="Editor" t="Include">
               <e p="PanelManagerEditor.cs" t="Include" />
