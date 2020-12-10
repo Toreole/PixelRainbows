@@ -12,6 +12,8 @@ namespace PixelRainbows
         protected PanelManager panelSource;
         [SerializeField]
         protected Button forwardButton, backwardButton;
+        [Header("Temp fix"), SerializeField]
+        protected string nextScene;
 
         private int panelIndex = 0;
         private PanelData lastPanel;
@@ -60,6 +62,8 @@ namespace PixelRainbows
                 panelIndex++;
                 if(panelIndex < panelSource.PanelCount)
                     StartCoroutine(DoTransition());
+                else if(!string.IsNullOrEmpty(nextScene))
+                    UnityEngine.SceneManagement.SceneManager.LoadScene(nextScene);
             }
         }
 

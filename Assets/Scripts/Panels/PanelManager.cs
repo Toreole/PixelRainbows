@@ -179,7 +179,11 @@ namespace PixelRainbows.Panels
             //Debug.DrawLine(sprite.bounds.min, sprite.bounds.max, Color.red, 5);
             //auto-scale the sprite.
             float scale = cameraBounds.x/spriteSize.x;
-            target.localScale *= scale;
+            Vector3 temp = target.localScale * scale;
+            if(temp != Vector3.positiveInfinity)
+                target.localScale = temp;
+            else
+                Debug.LogError($"Scale tried to be infinite with ({temp}) * {scale}", target);
             if(target.localScale.y > 1) //dont scale up beyond the default.
                 target.localScale = Vector3.one;
             //Try to get the minigame.
