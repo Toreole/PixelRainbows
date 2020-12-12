@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using PixelRainbows.Panels;
+using TMPro;
 
 namespace PixelRainbows
 {
@@ -12,8 +13,19 @@ namespace PixelRainbows
         protected PanelManager panelSource;
         [SerializeField]
         protected Button forwardButton, backwardButton;
-        [Header("Temp fix"), SerializeField]
+        
+        [Header("Chapter Transitions"), SerializeField]
         protected string nextScene;
+        [SerializeField]
+        protected TextMeshProUGUI chapterTitle;
+        [SerializeField]
+        protected CanvasGroup uiFade;
+        [SerializeField, Range(0.1f, 5)]
+        protected float whiteFadeInOutTime = 2;
+        [SerializeField, Range(0.1f, 5)]
+        protected float titleFadeInOutTime = 1;
+        [SerializeField, Range(1, 20)]
+        protected float titleStayTime = 3;
 
         private int panelIndex = 0;
         private PanelData lastPanel;
@@ -25,6 +37,53 @@ namespace PixelRainbows
             forwardButton.interactable = true;    
             forwardButton.onClick.AddListener(Continue);
             lastPanel = panelSource.GetPanel(0);
+            //set the position to be at the panel, just in case.
+            Vector3 position = lastPanel.transform.position;
+            position.z = transform.position.z;
+            transform.position = position;
+
+            chapterTitle.alpha = 0; //start with invisible title.
+            StartCoroutine(DoIntroFade());
+        }
+        
+        private IEnumerator DoIntroFade()
+        {
+            //Fade in the title.
+            for(float t = 0; t < titleFadeInOutTime; t += Time.deltaTime)
+            {
+                chapterTitle.alpha = t / titleFadeInOutTime;
+                yield return null;
+            }
+            chapterTitle.alpha = 1;
+            //let the title stay for a while.
+            yield return new WaitForSeconds(titleStayTime);
+            //Fade out the title
+            for(float t = titleFadeInOutTime; t > 0; t -= Time.deltaTime)
+            {
+                chapterTitle.alpha = t / titleFadeInOutTime;
+                yield return null;
+            }
+            chapterTitle.alpha = 0;
+            //fade into the scene.
+            for(float t = whiteFadeInOutTime; t > 0; t -= Time.deltaTime)
+            {
+                uiFade.alpha = t / whiteFadeInOutTime;
+                yield return null;
+            }
+            uiFade.alpha = 0;
+        }
+
+        private IEnumerator DoOutroFade()
+        {
+            for(float t = 0; t < whiteFadeInOutTime; t += Time.deltaTime)
+            {
+                uiFade.alpha = t / whiteFadeInOutTime;
+                yield return null;
+            }
+            uiFade.alpha = 1;
+            yield return new WaitForSeconds(1);
+            if(string.IsNullOrEmpty(nextScene))
+                UnityEngine.SceneManagement.SceneManager.LoadScene(nextScene);
         }
 
         //Should be easy to fix this in case we add sub-panels or minigames.
@@ -63,7 +122,7 @@ namespace PixelRainbows
                 if(panelIndex < panelSource.PanelCount)
                     StartCoroutine(DoTransition());
                 else if(!string.IsNullOrEmpty(nextScene))
-                    UnityEngine.SceneManagement.SceneManager.LoadScene(nextScene);
+                    StartCoroutine(DoOutroFade());
             }
         }
 
@@ -91,6 +150,8 @@ namespace PixelRainbows
                 lastPanel.Minigame.WakeUp();
                 yield return new WaitUntil(() => lastPanel.Minigame.IsDone);
                 forwardButton.interactable = panelIndex < panelSource.PanelCount-1;
+                if(!forwardButton.interactable)
+                    StartCoroutine(DoOutroFade());
             }
             else 
                 forwardButton.interactable = true;
