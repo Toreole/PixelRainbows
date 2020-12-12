@@ -71,6 +71,7 @@ namespace PixelRainbows
                 yield return null;
             }
             uiFade.alpha = 0;
+            uiFade.blocksRaycasts = false;
         }
 
         private IEnumerator DoOutroFade()
@@ -82,7 +83,7 @@ namespace PixelRainbows
             }
             uiFade.alpha = 1;
             yield return new WaitForSeconds(1);
-            if(string.IsNullOrEmpty(nextScene))
+            if(!string.IsNullOrEmpty(nextScene))
                 UnityEngine.SceneManagement.SceneManager.LoadScene(nextScene);
         }
 
