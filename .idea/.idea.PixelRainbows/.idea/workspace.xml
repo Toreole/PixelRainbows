@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="371a7646-7918-40c7-8a52-01623ab6964a" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
@@ -10,14 +13,30 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/A4546799-A4AB-4267-88E4-204C69507924/fb/3c92d1e3/RangeAttribute.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/63DD8BF9-8CFA-4BA9-85AF-735EF1A56BA9/58/eb0a3d10/AttributeTargets.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Audio/ScriptableAudioEvent.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/../gp3/Assets/GP3/Code/Runtime/06_Tools/UnityAttributes/UnityAttributeDemo.cs" root0="SKIP_HIGHLIGHTING" />
+  </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/Assets/Scripts/PanelController.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Minigame/BrushTeeth.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Minigame/MinigameBaseClass.cs" />
         <option value="$PROJECT_DIR$/Assets/DragBlanket.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Audio/MinMaxFloat.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Audio/MinMaxFloatAttribute.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Audio/CustomRangeDrawer.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Audio/FlagEditor.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Audio/ConditionalHidePropertyDrawer.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Editor/ConditionalHidePropertyDrawer.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Audio/ConditionalHideAttribute.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/AudioEdit/ConditionalHidePropertyDrawer.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Audio/ScriptableAudioEvent.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Minigame/DragBlanket.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Minigame/BrushTeeth.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Minigame/Alarm.cs" />
       </list>
     </option>
   </component>
@@ -75,6 +94,8 @@
       <workItem from="1605646034166" duration="2709000" />
       <workItem from="1606830913239" duration="13577000" />
       <workItem from="1607415933633" duration="808000" />
+      <workItem from="1607500320794" duration="19155000" />
+      <workItem from="1608038383356" duration="1260000" />
     </task>
     <servers />
   </component>
@@ -87,13 +108,18 @@
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="727" y="244" key="RiderGenerateDialog" timestamp="1606830985571">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state x="2647" y="244" key="RiderGenerateDialog" timestamp="1607500595445">
+      <screen x="1920" y="0" width="1920" height="1040" />
     </state>
     <state x="727" y="244" key="RiderGenerateDialog/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1606830985571" />
+    <state x="2647" y="244" key="RiderGenerateDialog/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1607500595445" />
     <state x="616" y="240" key="run.anything.popup" timestamp="1606836419859">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="616" y="240" key="run.anything.popup/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1606836419859" />
+    <state x="2543" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1608038599806">
+      <screen x="1920" y="0" width="1920" height="1040" />
+    </state>
+    <state x="2543" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1608038599806" />
   </component>
 </project>

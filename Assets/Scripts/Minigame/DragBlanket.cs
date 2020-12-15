@@ -22,7 +22,7 @@ namespace Minigame
         [SerializeField][Range(3.5f, 5f)][Tooltip("The distance the player has to drag the blanket to win")] 
         private float _winDistance;
 
-        
+        private DragBlanket _dragBlanket;
         private Rigidbody2D _rigidbody2D;
         private SpriteRenderer _spriteRenderer;
         private BoxCollider2D _collider2D;
@@ -49,13 +49,17 @@ namespace Minigame
         // Counts the amount of times the blanket has been dragged back
         private  int _counter = 0;
         
+        [SerializeField]
+        private string _winMessage;
         public override void WakeUp()
         {
-            _tmpUGUI.text = "Drag your blanket!";
+            if(!IsDone) 
+                _tmpUGUI.text = "Drag your blanket!";
         }
         
         private void Awake()
         {
+            _dragBlanket = GetComponent<DragBlanket>();
             _collider2D = GetComponent<BoxCollider2D>();
             _originalPos = transform.position;
             _camera = Camera.main;
@@ -66,21 +70,23 @@ namespace Minigame
         // Update is called once per frame
         void Update()
         {
-            DragBack();
-           _distance = Vector2.Distance(_pos, _originalPos);
-           if (Input.GetMouseButtonUp(0))
-           {
-               Cursor.visible = true;
-               _isButtonStillHeld = false;
-           }
+            if(_counter <=3)
+                DragBack();
+            
+            _distance = Vector2.Distance(_pos, _originalPos);
+            if (Input.GetMouseButtonUp(0))
+            {
+                Cursor.visible = true;
+                _isButtonStillHeld = false;
+            }
            
-           if (IsDone)
-           {
-               Cursor.visible = true;
-               _blanket.enabled = false;
-               _spriteRenderer.enabled = false;
-               _collider2D.enabled = false;
-           }
+            if (IsDone)
+            {
+                Cursor.visible = true;
+                _blanket.enabled = false;
+                _spriteRenderer.enabled = false;
+                _collider2D.enabled = false;
+            }
         }
 
         // Drags the blanket by holding left click
@@ -100,6 +106,7 @@ namespace Minigame
 
             if (_distance >= _winDistance && _counter == 3)
             {
+                _tmpUGUI.text = "" + _winMessage;
                 IsDone = true;
             }
         }
@@ -134,7 +141,7 @@ namespace Minigame
 
         public override void CancelMinigame()
         {
-            if (IsDone == false)
+            if (!IsDone)
             {
                 _counter = 0;
                 _tmpUGUI.text = "";

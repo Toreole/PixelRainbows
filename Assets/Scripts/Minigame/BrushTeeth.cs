@@ -23,6 +23,8 @@ namespace Minigame
         private int _leftCheck = 0;
         private int _rightCheck = 0;
         
+        [SerializeField]
+        private string _winMessage;
         private void Awake()
         {
             _camera = Camera.main;
@@ -32,7 +34,8 @@ namespace Minigame
 
         public override void WakeUp()
         {
-            _tmpUGUI.text = "Brush your teeth!";
+            if(!IsDone)
+                _tmpUGUI.text = "Brush your teeth!";
         }
 
         private void Update()
@@ -82,16 +85,16 @@ namespace Minigame
         {
             if (_leftCheck >= _repetitions && _rightCheck >= _repetitions)
             {
-                _tmpUGUI.text = "";
                 _anim.SetBool(BrushTeethReqDone, true);
                 _spriteRenderer.sprite = null;
+                _tmpUGUI.text = "" + _winMessage;
                 IsDone = true;
             }
         }
         
         public override void CancelMinigame()
         {
-            if (IsDone == false)
+            if (!IsDone)
             {
                 _leftCheck = 0;
                 _rightCheck = 0;
