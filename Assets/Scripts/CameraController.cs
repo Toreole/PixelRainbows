@@ -76,6 +76,7 @@ namespace PixelRainbows
 
         private IEnumerator DoOutroFade()
         {
+            uiFade.blocksRaycasts = true;
             for(float t = 0; t < whiteFadeInOutTime; t += Time.deltaTime)
             {
                 uiFade.alpha = t / whiteFadeInOutTime;
