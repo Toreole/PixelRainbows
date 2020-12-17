@@ -3354,7 +3354,6 @@ GameObject:
   - component: {fileID: 1584902290}
   - component: {fileID: 1584902291}
   - component: {fileID: 1584902293}
-  - component: {fileID: 1584902292}
   m_Layer: 0
   m_Name: Minigame_Alarm
   m_TagString: Untagged
@@ -3392,27 +3391,7 @@ MonoBehaviour:
   _alarmClock: {fileID: 11400000, guid: 6f99efb0eb23bdd43bd6e5d039763109, type: 2}
   _audioSource: {fileID: 498550563}
   _tmpUGUI: {fileID: 206217248}
---- !u!50 &1584902292
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1584902289}
-  m_BodyType: 1
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 1
-  m_Material: {fileID: 0}
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
+  _winMessage: 
 --- !u!61 &1584902293
 BoxCollider2D:
   m_ObjectHideFlags: 0
