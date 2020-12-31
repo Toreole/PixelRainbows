@@ -1,0 +1,458 @@
+fileFormatVersion: 2
+guid: e581c3d057d625040bf54360685fb82e
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 7080971974406228975
+    second: MathTask_0
+  - first:
+      213: 4530506645947774716
+    second: MathTask_1
+  - first:
+      213: -3557947024783412875
+    second: MathTask_2
+  - first:
+      213: 4663550476886091118
+    second: MathTask_3
+  - first:
+      213: 2176030350465267510
+    second: MathTask_4
+  - first:
+      213: -1287971906998299203
+    second: MathTask_5
+  - first:
+      213: -8925720419698171232
+    second: MathTask_6
+  - first:
+      213: -7622035969260582476
+    second: MathTask_7
+  - first:
+      213: 601552805070535612
+    second: MathTask_8
+  - first:
+      213: 1404910037664515411
+    second: MathTask_9
+  - first:
+      213: -1856294590167894176
+    second: MathTask_10
+  - first:
+      213: -1058082178480559738
+    second: MathTask_11
+  - first:
+      213: -2270139944575104685
+    second: MathTask_12
+  - first:
+      213: -180665632941179327
+    second: MathTask_13
+  - first:
+      213: -7469335417186995007
+    second: MathTask_14
+  - first:
+      213: 5239564136385009373
+    second: MathTask_15
+  - first:
+      213: -2411673620547387901
+    second: MathTask_16
+  - first:
+      213: -5254315169770601033
+    second: MathTask_17
+  - first:
+      213: -2108599780121475621
+    second: MathTask_18
+  - first:
+      213: -7705990637127956761
+    second: MathTask_19
+  - first:
+      213: 1148052458118241127
+    second: MathTask_20
+  - first:
+      213: -5112905810517306270
+    second: MathTask_21
+  - first:
+      213: 8525422279096686317
+    second: MathTask_22
+  - first:
+      213: -5733322066439999921
+    second: MathTask_23
+  - first:
+      213: -6110143133893833453
+    second: MathTask_24
+  - first:
+      213: -263366840754499658
+    second: MathTask_25
+  - first:
+      213: -9189594306550224997
+    second: MathTask_26
+  - first:
+      213: 3480409985862609664
+    second: MathTask_27
+  - first:
+      213: 8912695549960250845
+    second: MathTask_28
+  - first:
+      213: -5858692887932285447
+    second: MathTask_29
+  - first:
+      213: -8140225635580572848
+    second: MathTask_30
+  - first:
+      213: -4645828294446949172
+    second: MathTask_31
+  - first:
+      213: -8708668904357168217
+    second: MathTask_32
+  - first:
+      213: 2048475854842307684
+    second: MathTask_33
+  - first:
+      213: 8235310971398062759
+    second: MathTask_34
+  - first:
+      213: -3350719477760277742
+    second: MathTask_35
+  - first:
+      213: -3331997416225344262
+    second: MathTask_36
+  - first:
+      213: 7061412918206777102
+    second: MathTask_37
+  - first:
+      213: 2378235229770759102
+    second: MathTask_38
+  - first:
+      213: -7165443814135295692
+    second: MathTask_39
+  - first:
+      213: -5150984917827390795
+    second: MathTask_40
+  - first:
+      213: -8280969375593928642
+    second: MathTask_41
+  - first:
+      213: -3382223991314325729
+    second: MathTask_42
+  - first:
+      213: -168778815752268378
+    second: MathTask_43
+  - first:
+      213: -842312924003705222
+    second: MathTask_44
+  - first:
+      213: -2291655091120720420
+    second: MathTask_45
+  - first:
+      213: -2599666049319577102
+    second: MathTask_46
+  - first:
+      213: 7053905197324187836
+    second: MathTask_47
+  - first:
+      213: -4570514671169515151
+    second: MathTask_48
+  - first:
+      213: 590292926142389132
+    second: MathTask_49
+  - first:
+      213: 8036959830774234187
+    second: MathTask_50
+  - first:
+      213: -568520848468992562
+    second: MathTask_51
+  - first:
+      213: -5176110747302462034
+    second: MathTask_52
+  - first:
+      213: -2636606305045411243
+    second: MathTask_53
+  - first:
+      213: 3106510818979851315
+    second: MathTask_54
+  - first:
+      213: -373407676621616210
+    second: MathTask_55
+  - first:
+      213: -2275197094204483170
+    second: MathTask_56
+  - first:
+      213: -8171664643089900988
+    second: MathTask_57
+  - first:
+      213: -4617806481387419292
+    second: MathTask_58
+  - first:
+      213: -1762938847214362641
+    second: MathTask_59
+  - first:
+      213: -1961425319168427776
+    second: MathTask_60
+  - first:
+      213: 5422654709709309527
+    second: MathTask_61
+  - first:
+      213: -2933041929306297667
+    second: MathTask_62
+  - first:
+      213: 1611108639667288154
+    second: MathTask_63
+  - first:
+      213: -6274650534121559505
+    second: MathTask_64
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: -1
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: MathTask_0
+      rect:
+        serializedVersion: 2
+        x: 448
+        y: 0
+        width: 1047
+        height: 1038
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: febcafe7e7aa44260800000000000000
+      internalID: 7080971974406228975
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MathTask_13
+      rect:
+        serializedVersion: 2
+        x: 23
+        y: 824
+        width: 243
+        height: 124
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 14e7b6560952e7df0800000000000000
+      internalID: -180665632941179327
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MathTask_24
+      rect:
+        serializedVersion: 2
+        x: 1546
+        y: 813
+        width: 248
+        height: 180
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 31d47715139643ba0800000000000000
+      internalID: -6110143133893833453
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MathTask_37
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 388
+        width: 413
+        height: 248
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e07c11ad2ad2ff160800000000000000
+      internalID: 7061412918206777102
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MathTask_56
+      rect:
+        serializedVersion: 2
+        x: 1588
+        y: 499
+        width: 179
+        height: 231
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e99d0fd1c40ec60e0800000000000000
+      internalID: -2275197094204483170
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MathTask_59
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 12
+        width: 440
+        height: 284
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fef1d0b7578c887e0800000000000000
+      internalID: -1762938847214362641
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MathTask_61
+      rect:
+        serializedVersion: 2
+        x: 1512
+        y: 166
+        width: 289
+        height: 215
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 75682df5ab3214b40800000000000000
+      internalID: 5422654709709309527
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
