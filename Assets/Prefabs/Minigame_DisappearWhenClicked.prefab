@@ -17,7 +17,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &809214865749322638
 Transform:
   m_ObjectHideFlags: 0
@@ -26,7 +26,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3590148251297470319}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.41, y: 0, z: 0}
+  m_LocalPosition: {x: 0.69, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 8023697492014947625}
@@ -71,15 +71,15 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: de2395338ef44dc49a6f2153fa674d94, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 5.2016387, y: 7.98}
+  m_Size: {x: 8.64, y: 8.7}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!61 &4872626573584230315
@@ -99,8 +99,8 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 5.2016387, y: 7.98}
-    newSize: {x: 5.2016387, y: 7.98}
+    oldSize: {x: 8.64, y: 8.7}
+    newSize: {x: 8.64, y: 8.7}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
@@ -154,10 +154,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf73e711bede2344b97c2d8c0560a816, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _sprites: []
+  _sprites:
+  - {fileID: 8023697492396655713}
+  - {fileID: 3590148251297470319}
+  - {fileID: 8753067233887603409}
   _tmpUGUI: {fileID: 0}
   _message: 
   _winMessage: 
+  _enableMode: 1
+  _switchMode: 1
 --- !u!1 &8023697492396655713
 GameObject:
   m_ObjectHideFlags: 0
@@ -229,15 +234,15 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: de2395338ef44dc49a6f2153fa674d94, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 5.2016387, y: 7.98}
+  m_Size: {x: 8.64, y: 8.7}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!61 &8023697492396655712
@@ -257,8 +262,8 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 5.2016387, y: 7.98}
-    newSize: {x: 5.2016387, y: 7.98}
+    oldSize: {x: 8.64, y: 8.7}
+    newSize: {x: 8.64, y: 8.7}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
@@ -283,7 +288,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4125246576968452564
 Transform:
   m_ObjectHideFlags: 0
@@ -292,7 +297,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8753067233887603409}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.41, y: 0, z: 0}
+  m_LocalPosition: {x: 1.37, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 8023697492014947625}
@@ -337,15 +342,15 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: de2395338ef44dc49a6f2153fa674d94, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 5.2016387, y: 7.98}
+  m_Size: {x: 8.64, y: 8.7}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!61 &1184653920771150021
@@ -365,8 +370,8 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 5.2016387, y: 7.98}
-    newSize: {x: 5.2016387, y: 7.98}
+    oldSize: {x: 8.64, y: 8.7}
+    newSize: {x: 8.64, y: 8.7}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0

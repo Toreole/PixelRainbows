@@ -31,15 +31,11 @@ namespace Minigame
         // Start is called before the first frame update
         void Awake()
         {
-            if(!_switchMode)
-                _counter = _sprites.Length;
-
+            // Ensure we dont get mixing modes which will break the code
             if (_switchMode)
             {
                 _enableMode = false;
             }
-
-            WakeUp();
         }
 
         // Update is called once per frame
@@ -51,55 +47,58 @@ namespace Minigame
                 CastRay();
             }
 
-            if (_counter == 0)
+            if (_counter == _sprites.Length)
             {
                 IsDone = true;
                 _tmpUGUI.text = $"{_winMessage}";
             }
+          
         }
 
         // Cast a ray that checks which object we are hitting
         private void CastRay()
         {
+            // Get the mouse position on the screen
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
+            // Shoot towards the clicked direction
             RaycastHit2D hit = Physics2D.Raycast(ray.origin, ray.direction, Mathf.Infinity);
 
-            if (hit)
+            // If it hits nothing, return
+            if (!hit) return;
+            
+            // DisableMode: Disable clicked object in the array
+            if (_sprites.Contains(hit.collider.gameObject) && !_enableMode && !_switchMode)
             {
-                // Disable clicked object in the array
-                if (_sprites.Contains(hit.collider.gameObject) && !_enableMode && !_switchMode)
+                hit.collider.gameObject.SetActive(false);
+                _counter += 1;
+            }
+            // EnableMode: Enable clicked object's spriterenderer in the array
+            else if (_sprites.Contains(hit.collider.gameObject) && _enableMode)
+            {
+                var spriteRenderer = hit.collider.gameObject.GetComponent<SpriteRenderer>();
+                spriteRenderer.enabled = true;
+                _counter += 1;
+            }
+            // SwitchMode: Switch to the next object in the array
+            else if (_sprites.Contains(hit.collider.gameObject) && _switchMode)
+            {
+                hit.collider.gameObject.SetActive(false);
+                _counter += 1;
+                if (_counter < _sprites.Length)
                 {
-                    hit.collider.gameObject.SetActive(false);
-                    _counter -= 1;
-                }
-                // Enable clicked object's spriterenderer in the array
-                else if (_sprites.Contains(hit.collider.gameObject) && _enableMode)
-                {
-                    var spriteRenderer = hit.collider.gameObject.GetComponent<SpriteRenderer>();
-                    spriteRenderer.enabled = true;
-                    _counter -= 1;
-                }
-                // Switch to the next object in the array
-                else if (_sprites.Contains(hit.collider.gameObject) && _switchMode)
-                {
-                    hit.collider.gameObject.SetActive(false);
-                    _counter += 1;
-                    if (_counter < _sprites.Length)
-                    {
-                        _sprites[_counter].gameObject.SetActive(true);
-                    }
+                    _sprites[_counter].gameObject.SetActive(true);
                 }
             }
         }
 
         public override void WakeUp()
         {
+            _counter = 0;
+            _tmpUGUI.text = $"{_message}";
+            var count = 0;
             if (!IsDone && _tmpUGUI != null && !_switchMode)
             {
-                _tmpUGUI.text = $"{_message}";
-                _counter = _sprites.Length;
-                var count = 0;
                 // Enable all objects but disable their SpriteRenderer
                 if (_enableMode)
                 {
@@ -125,9 +124,7 @@ namespace Minigame
             }
             else if (!IsDone && _tmpUGUI != null && _switchMode)
             {
-                _tmpUGUI.text = $"{_message}";
-                _counter = 0;
-                
+                // Disable all objects except the first one
                 foreach (var sprite in _sprites)
                 {
                     sprite.gameObject.SetActive(false);
@@ -136,38 +133,14 @@ namespace Minigame
             }
             else
             {
+                // If we already won the game, set text to nothing
                 _tmpUGUI.text = "";
             }
         }
 
         public override void CancelMinigame()
         {
-            if (!IsDone && _enableMode)
-            {
-                foreach (var sprite in _sprites)
-                {
-                    sprite.gameObject.SetActive(true);
-                }
-            }
-            else if (!IsDone && !_enableMode && !_switchMode)
-            {
-                foreach (var sprite in _sprites)
-                {
-                    sprite.gameObject.SetActive(false);
-                }
-            }
-            else if (!IsDone && _switchMode)
-            {
-                foreach (var sprite in _sprites)
-                {
-                    sprite.gameObject.SetActive(false);
-                    _sprites[0].gameObject.SetActive(true);
-                }
-            }
-            else
-            {
-                _tmpUGUI.text = "";
-            }
+            _tmpUGUI.text = "";
         }
     }
 }
