@@ -40,6 +40,7 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/Minigame/DragBlanket.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Minigame/PullObjectOutOfBag.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Minigame/DragToTarget.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Minigame/MakeObjectsDisappear.cs" />
       </list>
     </option>
   </component>
@@ -101,7 +102,7 @@
       <workItem from="1607415933633" duration="808000" />
       <workItem from="1607500320794" duration="19155000" />
       <workItem from="1608038383356" duration="1260000" />
-      <workItem from="1609764027902" duration="6704000" />
+      <workItem from="1609764027902" duration="11582000" />
     </task>
     <servers />
   </component>
@@ -178,10 +179,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1877" height="375" key="GridCell.Tab.3.right/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1609766336016" />
-    <state x="727" y="244" key="RiderGenerateDialog" timestamp="1609764096370">
+    <state x="727" y="244" key="RiderGenerateDialog" timestamp="1609771652965">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="727" y="244" key="RiderGenerateDialog/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1609764096370" />
+    <state x="727" y="244" key="RiderGenerateDialog/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1609771652965" />
     <state x="2647" y="244" key="RiderGenerateDialog/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1607500595445" />
     <state x="616" y="240" key="run.anything.popup" timestamp="1606836419859">
       <screen x="0" y="0" width="1920" height="1040" />
