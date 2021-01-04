@@ -1239,6 +1239,12 @@ MonoBehaviour:
   panelSource: {fileID: 274356936}
   forwardButton: {fileID: 758880566}
   backwardButton: {fileID: 1584252518}
+  nextScene: 
+  chapterTitle: {fileID: 0}
+  uiFade: {fileID: 0}
+  whiteFadeInOutTime: 2
+  titleFadeInOutTime: 1
+  titleStayTime: 3
 --- !u!20 &519420031
 Camera:
   m_ObjectHideFlags: 0
@@ -2782,6 +2788,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Minigame_DragBlanket
+      objectReference: {fileID: 0}
+    - target: {fileID: 997520737842068926, guid: b43d6668361277a4b89811dce3186c2b,
+        type: 3}
+      propertyPath: _standingUp
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 997520737842068926, guid: b43d6668361277a4b89811dce3186c2b,
+        type: 3}
+      propertyPath: _tmpUGUI
+      value: 
+      objectReference: {fileID: 206217248}
+    - target: {fileID: 997520737842068926, guid: b43d6668361277a4b89811dce3186c2b,
+        type: 3}
+      propertyPath: _winDistance
+      value: 3.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b43d6668361277a4b89811dce3186c2b, type: 3}
