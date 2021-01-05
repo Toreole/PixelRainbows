@@ -22,7 +22,6 @@ namespace Minigame
         [SerializeField][Range(3.5f, 5f)][Tooltip("The distance the player has to drag the blanket to win")] 
         private float _winDistance;
 
-        private DragBlanket _dragBlanket;
         private Rigidbody2D _rigidbody2D;
         private SpriteRenderer _spriteRenderer;
         private BoxCollider2D _collider2D;
@@ -46,9 +45,14 @@ namespace Minigame
         // Checks if the left mouse button is still being held after the blanket has been dragged back by the MC
         private bool _isButtonStillHeld;
         
+        // Check it if you want the MC to stand up, else the MC is going to bed instead of waking up
+        [SerializeField]
+        private bool _standingUp;
+        
         // Counts the amount of times the blanket has been dragged back
         private  int _counter = 0;
         
+        // Any message we want to display at the end?
         [SerializeField]
         private string _winMessage;
         public override void WakeUp()
@@ -59,8 +63,12 @@ namespace Minigame
         
         private void Awake()
         {
-            _dragBlanket = GetComponent<DragBlanket>();
             _collider2D = GetComponent<BoxCollider2D>();
+            if (!_standingUp)
+            {
+                transform.position = _endTarget.transform.position;
+                _pos = _endTarget.transform.position;
+            }
             _originalPos = transform.position;
             _camera = Camera.main;
             _rigidbody2D = GetComponent<Rigidbody2D>();
@@ -73,18 +81,28 @@ namespace Minigame
             if(_counter <=3)
                 DragBack();
             
-            _distance = Vector2.Distance(_pos, _originalPos);
+            if(_standingUp)
+                _distance = Vector2.Distance(_pos, _originalPos);
+            else
+            {
+                _distance = Vector2.Distance(_pos, _endTarget.transform.position);
+            }
             if (Input.GetMouseButtonUp(0))
             {
                 Cursor.visible = true;
                 _isButtonStillHeld = false;
             }
            
-            if (IsDone)
+            if (IsDone && _standingUp)
             {
                 Cursor.visible = true;
                 _blanket.enabled = false;
                 _spriteRenderer.enabled = false;
+                _collider2D.enabled = false;
+            }
+            else if(IsDone && !_standingUp)
+            {
+                Cursor.visible = true;
                 _collider2D.enabled = false;
             }
         }
@@ -92,10 +110,19 @@ namespace Minigame
         // Drags the blanket by holding left click
         private void OnMouseDrag()
         {
-            if(!_isButtonStillHeld)
-                return;
+            if(_standingUp)
+                if(!_isButtonStillHeld) 
+                    return;
                         
-            if (!_draggingBack)
+            if (!_draggingBack && _standingUp)
+            {
+                Cursor.visible = false;
+                _pos = _camera.ScreenToWorldPoint(Input.mousePosition);
+                _pos.x = Mathf.Clamp(_pos.x, _startTarget.position.x, _endTarget.position.x);
+                _pos.y = Mathf.Clamp(_pos.y, _endTarget.position.y, _startTarget.position.y);
+                _rigidbody2D.position = _pos;
+            }
+            else if(!_standingUp)
             {
                 Cursor.visible = false;
                 _pos = _camera.ScreenToWorldPoint(Input.mousePosition);
@@ -104,16 +131,29 @@ namespace Minigame
                 _rigidbody2D.position = _pos;
             }
 
-            if (_distance >= _winDistance && _counter == 3)
+            if (_standingUp)
             {
-                _tmpUGUI.text = "" + _winMessage;
-                IsDone = true;
+                if (_distance >= _winDistance && _counter == 3)
+                {
+                    _tmpUGUI.text = "" + _winMessage;
+                    IsDone = true;
+                }
+            }
+            else if(!_standingUp)
+            {
+                if (_distance >= _winDistance)
+                {
+                    _tmpUGUI.text = "" + _winMessage;
+                    IsDone = true;
+                }
             }
         }
 
         // Drags the blanket back after the player drags it too far away from mc. Wont be called after n(_counter)-amount of times
         private void DragBack()
         {
+            if(!_standingUp)
+                return;
             Cursor.visible = true;
             if (_distance > _dragResistanceDistance && _counter != 3)
             {

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 997520736373406119}
   - component: {fileID: 997520736373406117}
   - component: {fileID: 997520736373406116}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Counter
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -427,3 +427,5 @@ MonoBehaviour:
   _endTarget: {fileID: 997520737185957717}
   _dragSpeed: 0.1
   _winDistance: 3.5
+  _standingUp: 1
+  _winMessage: 
