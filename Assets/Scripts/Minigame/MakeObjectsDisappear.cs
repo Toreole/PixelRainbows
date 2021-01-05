@@ -36,6 +36,9 @@ namespace Minigame
             {
                 _enableMode = false;
             }
+            #if UNITY_EDITOR
+            WakeUp();
+            #endif
         }
 
         // Update is called once per frame

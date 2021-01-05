@@ -50,6 +50,7 @@ namespace Minigame
         
         private void Awake()
         {
+            transform.position = _startPos.transform.position;
             _camera = Camera.main;
             _rigidbody2D = GetComponent<Rigidbody2D>();
             _spriteRenderer = GetComponent<SpriteRenderer>();
@@ -92,7 +93,7 @@ namespace Minigame
             // Win the game if the player reached a minimum distance
             if (Vector2.Distance(transform.position , _target.transform.position) < _minimumDist)
             {
-                Vector2.Lerp(transform.position, _target.transform.position, 0.5f * Time.deltaTime);
+                transform.position = _target.transform.position;
                 _tmpUGUI.text = "" + _winMessage;
                 if(transform.position == _target.transform.position)
                     IsDone = true;
