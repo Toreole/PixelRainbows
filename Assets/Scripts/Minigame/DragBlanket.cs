@@ -50,7 +50,11 @@ namespace Minigame
         private bool _standingUp;
         
         // Counts the amount of times the blanket has been dragged back
-        private  int _counter = 0;
+        private int _counter = 0;
+        
+        // Max amount of times the blanket has to be dragged back
+        [SerializeField]
+        private int _maxAmount;
         
         // Any message we want to display at the end?
         [SerializeField]
@@ -78,7 +82,7 @@ namespace Minigame
         // Update is called once per frame
         void Update()
         {
-            if(_counter <=3)
+            if(_counter <=_maxAmount)
                 DragBack();
             
             if(_standingUp)
@@ -133,7 +137,7 @@ namespace Minigame
 
             if (_standingUp)
             {
-                if (_distance >= _winDistance && _counter == 3)
+                if (_distance >= _winDistance && _counter == _maxAmount)
                 {
                     _tmpUGUI.text = "" + _winMessage;
                     IsDone = true;
@@ -155,7 +159,7 @@ namespace Minigame
             if(!_standingUp)
                 return;
             Cursor.visible = true;
-            if (_distance > _dragResistanceDistance && _counter != 3)
+            if (_distance > _dragResistanceDistance && _counter != _maxAmount)
             {
                 _draggingBack = true;
             }
