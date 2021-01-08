@@ -10,6 +10,8 @@ namespace PixelRainbows
     public class CameraController : MonoBehaviour
     {
         [SerializeField]
+        TransitionMode mode = TransitionMode.SmoothMove;
+        [SerializeField]
         protected PanelManager panelSource;
         [SerializeField]
         protected Button forwardButton, backwardButton;
@@ -134,16 +136,14 @@ namespace PixelRainbows
             PanelData targetPanel = panelSource.GetPanel(panelIndex);
             Vector2 startPos = lastPanel.transform.position;
             Vector2 targetPos = targetPanel.transform.position;
-            //time based transition.
-            for(float t = 0; t < targetPanel.transitionTime; t += Time.deltaTime)
-            {
-                //normalized time, evaluated from the curve.
-                float nt = targetPanel.transitionCurve.Evaluate(t / targetPanel.transitionTime);
-                Vector3 pos = Vector2.Lerp(startPos, targetPos, nt);
-                pos.z = transform.position.z;
-                transform.position = pos;
-                yield return null;
-            }
+            //transition handle:
+            if(mode == TransitionMode.SmoothMove)
+                yield return DoSmoothTransition();
+            else if(mode == TransitionMode.LinearMove)
+                yield return DoLinearTransition();
+            else //if(mode == TransitionMode.JumpCut)
+                transform.position = targetPos.WithZ(transform.position.z);
+
             lastPanel = targetPanel;
             //EnableButtons();
             backwardButton.interactable = true;
@@ -157,7 +157,33 @@ namespace PixelRainbows
             }
             else 
                 forwardButton.interactable = true;
+
+            //local methods for handling the transition. 
+            IEnumerator DoSmoothTransition() //smooth curved-based transition
+            {
+                for(float t = 0; t < targetPanel.transitionTime; t += Time.deltaTime)
+                {
+                    //normalized time, evaluated from the curve.
+                    float nt = targetPanel.transitionCurve.Evaluate(t / targetPanel.transitionTime);
+                    Vector3 pos = Vector2.Lerp(startPos, targetPos, nt);
+                    pos.z = transform.position.z;
+                    transform.position = pos;
+                    yield return null;
+                }
+            }
+            IEnumerator DoLinearTransition() //linear movement between panels.
+            {
+                for(float t = 0; t < targetPanel.transitionTime; t += Time.deltaTime)
+                {
+                    float nt = t / targetPanel.transitionTime;
+                    Vector3 pos = Vector2.Lerp(startPos, targetPos, nt);
+                    pos.z = transform.position.z;
+                    transform.position = pos;
+                    yield return null;
+                }
+            }
         }
+
 
         void DisableButtons()
         {
@@ -170,5 +196,13 @@ namespace PixelRainbows
         //    backwardButton.interactable = panelIndex > 0;
         //    forwardButton.interactable = panelIndex < panelSource.PanelCount-1;
         //}
+
+        public enum TransitionMode
+        {
+            SmoothMove,
+            LinearMove,
+            JumpCut,
+
+        }
     }  
 }
