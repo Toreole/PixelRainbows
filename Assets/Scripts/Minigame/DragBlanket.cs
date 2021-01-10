@@ -36,7 +36,7 @@ namespace Minigame
         // Distance between the _originalPos and _pos
         private float _distance;
         
-        // Distance at which point the MC will drag the blanket back
+        [SerializeField][Tooltip("Distance at which point the MC will drag the blanket back")]
         private float _dragResistanceDistance = 2.5f;
         
         // Checks if the blanket is being dragged
@@ -71,12 +71,15 @@ namespace Minigame
             if (!_standingUp)
             {
                 transform.position = _endTarget.transform.position;
-                _pos = _endTarget.transform.position;
+                _pos = _endTarget.position;
             }
+
             _originalPos = transform.position;
+            _pos = _originalPos;
             _camera = Camera.main;
             _rigidbody2D = GetComponent<Rigidbody2D>();
             _spriteRenderer = GetComponent<SpriteRenderer>();
+            _rigidbody2D.position = _originalPos;
         }
 
         // Update is called once per frame
@@ -85,20 +88,22 @@ namespace Minigame
             if(_counter <=_maxAmount)
                 DragBack();
             
-            if(_standingUp)
-                _distance = Vector2.Distance(_pos, _originalPos);
-            else
-            {
-                _distance = Vector2.Distance(_pos, _endTarget.transform.position);
-            }
+            if(Input.GetMouseButton(0))
+                _distance = _standingUp ? Vector3.Distance(_startTarget.position, transform.position) : Vector2.Distance(_pos, _endTarget.transform.position);
+            
             if (Input.GetMouseButtonUp(0))
             {
                 Cursor.visible = true;
                 _isButtonStillHeld = false;
             }
-           
+            if (Input.GetMouseButtonDown(0))
+            {
+                _isButtonStillHeld = true;
+            }
+            
             if (IsDone && _standingUp)
             {
+              
                 Cursor.visible = true;
                 _blanket.enabled = false;
                 _spriteRenderer.enabled = false;
@@ -163,16 +168,15 @@ namespace Minigame
             {
                 _draggingBack = true;
             }
-            _rigidbody2D.position = Vector2.Lerp(_rigidbody2D.position, _originalPos, _dragSpeed);
-            if (_rigidbody2D.position == _originalPos)
+            
+            if(_draggingBack)
+                transform.position = Vector2.Lerp(transform.position, _startTarget.transform.position, _dragSpeed);
+
+            if (Vector3.Distance(transform.position, _startTarget.transform.position) < 0.1f)
             {
-                if (Input.GetMouseButtonDown(0))
-                {
-                    _isButtonStillHeld = true;
-                }
                 if(!_isButtonStillHeld)
                     _draggingBack = false;
-                _pos = _originalPos;
+                transform.position = _startTarget.transform.position;
             }
         }
 
