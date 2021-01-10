@@ -1191,6 +1191,7 @@ MonoBehaviour:
   _winMessage: 
   _enableMode: 1
   _switchMode: 1
+  _keepLastSprite: 1
 --- !u!1 &258473146
 GameObject:
   m_ObjectHideFlags: 0
@@ -1816,6 +1817,11 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8491843101725544205, guid: 146798cd8637968448739c3fff8b8e5d,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 146798cd8637968448739c3fff8b8e5d, type: 3}
 --- !u!114 &510112867 stripped
@@ -2030,6 +2036,7 @@ MonoBehaviour:
   _winMessage: 
   _enableMode: 1
   _switchMode: 0
+  _keepLastSprite: 0
 --- !u!1 &598594911
 GameObject:
   m_ObjectHideFlags: 0
@@ -2920,6 +2927,7 @@ MonoBehaviour:
   _winMessage: 
   _enableMode: 0
   _switchMode: 1
+  _keepLastSprite: 0
 --- !u!1 &894920845
 GameObject:
   m_ObjectHideFlags: 0
@@ -3951,6 +3959,7 @@ MonoBehaviour:
   _winMessage: 
   _enableMode: 1
   _switchMode: 1
+  _keepLastSprite: 0
 --- !u!1 &1235570612
 GameObject:
   m_ObjectHideFlags: 0
@@ -4003,6 +4012,7 @@ MonoBehaviour:
   _winMessage: 
   _enableMode: 1
   _switchMode: 1
+  _keepLastSprite: 0
 --- !u!1 &1256651984
 GameObject:
   m_ObjectHideFlags: 0
@@ -4697,6 +4707,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5036022269bd47145853b358576936c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mode: 0
   panelSource: {fileID: 156516540}
   forwardButton: {fileID: 510112868}
   backwardButton: {fileID: 510112867}

@@ -38,6 +38,7 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/Minigame/BrushTeeth.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Minigame/Alarm.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Minigame/DragBlanket.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Minigame/MakeObjectsDisappear.cs" />
       </list>
     </option>
   </component>
@@ -101,7 +102,7 @@
       <workItem from="1608038383356" duration="1260000" />
       <workItem from="1610036934550" duration="1827000" />
       <workItem from="1610301830122" duration="6934000" />
-      <workItem from="1610308884075" duration="333000" />
+      <workItem from="1610308884075" duration="1412000" />
     </task>
     <servers />
   </component>

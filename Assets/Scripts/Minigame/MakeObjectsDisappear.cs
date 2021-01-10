@@ -23,6 +23,11 @@ namespace Minigame
         
         [SerializeField][Tooltip("If this is enabled, the sprite will be changed to the next sprite in the list instead of disabled")]
         private bool _switchMode;
+
+        [SerializeField][Tooltip("If this is enabled, the last sprite in the switch mode will still be displayed")]
+        private bool _keepLastSprite;
+
+        private bool _lastSpriteKeptAndDone;
         
         // Counter that goes lower if we make the 
         private int _counter;
@@ -50,7 +55,7 @@ namespace Minigame
                 CastRay();
             }
 
-            if (_counter == _sprites.Length)
+            if (_counter == _sprites.Length || _lastSpriteKeptAndDone)
             {
                 IsDone = true;
                 _tmpUGUI.text = $"{_winMessage}";
@@ -86,6 +91,11 @@ namespace Minigame
             // SwitchMode: Switch to the next object in the array
             else if (_sprites.Contains(hit.collider.gameObject) && _switchMode)
             {
+                if(_keepLastSprite && _counter == _sprites.Length -1)
+                {
+                    _lastSpriteKeptAndDone = true;
+                    return;  
+                }
                 hit.collider.gameObject.SetActive(false);
                 _counter += 1;
                 if (_counter < _sprites.Length)
