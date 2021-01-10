@@ -34,6 +34,7 @@ namespace Minigame
         private Vector2 _originalPos;
         
         // Distance between the _originalPos and _pos
+        [SerializeField]
         private float _distance;
         
         [SerializeField][Tooltip("Distance at which point the MC will drag the blanket back")]
@@ -88,8 +89,8 @@ namespace Minigame
             if(_counter <=_maxAmount)
                 DragBack();
             
-            if(Input.GetMouseButton(0))
-                _distance = _standingUp ? Vector3.Distance(_startTarget.position, transform.position) : Vector2.Distance(_pos, _endTarget.transform.position);
+            
+            _distance = _standingUp ? Vector3.Distance(_startTarget.position, transform.position) : Vector2.Distance(_pos, _endTarget.transform.position);
             
             if (Input.GetMouseButtonUp(0))
             {
@@ -168,9 +169,11 @@ namespace Minigame
             {
                 _draggingBack = true;
             }
-            
-            if(_draggingBack)
-                transform.position = Vector2.Lerp(transform.position, _startTarget.transform.position, _dragSpeed);
+
+            if (_draggingBack)
+            {
+                transform.position = Vector3.Lerp(transform.position, _startTarget.transform.position, _dragSpeed);
+            }
 
             if (Vector3.Distance(transform.position, _startTarget.transform.position) < 0.1f)
             {
