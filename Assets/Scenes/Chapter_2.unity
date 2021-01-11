@@ -1036,9 +1036,9 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 220573045}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b26c71eef455c2c4fa522f8e16f84f82, type: 3}
+  m_Script: {fileID: 11500000, guid: 1b3410800fdd0544998d7a0f619831a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &238901135
@@ -5998,7 +5998,7 @@ GameObject:
   - component: {fileID: 1469298681}
   - component: {fileID: 1469298682}
   m_Layer: 0
-  m_Name: Sprite
+  m_Name: School
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6707,8 +6707,10 @@ GameObject:
   m_Component:
   - component: {fileID: 1773603420}
   - component: {fileID: 1773603421}
+  - component: {fileID: 1773603422}
+  - component: {fileID: 1773603423}
   m_Layer: 0
-  m_Name: Sprite
+  m_Name: MCFalling
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6778,6 +6780,37 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &1773603422
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1773603419}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: aa9447b8d2a4fa9409962d63b667e06e, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &1773603423
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1773603419}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b3410800fdd0544998d7a0f619831a2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1806708503
 GameObject:
   m_ObjectHideFlags: 0
