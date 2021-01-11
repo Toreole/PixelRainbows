@@ -91,7 +91,7 @@ namespace Minigame
             // SwitchMode: Switch to the next object in the array
             else if (_sprites.Contains(hit.collider.gameObject) && _switchMode)
             {
-                if(_keepLastSprite && _counter == _sprites.Length -1)
+                if(_keepLastSprite && _counter + 1 == _sprites.Length)
                 {
                     _lastSpriteKeptAndDone = true;
                     return;  

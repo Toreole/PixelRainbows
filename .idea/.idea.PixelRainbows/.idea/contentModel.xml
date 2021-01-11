@@ -9,6 +9,9 @@
       <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
       <e p="Assets" t="Include">
         <e p="Scripts" t="Include">
+          <e p="Anims" t="Include">
+            <e p="StartAnimOnClick.cs" t="Include" />
+          </e>
           <e p="Audio" t="Include">
             <e p="MinMaxFloat.cs" t="Include" />
             <e p="MinMaxFloatAttribute.cs" t="Include" />
@@ -33,6 +36,7 @@
             <e p="Editor" t="Include">
               <e p="PanelManagerEditor.cs" t="Include" />
             </e>
+            <e p="PanelAnimator.cs" t="Include" />
             <e p="PanelData.cs" t="Include" />
             <e p="PanelManager.cs" t="Include" />
           </e>

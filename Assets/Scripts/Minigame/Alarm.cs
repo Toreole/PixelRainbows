@@ -15,6 +15,13 @@ namespace Minigame
         // SO that is somewhere in the scene
         [SerializeField]
         private AudioSource _audioSource;
+
+        // Gets the animator from an object
+        private Animator _animator;
+
+        // Resets the rotation after an animation back to zero
+        [SerializeField]
+        private GameObject _resetAnimGameObject;
         
         // TMP that is somewhere in the scene
         [SerializeField] 
@@ -25,8 +32,16 @@ namespace Minigame
 
         [SerializeField]
         private string _winMessage;
+
+        private void Awake()
+        {
+            _animator = GetComponentInChildren<Animator>();
+        }
+
         private void OnMouseDown()
         {
+            _animator.enabled = false;
+            _resetAnimGameObject.transform.localRotation = Quaternion.identity;
             _audioSource.Stop();
             _tmpUGUI.text = "" + _winMessage;
             IsDone = true;
@@ -39,6 +54,7 @@ namespace Minigame
                 // Plays the soundclip. It will continue to ring even if the player tries to escape the sound by going back to another panel.
                 if(!_isPlaying)
                     _alarmClock.Play(_audioSource);
+                _animator.enabled = true;
                 _tmpUGUI.text = "Stop the alarm!";
                 _isPlaying = true;
             }

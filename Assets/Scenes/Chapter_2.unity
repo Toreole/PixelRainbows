@@ -5835,6 +5835,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2004939510}
     m_Modifications:
+    - target: {fileID: 86523332244800468, guid: bc28092f07f989747980bcc82613debb,
+        type: 3}
+      propertyPath: m_Icon
+      value: 
+      objectReference: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000,
+        type: 0}
+    - target: {fileID: 1117792444467156601, guid: bc28092f07f989747980bcc82613debb,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -2.53
+      objectReference: {fileID: 0}
+    - target: {fileID: 1117792444467156601, guid: bc28092f07f989747980bcc82613debb,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -2.64
+      objectReference: {fileID: 0}
     - target: {fileID: 1367529051399397369, guid: bc28092f07f989747980bcc82613debb,
         type: 3}
       propertyPath: m_LocalPosition.y
@@ -5844,6 +5860,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalPosition.y
       value: -3.42
+      objectReference: {fileID: 0}
+    - target: {fileID: 2197542917414700875, guid: bc28092f07f989747980bcc82613debb,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -4.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2197542917414700875, guid: bc28092f07f989747980bcc82613debb,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -6.82
       objectReference: {fileID: 0}
     - target: {fileID: 2753685379809313451, guid: bc28092f07f989747980bcc82613debb,
         type: 3}
@@ -5884,6 +5910,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Minigame_DragToTarget
+      objectReference: {fileID: 0}
+    - target: {fileID: 4843320121351241039, guid: bc28092f07f989747980bcc82613debb,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 2.72
+      objectReference: {fileID: 0}
+    - target: {fileID: 4843320121351241039, guid: bc28092f07f989747980bcc82613debb,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 4.73
       objectReference: {fileID: 0}
     - target: {fileID: 5227403609627758970, guid: bc28092f07f989747980bcc82613debb,
         type: 3}
@@ -5990,6 +6026,18 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 5411628713307045808, guid: bc28092f07f989747980bcc82613debb,
+        type: 3}
+      propertyPath: m_Icon
+      value: 
+      objectReference: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000,
+        type: 0}
+    - target: {fileID: 8002238330412687091, guid: bc28092f07f989747980bcc82613debb,
+        type: 3}
+      propertyPath: m_Icon
+      value: 
+      objectReference: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000,
+        type: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bc28092f07f989747980bcc82613debb, type: 3}
 --- !u!224 &1310351626 stripped
