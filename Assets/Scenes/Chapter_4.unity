@@ -444,6 +444,7 @@ MonoBehaviour:
   _winMessage: 
   _enableMode: 1
   _switchMode: 1
+  _keepLastSprite: 0
 --- !u!1 &239636519
 GameObject:
   m_ObjectHideFlags: 0
@@ -2910,6 +2911,7 @@ MonoBehaviour:
   _winMessage: 
   _enableMode: 1
   _switchMode: 1
+  _keepLastSprite: 1
 --- !u!1 &962016329
 GameObject:
   m_ObjectHideFlags: 0
@@ -3044,6 +3046,7 @@ MonoBehaviour:
   _winMessage: 
   _enableMode: 1
   _switchMode: 1
+  _keepLastSprite: 1
 --- !u!1 &1052210944
 GameObject:
   m_ObjectHideFlags: 0
@@ -3178,6 +3181,7 @@ MonoBehaviour:
   _winMessage: 
   _enableMode: 1
   _switchMode: 1
+  _keepLastSprite: 0
 --- !u!1 &1122664947
 GameObject:
   m_ObjectHideFlags: 0
@@ -4935,6 +4939,7 @@ MonoBehaviour:
   _winMessage: 
   _enableMode: 0
   _switchMode: 1
+  _keepLastSprite: 1
 --- !u!1 &1948433684
 GameObject:
   m_ObjectHideFlags: 0
@@ -6495,6 +6500,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5036022269bd47145853b358576936c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mode: 0
   panelSource: {fileID: 222346295182029286}
   forwardButton: {fileID: 6906902899292245168}
   backwardButton: {fileID: 6906902899540382688}
@@ -7000,7 +7006,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!223 &6906902899514594694
 Canvas:
   m_ObjectHideFlags: 0
