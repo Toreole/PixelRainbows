@@ -27,6 +27,7 @@ namespace PixelRainbows.Editing
         SerializedProperty panelTransitionCurve;
         SerializedProperty panelPlacement;
         SerializedProperty panelSubPanels;
+        SerializedProperty transitionStyle;
 
         bool autoRefreshArrangement = true;
 
@@ -215,7 +216,9 @@ namespace PixelRainbows.Editing
                 EditorGUILayout.PropertyField(panelTransform);
                 EditorGUILayout.PropertyField(panelRenderer);
                 EditorGUILayout.PropertyField(panelTransitionTime);
-                EditorGUILayout.PropertyField(panelTransitionCurve);
+                EditorGUILayout.PropertyField(transitionStyle);
+                if(transitionStyle.enumValueIndex == (int)TransitionMode.SmoothMove)
+                    EditorGUILayout.PropertyField(panelTransitionCurve);
                 //temporary buffer
                 var previousPlacement = panelPlacement.enumValueIndex;
                 EditorGUILayout.PropertyField(panelPlacement);
@@ -236,8 +239,8 @@ namespace PixelRainbows.Editing
                         //Address the issue.
                         EditorGUILayout.HelpBox("Two consecutive panels are placed Below and Above the previous. This is not supported.", MessageType.Error);
                 }
-                if(frameSpriteProperty.objectReferenceValue)
-                    ShowSubPanelWorkflow();
+                //if(frameSpriteProperty.objectReferenceValue)
+                //    ShowSubPanelWorkflow(); //SUB PANELS ARE WACKY
             }
             
             EditorGUI.indentLevel--;
@@ -251,8 +254,8 @@ namespace PixelRainbows.Editing
             if(panelSubPanels.arraySize == 0)
             {
                 //1.1. give option to convert it. Change main renderer sprite, instantiate first subpanel being the old panel sprite.
-                if(GUILayout.Button("Set to use Sub-Panels.")) //This shouldnt be displayed, if the panel is a minigame.
-                    ConvertSelectedPanelToMulti();
+                //if(GUILayout.Button("Set to use Sub-Panels.")) //This shouldnt be displayed, if the panel is a minigame.
+                //    ConvertSelectedPanelToMulti();
             }
             else 
             {
@@ -317,6 +320,7 @@ namespace PixelRainbows.Editing
             panelTransitionCurve = panelDataInstanceProperty.FindPropertyRelative("transitionCurve");
             panelPlacement       = panelDataInstanceProperty.FindPropertyRelative("placement");
             panelSubPanels       = panelDataInstanceProperty.FindPropertyRelative("subPanels");
+            transitionStyle      = panelDataInstanceProperty.FindPropertyRelative("transitionStyle");
         }
     
         ///<summary>Presents the UI to intialize the panel list.</summary>
