@@ -74,6 +74,13 @@ namespace PixelRainbows
             }
             uiFade.alpha = 0;
             uiFade.blocksRaycasts = false;
+            if(lastPanel.Minigame)
+            {
+                forwardButton.interactable = false;
+                lastPanel.Minigame.WakeUp(); //mainly for animations and the sort.
+                yield return new WaitUntil(() => lastPanel.Minigame.IsDone);
+                forwardButton.interactable = true;
+            }
         }
 
         private IEnumerator DoOutroFade()
