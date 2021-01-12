@@ -143,14 +143,15 @@ namespace PixelRainbows
             PanelData targetPanel = panelSource.GetPanel(panelIndex);
             Vector2 startPos = lastPanel.transform.position;
             Vector2 targetPos = targetPanel.transform.position;
+            var transitionStyle = (targetPanel.overrideTransition == TransitionMode.UseDefault) ? panelSource.DefaultTransition : targetPanel.overrideTransition;
             //transition handle:
-            if(targetPanel.transitionStyle == TransitionMode.SmoothMove)
+            if(transitionStyle == TransitionMode.SmoothMove)
                 yield return DoSmoothTransition();
-            else if(targetPanel.transitionStyle == TransitionMode.LinearMove)
+            else if(transitionStyle == TransitionMode.LinearMove)
                 yield return DoLinearTransition();
-            else if(targetPanel.transitionStyle == TransitionMode.JumpCut)
+            else if(transitionStyle == TransitionMode.JumpCut)
                 transform.position = targetPos.WithZ(transform.position.z);
-            else //if(targetPanel.transitionStyle == TransitionMode.WhiteFade)
+            else //if(transitionStyle == TransitionMode.WhiteFade)
                 yield return DoWhiteFadeTransition();
 
             lastPanel = targetPanel;

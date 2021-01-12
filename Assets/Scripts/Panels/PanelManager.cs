@@ -25,6 +25,11 @@ namespace PixelRainbows.Panels
 
         [SerializeField]
         private Transform panelParent;
+
+        [SerializeField]
+        private TransitionMode defaultTransitionStyle;
+
+        public TransitionMode DefaultTransition => defaultTransitionStyle;
 #endregion
 
 #region Runtime_Vars

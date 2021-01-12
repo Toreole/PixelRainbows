@@ -13,8 +13,9 @@ namespace PixelRainbows.Panels
         ///<summary>The main SpriteRenderer of this panel.</summary>
         public SpriteRenderer spriteRenderer;
 
-        ///<summary>The way the panel is transitioned in</summary>
-        public TransitionMode transitionStyle = TransitionMode.LinearMove; //Default = Linear, makes people less dizzy.
+        ///<summary>The way the panel is transitioned in</summary> 
+        [UnityEngine.Serialization.FormerlySerializedAs("transitionStyle")]
+        public TransitionMode overrideTransition = TransitionMode.UseDefault;
 
         ///<summary>The time in seconds it takes to transition to this panel.</summary>
         public float transitionTime = 1f;
@@ -51,6 +52,7 @@ namespace PixelRainbows.Panels
     public enum TransitionMode
     {
         SmoothMove,
+        UseDefault = 1,
         LinearMove,
         JumpCut,
         WhiteFade

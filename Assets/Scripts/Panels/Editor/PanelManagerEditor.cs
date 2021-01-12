@@ -16,6 +16,7 @@ namespace PixelRainbows.Editing
         SerializedProperty panelPrefabProperty;
         SerializedProperty frameSpriteProperty;
         SerializedProperty panelParentProperty;
+        SerializedProperty defaultTransitionStyleProperty;
         bool foldout = false;
         int panelIndex;
 
@@ -27,7 +28,7 @@ namespace PixelRainbows.Editing
         SerializedProperty panelTransitionCurve;
         SerializedProperty panelPlacement;
         SerializedProperty panelSubPanels;
-        SerializedProperty transitionStyle;
+        SerializedProperty overrideTransition;
 
         bool autoRefreshArrangement = true;
 
@@ -41,6 +42,7 @@ namespace PixelRainbows.Editing
             panelPrefabProperty = serializedObject.FindProperty("blankPanelPrefab");
             panelParentProperty = serializedObject.FindProperty("panelParent");
             frameSpriteProperty = serializedObject.FindProperty("frameSprite");
+            defaultTransitionStyleProperty = serializedObject.FindProperty("defaultTransitionStyle");
 
             panelIndex = Mathf.Clamp(manager.lastEditedPanel, 0, panelList.arraySize-1); //Get the panel index from the manager, this guarantees that we're never out of bounds.
             manager.lastEditedPanel = panelIndex; //set it back just incase
@@ -60,9 +62,10 @@ namespace PixelRainbows.Editing
             EditorGUILayout.PropertyField(cameraProperty);
             EditorGUILayout.PropertyField(panelParentProperty);
             EditorGUILayout.PropertyField(frameSpriteProperty);
+            EditorGUILayout.PropertyField(defaultTransitionStyleProperty);
                 serializedObject.ApplyModifiedProperties();
-            if(!frameSpriteProperty.objectReferenceValue) //Give the message to the designer.
-                EditorGUILayout.HelpBox("A frame sprite is required for the sub-panel workflow", MessageType.Info);
+            //if(!frameSpriteProperty.objectReferenceValue) //Give the message to the designer.
+            //    EditorGUILayout.HelpBox("A frame sprite is required for the sub-panel workflow", MessageType.Info);
 
             //make sure the camera is assigned before we do anything else
             if(!cameraProperty.objectReferenceValue || !panelPrefabProperty.objectReferenceValue)
@@ -216,8 +219,8 @@ namespace PixelRainbows.Editing
                 EditorGUILayout.PropertyField(panelTransform);
                 EditorGUILayout.PropertyField(panelRenderer);
                 EditorGUILayout.PropertyField(panelTransitionTime);
-                EditorGUILayout.PropertyField(transitionStyle);
-                if(transitionStyle.enumValueIndex == (int)TransitionMode.SmoothMove)
+                EditorGUILayout.PropertyField(overrideTransition);
+                if(overrideTransition.enumValueIndex == (int)TransitionMode.SmoothMove)
                     EditorGUILayout.PropertyField(panelTransitionCurve);
                 //temporary buffer
                 var previousPlacement = panelPlacement.enumValueIndex;
@@ -320,7 +323,7 @@ namespace PixelRainbows.Editing
             panelTransitionCurve = panelDataInstanceProperty.FindPropertyRelative("transitionCurve");
             panelPlacement       = panelDataInstanceProperty.FindPropertyRelative("placement");
             panelSubPanels       = panelDataInstanceProperty.FindPropertyRelative("subPanels");
-            transitionStyle      = panelDataInstanceProperty.FindPropertyRelative("transitionStyle");
+            overrideTransition   = panelDataInstanceProperty.FindPropertyRelative("overrideTransition");
         }
     
         ///<summary>Presents the UI to intialize the panel list.</summary>
