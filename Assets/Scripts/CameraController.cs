@@ -9,8 +9,8 @@ namespace PixelRainbows
 {
     public class CameraController : MonoBehaviour
     {
-        [SerializeField]
-        TransitionMode mode = TransitionMode.SmoothMove;
+        //[SerializeField]
+        //TransitionMode mode = TransitionMode.SmoothMove;
         [SerializeField]
         protected PanelManager panelSource;
         [SerializeField]
@@ -137,12 +137,14 @@ namespace PixelRainbows
             Vector2 startPos = lastPanel.transform.position;
             Vector2 targetPos = targetPanel.transform.position;
             //transition handle:
-            if(mode == TransitionMode.SmoothMove)
+            if(targetPanel.transitionStyle == TransitionMode.SmoothMove)
                 yield return DoSmoothTransition();
-            else if(mode == TransitionMode.LinearMove)
+            else if(targetPanel.transitionStyle == TransitionMode.LinearMove)
                 yield return DoLinearTransition();
-            else //if(mode == TransitionMode.JumpCut)
+            else if(targetPanel.transitionStyle == TransitionMode.JumpCut)
                 transform.position = targetPos.WithZ(transform.position.z);
+            else //if(targetPanel.transitionStyle == TransitionMode.WhiteFade)
+                yield return DoWhiteFadeTransition();
 
             lastPanel = targetPanel;
             //EnableButtons();
@@ -157,7 +159,7 @@ namespace PixelRainbows
             }
             else 
                 forwardButton.interactable = true;
-
+#region TransitionRoutines
             //local methods for handling the transition. 
             IEnumerator DoSmoothTransition() //smooth curved-based transition
             {
@@ -182,6 +184,34 @@ namespace PixelRainbows
                     yield return null;
                 }
             }
+            IEnumerator DoWhiteFadeTransition()
+            {
+                uiFade.blocksRaycasts = true;
+                chapterTitle.alpha = 0;
+                float t;
+                //Fade the ui to pure white
+                for(t = 0; t < targetPanel.transitionTime; t+= Time.deltaTime)
+                {
+                    float nt = t / targetPanel.transitionTime;
+                    uiFade.alpha = nt;
+                    yield return null;
+                }
+                //relocate the camera.
+                transform.position = targetPanel.transform.position.WithZ(transform.position.z);
+
+                //fade out the white screen blocker
+                for(; t > 0f; t -= Time.deltaTime)
+                {
+                    float nt = t / targetPanel.transitionTime;
+                    uiFade.alpha = nt;
+                    yield return null;
+                }
+                //reset values to normalized.
+                uiFade.blocksRaycasts = false;
+                chapterTitle.alpha = 1;
+                uiFade.alpha = 0;
+            }
+#endregion
         }
 
 
@@ -197,12 +227,5 @@ namespace PixelRainbows
         //    forwardButton.interactable = panelIndex < panelSource.PanelCount-1;
         //}
 
-        public enum TransitionMode
-        {
-            SmoothMove,
-            LinearMove,
-            JumpCut,
-
-        }
     }  
 }
