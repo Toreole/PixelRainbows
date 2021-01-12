@@ -444,7 +444,7 @@ MonoBehaviour:
   _winMessage: 
   _enableMode: 1
   _switchMode: 1
-  _keepLastSprite: 0
+  _keepLastSprite: 1
 --- !u!1 &239636519
 GameObject:
   m_ObjectHideFlags: 0
@@ -2911,7 +2911,7 @@ MonoBehaviour:
   _winMessage: 
   _enableMode: 1
   _switchMode: 1
-  _keepLastSprite: 1
+  _keepLastSprite: 0
 --- !u!1 &962016329
 GameObject:
   m_ObjectHideFlags: 0
@@ -3181,7 +3181,7 @@ MonoBehaviour:
   _winMessage: 
   _enableMode: 1
   _switchMode: 1
-  _keepLastSprite: 0
+  _keepLastSprite: 1
 --- !u!1 &1122664947
 GameObject:
   m_ObjectHideFlags: 0

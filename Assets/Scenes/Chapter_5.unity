@@ -507,6 +507,7 @@ MonoBehaviour:
   _winMessage: 
   _enableMode: 0
   _switchMode: 0
+  _keepLastSprite: 1
 --- !u!1 &172676891
 GameObject:
   m_ObjectHideFlags: 0
@@ -938,6 +939,7 @@ MonoBehaviour:
   _winMessage: 
   _enableMode: 1
   _switchMode: 1
+  _keepLastSprite: 0
 --- !u!1 &365205361
 GameObject:
   m_ObjectHideFlags: 0
@@ -1254,7 +1256,7 @@ BoxCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 473332826}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
@@ -2318,7 +2320,7 @@ BoxCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 688229764}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
@@ -3056,7 +3058,7 @@ BoxCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 930775820}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
@@ -3189,6 +3191,7 @@ MonoBehaviour:
   _winMessage: 
   _enableMode: 0
   _switchMode: 1
+  _keepLastSprite: 1
 --- !u!1 &1071246813
 GameObject:
   m_ObjectHideFlags: 0
@@ -3228,7 +3231,7 @@ BoxCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1071246813}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
@@ -3979,6 +3982,7 @@ MonoBehaviour:
   _winMessage: 
   _enableMode: 0
   _switchMode: 1
+  _keepLastSprite: 1
 --- !u!1 &1545440375
 GameObject:
   m_ObjectHideFlags: 0
@@ -4715,6 +4719,7 @@ MonoBehaviour:
   _winMessage: 
   _enableMode: 0
   _switchMode: 0
+  _keepLastSprite: 1
 --- !u!1 &1895988023
 GameObject:
   m_ObjectHideFlags: 0
@@ -5118,6 +5123,7 @@ MonoBehaviour:
   _winMessage: 
   _enableMode: 0
   _switchMode: 1
+  _keepLastSprite: 1
 --- !u!1 &2034972034
 GameObject:
   m_ObjectHideFlags: 0
@@ -5315,7 +5321,7 @@ BoxCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2070072899}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
@@ -6276,6 +6282,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5036022269bd47145853b358576936c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mode: 0
   panelSource: {fileID: 222346296365553543}
   forwardButton: {fileID: 222346295221433084}
   backwardButton: {fileID: 222346295221433083}
