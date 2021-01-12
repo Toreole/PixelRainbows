@@ -1381,7 +1381,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &624002442
 GameObject:
@@ -3499,6 +3499,7 @@ Transform:
   - {fileID: 1535747622}
   - {fileID: 1844598730}
   - {fileID: 1727689758}
+  - {fileID: 1911736574}
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3826,12 +3827,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1911736573}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -240.51944, y: 7.67931, z: 20.914688}
+  m_LocalPosition: {x: -240.51944, y: 7.67931, z: -9.1953125}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 655492115}
-  m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_Father: {fileID: 1746401263}
+  m_RootOrder: 20
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &1911736575
 SpriteRenderer:
@@ -4278,7 +4279,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5036022269bd47145853b358576936c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mode: 0
   panelSource: {fileID: 5401034752088295450}
   forwardButton: {fileID: 5401034753097952617}
   backwardButton: {fileID: 5401034753097952616}
@@ -4349,6 +4349,7 @@ MonoBehaviour:
   panels:
   - transform: {fileID: 1723456504}
     spriteRenderer: {fileID: 1723456505}
+    overrideTransition: 1
     transitionTime: 1
     transitionCurve:
       serializedVersion: 2
@@ -4378,6 +4379,7 @@ MonoBehaviour:
     subPanels: []
   - transform: {fileID: 284903600}
     spriteRenderer: {fileID: 284903599}
+    overrideTransition: 1
     transitionTime: 1
     transitionCurve:
       serializedVersion: 2
@@ -4407,6 +4409,7 @@ MonoBehaviour:
     subPanels: []
   - transform: {fileID: 456742183}
     spriteRenderer: {fileID: 456742184}
+    overrideTransition: 1
     transitionTime: 1
     transitionCurve:
       serializedVersion: 2
@@ -4436,6 +4439,7 @@ MonoBehaviour:
     subPanels: []
   - transform: {fileID: 1593417555}
     spriteRenderer: {fileID: 1593417556}
+    overrideTransition: 1
     transitionTime: 1
     transitionCurve:
       serializedVersion: 2
@@ -4465,6 +4469,7 @@ MonoBehaviour:
     subPanels: []
   - transform: {fileID: 467861021}
     spriteRenderer: {fileID: 467861022}
+    overrideTransition: 1
     transitionTime: 1
     transitionCurve:
       serializedVersion: 2
@@ -4494,6 +4499,7 @@ MonoBehaviour:
     subPanels: []
   - transform: {fileID: 811821885}
     spriteRenderer: {fileID: 811821886}
+    overrideTransition: 1
     transitionTime: 1
     transitionCurve:
       serializedVersion: 2
@@ -4523,6 +4529,7 @@ MonoBehaviour:
     subPanels: []
   - transform: {fileID: 1129292715}
     spriteRenderer: {fileID: 1129292716}
+    overrideTransition: 1
     transitionTime: 1
     transitionCurve:
       serializedVersion: 2
@@ -4552,6 +4559,7 @@ MonoBehaviour:
     subPanels: []
   - transform: {fileID: 2049718160}
     spriteRenderer: {fileID: 2049718161}
+    overrideTransition: 1
     transitionTime: 1
     transitionCurve:
       serializedVersion: 2
@@ -4581,6 +4589,7 @@ MonoBehaviour:
     subPanels: []
   - transform: {fileID: 940908655}
     spriteRenderer: {fileID: 940908656}
+    overrideTransition: 4
     transitionTime: 1
     transitionCurve:
       serializedVersion: 2
@@ -4610,6 +4619,7 @@ MonoBehaviour:
     subPanels: []
   - transform: {fileID: 222828740}
     spriteRenderer: {fileID: 222828741}
+    overrideTransition: 1
     transitionTime: 1
     transitionCurve:
       serializedVersion: 2
@@ -4639,6 +4649,7 @@ MonoBehaviour:
     subPanels: []
   - transform: {fileID: 624002443}
     spriteRenderer: {fileID: 624002444}
+    overrideTransition: 1
     transitionTime: 1
     transitionCurve:
       serializedVersion: 2
@@ -4668,6 +4679,7 @@ MonoBehaviour:
     subPanels: []
   - transform: {fileID: 928464464}
     spriteRenderer: {fileID: 928464465}
+    overrideTransition: 1
     transitionTime: 1
     transitionCurve:
       serializedVersion: 2
@@ -4697,6 +4709,7 @@ MonoBehaviour:
     subPanels: []
   - transform: {fileID: 1587457257}
     spriteRenderer: {fileID: 1587457258}
+    overrideTransition: 1
     transitionTime: 1
     transitionCurve:
       serializedVersion: 2
@@ -4726,6 +4739,7 @@ MonoBehaviour:
     subPanels: []
   - transform: {fileID: 543671175}
     spriteRenderer: {fileID: 543671176}
+    overrideTransition: 4
     transitionTime: 1
     transitionCurve:
       serializedVersion: 2
@@ -4755,6 +4769,7 @@ MonoBehaviour:
     subPanels: []
   - transform: {fileID: 1197283733}
     spriteRenderer: {fileID: 1197283734}
+    overrideTransition: 4
     transitionTime: 1
     transitionCurve:
       serializedVersion: 2
@@ -4784,6 +4799,7 @@ MonoBehaviour:
     subPanels: []
   - transform: {fileID: 949341651}
     spriteRenderer: {fileID: 949341652}
+    overrideTransition: 4
     transitionTime: 1
     transitionCurve:
       serializedVersion: 2
@@ -4813,6 +4829,7 @@ MonoBehaviour:
     subPanels: []
   - transform: {fileID: 1535747622}
     spriteRenderer: {fileID: 1535747623}
+    overrideTransition: 1
     transitionTime: 1
     transitionCurve:
       serializedVersion: 2
@@ -4842,6 +4859,7 @@ MonoBehaviour:
     subPanels: []
   - transform: {fileID: 1844598730}
     spriteRenderer: {fileID: 1844598731}
+    overrideTransition: 1
     transitionTime: 1
     transitionCurve:
       serializedVersion: 2
@@ -4871,6 +4889,7 @@ MonoBehaviour:
     subPanels: []
   - transform: {fileID: 1727689758}
     spriteRenderer: {fileID: 1727689759}
+    overrideTransition: 1
     transitionTime: 1
     transitionCurve:
       serializedVersion: 2
@@ -4900,6 +4919,7 @@ MonoBehaviour:
     subPanels: []
   - transform: {fileID: 303586577}
     spriteRenderer: {fileID: 303586578}
+    overrideTransition: 1
     transitionTime: 1
     transitionCurve:
       serializedVersion: 2
@@ -4929,6 +4949,7 @@ MonoBehaviour:
     subPanels: []
   - transform: {fileID: 1911736574}
     spriteRenderer: {fileID: 1911736575}
+    overrideTransition: 1
     transitionTime: 1
     transitionCurve:
       serializedVersion: 2
@@ -4960,7 +4981,8 @@ MonoBehaviour:
   frameSprite: {fileID: 21300000, guid: 76f98e26258f73849ade7b382d842409, type: 3}
   camera: {fileID: 5401034751529371280}
   panelParent: {fileID: 1746401263}
-  lastEditedPanel: 15
+  defaultTransitionStyle: 0
+  lastEditedPanel: 20
 --- !u!4 &5401034752088295451
 Transform:
   m_ObjectHideFlags: 0
