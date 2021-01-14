@@ -19,10 +19,10 @@ namespace Minigame
         [SerializeField] [Range(0.01f, 0.1f)][Tooltip("The speed at which the MC drags the blanket")] 
         private float _dragSpeed = 0.1f;
         
-        [SerializeField][Range(3.5f, 5f)][Tooltip("The distance the player has to drag the blanket to win")] 
+        [SerializeField][Range(0.3f, 5f)][Tooltip("The distance the player has to drag the blanket to win")] 
         private float _winDistance;
 
-        private Rigidbody2D _rigidbody2D;
+        //private Rigidbody2D _rigidbody2D;
         private SpriteRenderer _spriteRenderer;
         private BoxCollider2D _collider2D;
         private Camera _camera;
@@ -34,7 +34,7 @@ namespace Minigame
         private Vector2 _originalPos;
         
         // Distance between the _originalPos and _pos
-        [SerializeField]
+        //[SerializeField] absolutely no need for this to be serialized.
         private float _distance;
         
         [SerializeField][Tooltip("Distance at which point the MC will drag the blanket back")]
@@ -71,16 +71,15 @@ namespace Minigame
             _collider2D = GetComponent<BoxCollider2D>();
             if (!_standingUp)
             {
-                transform.position = _endTarget.transform.position;
-                _pos = _endTarget.position;
+                transform.position = _startTarget.position; //Please dont do transform.transform.position...
+                _pos = _startTarget.position;
             }
 
             _originalPos = transform.position;
             _pos = _originalPos;
             _camera = Camera.main;
-            _rigidbody2D = GetComponent<Rigidbody2D>();
             _spriteRenderer = GetComponent<SpriteRenderer>();
-            _rigidbody2D.position = _originalPos;
+            //transform.position = _originalPos;
         }
 
         // Update is called once per frame
@@ -90,30 +89,35 @@ namespace Minigame
                 DragBack();
             
             
-            _distance = _standingUp ? Vector3.Distance(_startTarget.position, transform.position) : Vector2.Distance(_pos, _endTarget.transform.position);
+            _distance = _standingUp ? Vector2.Distance(_startTarget.position, transform.position) : 
+                                      Vector2.Distance(transform.position, _endTarget.position);
             
             if (Input.GetMouseButtonUp(0))
             {
                 Cursor.visible = true;
                 _isButtonStillHeld = false;
             }
-            if (Input.GetMouseButtonDown(0))
+            if (Input.GetMouseButton(0)) //GetButtonDown ONLY returns true on THE SAME FRAME as the button was pressed...
             {
                 _isButtonStillHeld = true;
             }
             
-            if (IsDone && _standingUp)
+            //sub-optimal to do this in Update but whatever
+            if(IsDone)
             {
-              
-                Cursor.visible = true;
-                _blanket.enabled = false;
-                _spriteRenderer.enabled = false;
-                _collider2D.enabled = false;
-            }
-            else if(IsDone && !_standingUp)
-            {
-                Cursor.visible = true;
-                _collider2D.enabled = false;
+                if (_standingUp)
+                {
+                    Cursor.visible = true;
+                    _blanket.enabled = false;
+                    _spriteRenderer.enabled = false;
+                    _collider2D.enabled = false;
+                }
+                else //if(IsDone && !_standingUp) no double checking.
+                {
+                    Cursor.visible = true;
+                    _collider2D.enabled = false;
+                }
+                this.enabled = false; //disable this script to stop this Update from running.
             }
         }
 
@@ -130,15 +134,25 @@ namespace Minigame
                 _pos = _camera.ScreenToWorldPoint(Input.mousePosition);
                 _pos.x = Mathf.Clamp(_pos.x, _startTarget.position.x, _endTarget.position.x);
                 _pos.y = Mathf.Clamp(_pos.y, _endTarget.position.y, _startTarget.position.y);
-                _rigidbody2D.position = _pos;
+                transform.position = _pos;
             }
             else if(!_standingUp)
             {
                 Cursor.visible = false;
                 _pos = _camera.ScreenToWorldPoint(Input.mousePosition);
-                _pos.x = Mathf.Clamp(_pos.x, _startTarget.position.x, _endTarget.position.x);
-                _pos.y = Mathf.Clamp(_pos.y, _endTarget.position.y, _startTarget.position.y);
-                _rigidbody2D.position = _pos;
+                //Buffer start and end position to avoid abundant Transform.get_position calls which are kinda slow and yucky.
+                Vector2 startPos = _startTarget.position;
+                Vector2 endPos = _endTarget.position;
+                //figure out the bounds via min and max coordinates
+                float minX = Mathf.Min(startPos.x, endPos.x);
+                float maxX = Mathf.Max(startPos.x, endPos.x);
+                float minY = Mathf.Min(startPos.y, endPos.y);
+                float maxY = Mathf.Max(startPos.y, endPos.y);
+                //clamp the position.
+                _pos.x = Mathf.Clamp(_pos.x, minX, maxX);
+                _pos.y = Mathf.Clamp(_pos.y, minY, maxY);
+                //set the position to drag.
+                transform.position = _pos;
             }
 
             if (_standingUp)
@@ -149,9 +163,9 @@ namespace Minigame
                     IsDone = true;
                 }
             }
-            else if(!_standingUp)
+            else// if(!_standingUp) 10000% unnecessary.
             {
-                if (_distance >= _winDistance)
+                if (_distance <= _winDistance) //check whether the drag object is within the win distance of the end target.
                 {
                     _tmpUGUI.text = "" + _winMessage;
                     IsDone = true;

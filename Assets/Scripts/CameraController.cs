@@ -47,6 +47,27 @@ namespace PixelRainbows
             chapterTitle.alpha = 0; //start with invisible title.
             StartCoroutine(DoIntroFade());
         }
+
+#if UNITY_EDITOR
+        //Utility for editor: go to next minigame panel.
+        void Update()
+        {
+            if(Input.GetKeyDown(KeyCode.F7))
+            {
+                for(int i = panelIndex+1; i < panelSource.PanelCount-1; i++)
+                {
+                    if(panelSource.GetPanel(i+1).Minigame)
+                    {
+                        Debug.Log($"Found minigame on panel {i}");
+                        lastPanel = panelSource.GetPanel(i);
+                        panelIndex = i;
+                        StartCoroutine(DoTransition());
+                        break;
+                    }
+                }
+            }
+        }
+#endif
         
         private IEnumerator DoIntroFade()
         {
@@ -216,7 +237,7 @@ namespace PixelRainbows
                 }
                 //reset values to normalized.
                 uiFade.blocksRaycasts = false;
-                chapterTitle.alpha = 1;
+                //chapterTitle.alpha = 1; was not needed lol
                 uiFade.alpha = 0;
             }
 #endregion
