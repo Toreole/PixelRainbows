@@ -6,6 +6,9 @@ namespace PixelRainbows
 {
     public class PanelAnimator : Minigame.MinigameBaseClass
     {
+        [SerializeField, Tooltip("Animation Length in seconds. Required for the last panel in a scene. Otherwise optional.")]
+        private float animationLength = 0f;
+
         Animator anim;
         private void Awake() 
         {
@@ -20,7 +23,14 @@ namespace PixelRainbows
         public override void WakeUp()
         {
             anim.enabled = true;
-            IsDone = true;
+            if(animationLength <= 0)
+                IsDone = true;
+            else 
+                StartCoroutine(Wait());
+            IEnumerator Wait()
+            {
+                yield return new WaitForSeconds(animationLength); IsDone = true;
+            }
         }
     }
 }
