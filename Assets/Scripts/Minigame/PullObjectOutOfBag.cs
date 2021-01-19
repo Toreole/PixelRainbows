@@ -39,15 +39,11 @@ namespace Minigame
         [SerializeField] 
         private TextMeshProUGUI _tmpUGUI;
 
-        private Rigidbody2D _rigidbody2D;
-        private SpriteRenderer _spriteRenderer;
         private Camera _camera;
         
         private void Awake()
         {
             _camera = Camera.main;
-            _rigidbody2D = GetComponent<Rigidbody2D>();
-            _spriteRenderer = GetComponent<SpriteRenderer>();
             WakeUp();
         }
 
@@ -65,7 +61,7 @@ namespace Minigame
             // Make sprite undraggable after winning the game
             if (IsDone)
             {
-                _rigidbody2D.simulated = false;
+                this.enabled = false;
             }
         }
         
@@ -77,16 +73,29 @@ namespace Minigame
             {
                 // Lock it in the transforms of the other objects
                 Cursor.visible = false;
+                
                 _pos = _camera.ScreenToWorldPoint(Input.mousePosition);
-                _pos.x = Mathf.Clamp(_pos.x, _startPos.transform.position.x, _minOutOfBagDist.transform.position.x);
-                _pos.y = Mathf.Clamp(_pos.y, _startPos.transform.position.y, _minOutOfBagDist.transform.position.y);
-                _rigidbody2D.position = _pos;
+                
+                // Get rid of transform.position calls
+                Vector3 startPos = _startPos.transform.position;
+                Vector3 endPos = _minOutOfBagDist.transform.position;
+                
+                // Clamp values to their min and max
+                float minX = Mathf.Min(startPos.x, endPos.x); 
+                float maxX = Mathf.Max(startPos.x, endPos.x); 
+                float minY = Mathf.Min(startPos.y, endPos.y); 
+                float maxY = Mathf.Max(startPos.y, endPos.y); 
+                _pos.x = Mathf.Clamp(_pos.x, minX, maxX); 
+                _pos.y = Mathf.Clamp(_pos.y, minY, maxY);
+                
+                // Move object to the position
+                transform.position = _pos;
             }
 
             // Win the game if the player reached a minimum distance
-            if (Vector2.Distance(transform.position , _minOutOfBagDist.transform.position) < _minimumDist)
+            if (Vector3.Distance(transform.position , _minOutOfBagDist.transform.position) < _minimumDist)
             {
-                _tmpUGUI.text = "" + _winMessage;
+                _tmpUGUI.text = _winMessage;
                 IsDone = true;
             }
         }
@@ -94,7 +103,9 @@ namespace Minigame
 
         public override void WakeUp()
         {
+            // Set the objects startPosition to the position of the pulled object to clamp the values later
             _startPos.transform.position = transform.position;
+            // Position the object above our pulled object for the same reasons as above
             _minOutOfBagDist.transform.position = new Vector3(transform.position.x, _minOutOfBagDist.transform.position.y, _minOutOfBagDist.transform.position.z);
             if(!IsDone && _tmpUGUI != null) 
                 _tmpUGUI.text = $"Drag your {_item} out of your bag!";

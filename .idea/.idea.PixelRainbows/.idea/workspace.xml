@@ -39,6 +39,7 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/Minigame/DragBlanket.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Minigame/MakeObjectsDisappear.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Minigame/Alarm.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Minigame/PullObjectOutOfBag.cs" />
       </list>
     </option>
   </component>
@@ -189,9 +190,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="616" y="240" key="run.anything.popup/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1606836419859" />
-    <state x="2543" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1608038599806">
-      <screen x="1920" y="0" width="1920" height="1040" />
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1611064923916">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1611064923916" />
     <state x="2543" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1608038599806" />
   </component>
 </project>
