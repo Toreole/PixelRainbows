@@ -39,8 +39,8 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/Minigame/Alarm.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Minigame/BrushTeeth.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Minigame/PullObjectOutOfBag.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Minigame/DragToTarget.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Minigame/DragBlanket.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Minigame/DragToTarget.cs" />
       </list>
     </option>
   </component>
