@@ -87,10 +87,11 @@ namespace Minigame
         {
             if(_counter <=_maxAmount)
                 DragBack();
-            
-            
-            _distance = _standingUp ? Vector2.Distance(_startTarget.position, transform.position) : 
-                                      Vector2.Distance(transform.position, _endTarget.position);
+
+
+            _distance = _standingUp
+                ? Vector2.Distance(_startTarget.position, transform.position)
+                : Vector2.Distance(transform.position, _endTarget.position);
             
             if (Input.GetMouseButtonUp(0))
             {

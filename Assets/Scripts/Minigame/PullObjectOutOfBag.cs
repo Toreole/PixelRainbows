@@ -61,6 +61,7 @@ namespace Minigame
             // Make sprite undraggable after winning the game
             if (IsDone)
             {
+                Cursor.visible = true;
                 this.enabled = false;
             }
         }

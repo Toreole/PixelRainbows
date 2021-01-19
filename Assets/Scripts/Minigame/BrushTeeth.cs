@@ -6,13 +6,19 @@ namespace Minigame
 {
     public class BrushTeeth : MinigameBaseClass
     {
-        [Header("Scene References")]
-        [SerializeField] private BoxCollider2D _brushTeethCheckLeft;
-        [SerializeField] private BoxCollider2D _brushTeethCheckRight;
-        [SerializeField] private Animator _anim;
-        [SerializeField] private TextMeshProUGUI _tmpUGUI;
+        [Header("Scene References")] 
+        [SerializeField] // Collider that checks if player brushed the right way
+        private BoxCollider2D _brushTeethCheckLeft;
+        [SerializeField] // Collider that checks if player brushed the right way
+        private BoxCollider2D _brushTeethCheckRight;
+        [SerializeField] 
+        private Animator _anim;
+        [SerializeField] 
+        private TextMeshProUGUI _tmpUGUI;
+        
+        [SerializeField][Tooltip("Sprites that will be disabled")] 
+        private GameObject[] _disableExtraSprites;
 
-        private Rigidbody2D _rigidbody2D;
         private SpriteRenderer _spriteRenderer;
         private Camera _camera;
        
@@ -28,7 +34,6 @@ namespace Minigame
         private void Awake()
         {
             _camera = Camera.main;
-            _rigidbody2D = GetComponent<Rigidbody2D>();
             _spriteRenderer = GetComponent<SpriteRenderer>();
         }
 
@@ -47,7 +52,7 @@ namespace Minigame
         private void OnMouseDrag()
         {
             Vector2 pos = _camera.ScreenToWorldPoint(Input.mousePosition);
-            _rigidbody2D.position = pos;
+            transform.position = pos;
         }
 
         // Counts the amount of times the player moved the object from side to side
@@ -80,14 +85,26 @@ namespace Minigame
         }
 
         // Plays animation after swiping an n(_repetitions)-amount of times to left and right
-        // After successfully starting the animation, the object will disappear
+        // After successfully starting the animation, the object and the helper sprites will disappear
         private void BrushTeethAnim()
         {
             if (_leftCheck >= _repetitions && _rightCheck >= _repetitions)
             {
+                // Activate animation...
                 _anim.SetBool(BrushTeethReqDone, true);
+                // Set the grabbed objects sprite to null...
                 _spriteRenderer.sprite = null;
-                _tmpUGUI.text = "" + _winMessage;
+                // display winMessage...
+                _tmpUGUI.text = _winMessage;
+                // Disable all objects in this array
+                if(_disableExtraSprites.Length != 0) 
+                {
+                    foreach (var disable in _disableExtraSprites)
+                    {
+                        disable.SetActive(false);
+                    }
+                }
+                // IsDone set to true...
                 IsDone = true;
             }
         }
