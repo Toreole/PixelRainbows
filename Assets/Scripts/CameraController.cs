@@ -1,5 +1,4 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using PixelRainbows.Panels;
@@ -9,8 +8,6 @@ namespace PixelRainbows
 {
     public class CameraController : MonoBehaviour
     {
-        //[SerializeField]
-        //TransitionMode mode = TransitionMode.SmoothMove;
         [SerializeField]
         protected PanelManager panelSource;
         [SerializeField]
@@ -18,6 +15,8 @@ namespace PixelRainbows
         
         [Header("Chapter Transitions"), SerializeField]
         protected string nextScene;
+        [SerializeField]
+        protected int chapterNumber;
         [SerializeField]
         protected TextMeshProUGUI chapterTitle;
         [SerializeField]
@@ -34,18 +33,39 @@ namespace PixelRainbows
 
         private void Start() 
         {
+
             backwardButton.interactable = false;
             backwardButton.onClick.AddListener(Back);
             forwardButton.interactable = true;    
             forwardButton.onClick.AddListener(Continue);
-            lastPanel = panelSource.GetPanel(0);
+            //Load from the furthest game progress.
+            if(GameProgress.LoadFromCurrent)
+            {
+                //use up the load flag.
+                GameProgress.LoadFromCurrent = false;
+                panelIndex = GameProgress.Current - (chapterNumber * 100);
+                lastPanel = panelSource.GetPanel(panelIndex);
+                lastPanel.Minigame?.WakeUp();
+            }
+            else
+            {
+                //Set current progress
+                GameProgress.Current = chapterNumber*100;
+                panelIndex = 0;
+                lastPanel = panelSource.GetPanel(panelIndex);
+            }
             //set the position to be at the panel, just in case.
-            Vector3 position = lastPanel.transform.position;
-            position.z = transform.position.z;
+            Vector3 position = lastPanel.transform.position.WithZ(transform.position.z);
+            
             transform.position = position;
 
             chapterTitle.alpha = 0; //start with invisible title.
             StartCoroutine(DoIntroFade());
+        }
+
+        public void BackToMenu()
+        {
+            UnityEngine.SceneManagement.SceneManager.LoadScene("MainMenu");
         }
 
 #if UNITY_EDITOR
@@ -178,6 +198,8 @@ namespace PixelRainbows
             lastPanel = targetPanel;
             //EnableButtons();
             backwardButton.interactable = true;
+            //Update the progress.
+            GameProgress.Current = chapterNumber*100 + panelIndex;
             if(lastPanel.Minigame)
             {
                 lastPanel.Minigame.WakeUp();
