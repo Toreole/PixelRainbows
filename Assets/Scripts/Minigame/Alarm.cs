@@ -2,6 +2,7 @@
 using Audio;
 using PixelRainbows.Panels;
 using TMPro;
+using Unity.Mathematics;
 using UnityEngine;
 
 namespace Minigame
@@ -40,22 +41,31 @@ namespace Minigame
 
         private void OnMouseDown()
         {
+            // On Mouse Down disable animator...
             _animator.enabled = false;
+            // reset the animated object's euler rotation to 0...
             _resetAnimGameObject.transform.localRotation = Quaternion.identity;
+            // stop the sound...
             _audioSource.Stop();
-            _tmpUGUI.text = "" + _winMessage;
+            // display winMessage...
+            _tmpUGUI.text = _winMessage;
+            // set IsDone to true
             IsDone = true;
+            // and disable this script
+            this.enabled = false;
         }
-
         public override void WakeUp()
         {
             if (!IsDone)
             {
-                // Plays the soundclip. It will continue to ring even if the player tries to escape the sound by going back to another panel.
+                // Plays the soundclip. It will continue to ring even if the player tries to escape the sound by going back to another panel...
                 if(!_isPlaying)
                     _alarmClock.Play(_audioSource);
+                // Turn animator on...
                 _animator.enabled = true;
+                // Tell player what to do if not obvious enough...
                 _tmpUGUI.text = "Stop the alarm!";
+                // Set this bool true
                 _isPlaying = true;
             }
         }
