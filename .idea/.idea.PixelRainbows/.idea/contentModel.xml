@@ -20,6 +20,7 @@
           <e p="Butterfly.cs" t="Include" />
           <e p="ButterflyGame.cs" t="Include" />
           <e p="CameraController.cs" t="Include" />
+          <e p="GameProgress.cs" t="Include" />
           <e p="Menu" t="Include">
             <e p="MainMenu.cs" t="Include" />
           </e>
