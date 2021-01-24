@@ -42,8 +42,10 @@ namespace Panels
         
         private void Awake()
         {
-            //_panelManager = PanelManager.Instance; //-- PanelManager.Instance is NOT supposed to be used in this way.
+            //_panelManager = PanelManager.Instance; //-- PanelManager.Instance can NOT be used like this.
+            //-- PanelManager.Instance was a EDITOR ONLY thing, that was ultimately never used.
             //_panelData = _panelManager.GetPanel(_thisPanel);
+
             //we do not need a lot of audio sources in a scene, if we will only have one or two audio clips playing at any time.
             //which is why sound should be handled by the CameraController and the PanelData with a Helper Script at most.
             //I know that this is partly my fault for not communicating enough and giving you more detailed information about the system

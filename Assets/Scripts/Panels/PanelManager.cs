@@ -1,8 +1,7 @@
-﻿using System.Collections.Generic;
-using PixelRainbows.Panels;
+using System.Collections.Generic;
 using UnityEngine;
 
-namespace PixelRainbows
+namespace PixelRainbows.Panels
 {
     ///<summary>
     ///The PanelManager is the instance for editor and gameplay that manages the collection of the panels in-scene and any additional info on them.
@@ -40,13 +39,12 @@ namespace PixelRainbows
 #endregion
 
 #if UNITY_EDITOR
-        //local static instance for the panel manager, just in case its needed.
+        //local static instance for the panel manager, just in case its needed. //Addendum: it is NOT needed.
         //if its not yet assigned, it will find it in the scene.
-        public static PanelManager Instance { get { return instance ?? (instance = FindObjectOfType<PanelManager>()); }}
-        protected static PanelManager instance;
-
+        //public static PanelManager Instance { get { return instance ?? (instance = FindObjectOfType<PanelManager>()); }}
+        //protected static PanelManager instance;
         //Does a PanelManager exist in this scene?
-        public static bool Exists => Instance;
+        //public static bool Exists => Instance;
 
         [SerializeField, HideInInspector]
         public int lastEditedPanel = 0;
