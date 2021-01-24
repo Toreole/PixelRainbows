@@ -126,7 +126,7 @@ namespace Minigame
         private void OnMouseDrag()
         {
             if(_standingUp)
-                if(!_isButtonStillHeld) 
+                if(!_isButtonStillHeld || IsDone) 
                     return;
                         
             if (!_draggingBack && _standingUp)
@@ -179,7 +179,6 @@ namespace Minigame
         {
             if(!_standingUp)
                 return;
-            Cursor.visible = true;
             if (_distance > _dragResistanceDistance && _counter != _maxAmount)
             {
                 _draggingBack = true;
@@ -188,6 +187,7 @@ namespace Minigame
             if (_draggingBack)
             {
                 transform.position = Vector3.Lerp(transform.position, _startTarget.transform.position, _dragSpeed);
+                Cursor.visible = true;
             }
 
             if (Vector3.Distance(transform.position, _startTarget.transform.position) < 0.1f)
