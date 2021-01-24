@@ -2,7 +2,7 @@
 using PixelRainbows.Panels;
 using UnityEngine;
 
-namespace Panels
+namespace PixelRainbows
 {
     ///<summary>
     ///The PanelManager is the instance for editor and gameplay that manages the collection of the panels in-scene and any additional info on them.
