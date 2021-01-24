@@ -10,16 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c8446132de892d84f9185fbb180ae199, type: 3}
-  m_Name: AlarmClock
+  m_Name: Outside
   m_EditorClassIdentifier: 
   _clips:
-  - {fileID: 8300000, guid: f0eaef3e9840ff1458ada2bc0e605bd8, type: 3}
+  - {fileID: 8300000, guid: a3b828bf088879045a4cd825cfb4102b, type: 3}
   _loop: 1
   _randomizeVolume: 0
-  _volume: 0.33
+  _volume: 1
   _minMaxVolume:
-    MinValue: 0.5
-    MaxValue: 1
+    MinValue: 0
+    MaxValue: 0
   _randomizePitch: 0
   _pitch: 1
   _minMaxPitch:

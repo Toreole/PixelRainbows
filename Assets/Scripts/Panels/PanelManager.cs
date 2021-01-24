@@ -1,8 +1,8 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using PixelRainbows.Panels;
 using UnityEngine;
 
-namespace PixelRainbows.Panels
+namespace Panels
 {
     ///<summary>
     ///The PanelManager is the instance for editor and gameplay that manages the collection of the panels in-scene and any additional info on them.
@@ -16,7 +16,7 @@ namespace PixelRainbows.Panels
 
         [SerializeField]
         private List<PanelData> panels = new List<PanelData>();
-
+        
         [SerializeField] //the frame sprite is *required* for sub-panels.
         private Sprite frameSprite;
         
@@ -42,7 +42,7 @@ namespace PixelRainbows.Panels
 #if UNITY_EDITOR
         //local static instance for the panel manager, just in case its needed.
         //if its not yet assigned, it will find it in the scene.
-        protected static PanelManager Instance { get { return instance ?? (instance = FindObjectOfType<PanelManager>()); }}
+        public static PanelManager Instance { get { return instance ?? (instance = FindObjectOfType<PanelManager>()); }}
         protected static PanelManager instance;
 
         //Does a PanelManager exist in this scene?
