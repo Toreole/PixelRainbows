@@ -214,8 +214,8 @@ namespace PixelRainbows.Editing
             if(foldout)
             {
                 //Time for properties yay!!!
-                EditorGUILayout.PropertyField(panelTransform);
-                EditorGUILayout.PropertyField(panelRenderer);
+                //EditorGUILayout.PropertyField(panelTransform);
+                //EditorGUILayout.PropertyField(panelRenderer);
                 EditorGUILayout.PropertyField(panelTransitionTime);
                 EditorGUILayout.PropertyField(overrideTransition);
                 if(overrideTransition.enumValueIndex == (int)TransitionMode.SmoothMove)
