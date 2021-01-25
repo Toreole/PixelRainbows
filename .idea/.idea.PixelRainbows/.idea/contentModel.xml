@@ -31,9 +31,11 @@
             <e p="DragToTarget.cs" t="Include" />
             <e p="MakeObjectsDisappear.cs" t="Include" />
             <e p="MinigameBaseClass.cs" t="Include" />
+            <e p="MinigameCollection.cs" t="Include" />
             <e p="PullObjectOutOfBag.cs" t="Include" />
           </e>
           <e p="Panels" t="Include">
+            <e p="ActivateSound.cs" t="Include" />
             <e p="Editor" t="Include">
               <e p="PanelManagerEditor.cs" t="Include" />
             </e>
