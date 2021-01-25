@@ -14,6 +14,7 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Audio/SchoolSound.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/A4546799-A4AB-4267-88E4-204C69507924/fb/3c92d1e3/RangeAttribute.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/63DD8BF9-8CFA-4BA9-85AF-735EF1A56BA9/58/eb0a3d10/AttributeTargets.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://C:/Program Files/Unity/Hub/Editor/2019.4.12f1/Editor/Data/Resources/PackageManager/BuiltInPackages/com.unity.ugui/Runtime/UI/Core/Layout/CanvasScaler.cs" root0="SKIP_HIGHLIGHTING" />
@@ -41,6 +42,13 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/Minigame/PullObjectOutOfBag.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Minigame/DragBlanket.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Minigame/DragToTarget.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Panels/PanelManager.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Panels/PanelData.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Panels/ActivateSound.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Audio/IAudioData.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Audio/AudioData.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Audio/SchoolSound.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/CameraController.cs" />
       </list>
     </option>
   </component>
@@ -74,10 +82,10 @@
       </option>
       <method v="2" />
     </configuration>
-    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="9124">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
-      <option name="pid" />
+      <option name="pid" value="9124" />
       <option name="selectedOptions">
         <set />
       </option>
@@ -106,6 +114,7 @@
       <workItem from="1610301830122" duration="6934000" />
       <workItem from="1610308884075" duration="1412000" />
       <workItem from="1610390193188" duration="1310000" />
+      <workItem from="1611528417882" duration="10523000" />
     </task>
     <servers />
   </component>
@@ -166,35 +175,39 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1877" height="75" key="GridCell.Tab.2.right/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1610305355656" />
-    <state width="1877" height="75" key="GridCell.Tab.3.bottom" timestamp="1610305355870">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state width="1877" height="75" key="GridCell.Tab.3.bottom" timestamp="1611533399150">
+      <screen x="1920" y="0" width="1920" height="1040" />
     </state>
     <state width="1877" height="75" key="GridCell.Tab.3.bottom/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1610305355870" />
-    <state width="1877" height="75" key="GridCell.Tab.3.center" timestamp="1610305355870">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state width="1877" height="75" key="GridCell.Tab.3.bottom/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1611533399150" />
+    <state width="1877" height="75" key="GridCell.Tab.3.center" timestamp="1611533399150">
+      <screen x="1920" y="0" width="1920" height="1040" />
     </state>
     <state width="1877" height="75" key="GridCell.Tab.3.center/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1610305355870" />
-    <state width="1877" height="75" key="GridCell.Tab.3.left" timestamp="1610305355870">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state width="1877" height="75" key="GridCell.Tab.3.center/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1611533399150" />
+    <state width="1877" height="75" key="GridCell.Tab.3.left" timestamp="1611533399150">
+      <screen x="1920" y="0" width="1920" height="1040" />
     </state>
     <state width="1877" height="75" key="GridCell.Tab.3.left/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1610305355870" />
-    <state width="1877" height="75" key="GridCell.Tab.3.right" timestamp="1610305355870">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state width="1877" height="75" key="GridCell.Tab.3.left/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1611533399150" />
+    <state width="1877" height="75" key="GridCell.Tab.3.right" timestamp="1611533399150">
+      <screen x="1920" y="0" width="1920" height="1040" />
     </state>
     <state width="1877" height="75" key="GridCell.Tab.3.right/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1610305355870" />
-    <state x="2647" y="244" key="RiderGenerateDialog" timestamp="1607500595445">
+    <state width="1877" height="75" key="GridCell.Tab.3.right/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1611533399150" />
+    <state x="2647" y="244" key="RiderGenerateDialog" timestamp="1611530793908">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
     <state x="727" y="244" key="RiderGenerateDialog/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1606830985571" />
-    <state x="2647" y="244" key="RiderGenerateDialog/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1607500595445" />
+    <state x="2647" y="244" key="RiderGenerateDialog/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1611530793908" />
     <state x="616" y="240" key="run.anything.popup" timestamp="1606836419859">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="616" y="240" key="run.anything.popup/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1606836419859" />
-    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1611068880702">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state x="2543" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1611530079972">
+      <screen x="1920" y="0" width="1920" height="1040" />
     </state>
     <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1611068880702" />
-    <state x="2543" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1608038599806" />
+    <state x="2543" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1611530079972" />
   </component>
 </project>

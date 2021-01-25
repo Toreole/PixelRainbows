@@ -191,6 +191,8 @@ namespace PixelRainbows.Panels
                 target.localScale = Vector3.one;
             //Try to get the minigame.
             panel.Minigame = panel.transform.GetComponentInChildren<Minigame.MinigameBaseClass>();
+            //Try to get the sound
+            panel.Sound = panel.transform.GetComponentInChildren<Audio.AudioData>();
         }
 
         public PanelData GetPanel(int index)

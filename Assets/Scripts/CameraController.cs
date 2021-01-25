@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using PixelRainbows.Panels;
@@ -27,9 +28,15 @@ namespace PixelRainbows
         protected float titleFadeInOutTime = 1;
         [SerializeField, Range(1, 20)]
         protected float titleStayTime = 3;
-
+        [SerializeField]
+        protected AudioSource[] _audio;
+        
         private int panelIndex = 0;
         private PanelData lastPanel;
+        private PanelData currentlyPlayingPanel;
+        private List<PanelData> playedPanels = new List<PanelData>();
+        private int _soundTime;
+        private int _extraSoundTime;
 
         private void Start() 
         {
@@ -115,6 +122,14 @@ namespace PixelRainbows
             }
             uiFade.alpha = 0;
             uiFade.blocksRaycasts = false;
+            if (lastPanel.Sound)
+            {
+                currentlyPlayingPanel = lastPanel;
+                _soundTime = currentlyPlayingPanel.Sound.StartSound(_audio[0], panelIndex);
+                if(currentlyPlayingPanel.Sound.HasMultipleSounds)
+                    _extraSoundTime = currentlyPlayingPanel.Sound.StartSound(_audio[1], panelIndex);
+            }
+            
             if(lastPanel.Minigame)
             {
                 forwardButton.interactable = false;
@@ -141,6 +156,10 @@ namespace PixelRainbows
         //Should be easy to fix this in case we add sub-panels or minigames.
         void Back()
         {
+            if (_soundTime >= 0)
+                _soundTime++;
+            if (_extraSoundTime > 0)
+                _extraSoundTime++;
             panelIndex--;
             if(lastPanel.Minigame)
                 lastPanel.Minigame.CancelMinigame();
@@ -149,6 +168,10 @@ namespace PixelRainbows
 
         void Continue()
         {
+            if (_soundTime > 0)
+                _soundTime--;
+            if (_extraSoundTime > 0)
+                _extraSoundTime--;
             //check if the panel has subpanels
             if(lastPanel.HasSubPanels)
             {
@@ -200,6 +223,57 @@ namespace PixelRainbows
             backwardButton.interactable = true;
             //Update the progress.
             GameProgress.Current = chapterNumber*100 + panelIndex;
+
+            if (lastPanel != currentlyPlayingPanel)
+            {
+                if (lastPanel.Sound)
+                {
+                    if (_audio[0].isPlaying && _soundTime == 0)
+                    {
+                        currentlyPlayingPanel.Sound.CancelSound(_audio[0], panelIndex);
+                        if (!playedPanels.Contains(currentlyPlayingPanel))
+                            playedPanels.Add(currentlyPlayingPanel);
+                    }
+
+                    if (_audio[1].isPlaying && _extraSoundTime == 0)
+                        currentlyPlayingPanel.Sound.CancelExtraSound(_audio[1], panelIndex);
+                    currentlyPlayingPanel = lastPanel;
+                    _soundTime = currentlyPlayingPanel.Sound.StartSound(_audio[0], panelIndex);
+                    if (currentlyPlayingPanel.Sound.HasMultipleSounds)
+                        _extraSoundTime = currentlyPlayingPanel.Sound.StartExtraSound(_audio[1], panelIndex);
+                }
+                else
+                {
+                    if (_audio[0].isPlaying && _soundTime == 0)
+                    {
+                        currentlyPlayingPanel.Sound.CancelSound(_audio[0], panelIndex);
+                        if (!playedPanels.Contains(currentlyPlayingPanel))
+                            playedPanels.Add(currentlyPlayingPanel);
+                    }
+
+                    if (_audio[1].isPlaying && _extraSoundTime == 0)
+                        currentlyPlayingPanel.Sound.CancelSound(_audio[1], panelIndex);
+                    if (playedPanels != null)
+                    {
+                        foreach (var soundPanel in playedPanels)
+                        {
+                            if (soundPanel.Sound.EndPanelNumber == panelIndex)
+                            {
+                                soundPanel.Sound.StartSound(_audio[0], soundPanel.Sound.PanelNumber);
+                                currentlyPlayingPanel = soundPanel;
+                                _soundTime = 1;
+                            }
+
+                            if (soundPanel.Sound.ExtraPanelNumber == panelIndex)
+                            {
+                                soundPanel.Sound.StartExtraSound(_audio[1], soundPanel.Sound.PanelNumber);
+                                _extraSoundTime = 1;
+                            }
+                        }
+                    }
+                }
+            }
+
             if(lastPanel.Minigame)
             {
                 lastPanel.Minigame.WakeUp();
@@ -210,6 +284,7 @@ namespace PixelRainbows
             }
             else 
                 forwardButton.interactable = true;
+          
 #region TransitionRoutines
             //local methods for handling the transition. 
             IEnumerator DoSmoothTransition() //smooth curved-based transition
