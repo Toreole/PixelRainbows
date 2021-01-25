@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Audio
 {
@@ -9,7 +10,8 @@ namespace Audio
         public int ExtraPanelNumber{ get; protected set; } = 0;
         public int EndPanelNumber { get; protected set; } = 0;
         public int ExtraEndPanelNumber { get; protected set; } = 0;
-        public bool HasMultipleSounds {  get; protected set; } = false;
+        
+        public bool hasMultipleSounds = false;
         
         public abstract int StartSound(AudioSource audioSource, int panel);
         

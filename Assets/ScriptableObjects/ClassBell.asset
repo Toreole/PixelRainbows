@@ -13,15 +13,15 @@ MonoBehaviour:
   m_Name: ClassBell
   m_EditorClassIdentifier: 
   _clips:
-  - {fileID: 8300000, guid: 3d6b48cb369f47f4299b417e6389f759, type: 3}
+  - {fileID: 8300000, guid: de4e47c76b6a5654e9bb4f70e1edf55f, type: 3}
   _loop: 0
   _randomizeVolume: 0
-  _volume: 0.5
+  _volume: 0.362
   _minMaxVolume:
     MinValue: 0
     MaxValue: 0
   _randomizePitch: 0
-  _pitch: 1
+  _pitch: 0.298
   _minMaxPitch:
     MinValue: 0
     MaxValue: 0

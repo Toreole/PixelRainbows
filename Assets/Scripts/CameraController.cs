@@ -126,7 +126,7 @@ namespace PixelRainbows
             {
                 currentlyPlayingPanel = lastPanel;
                 _soundTime = currentlyPlayingPanel.Sound.StartSound(_audio[0], panelIndex);
-                if(currentlyPlayingPanel.Sound.HasMultipleSounds)
+                if(currentlyPlayingPanel.Sound.hasMultipleSounds)
                     _extraSoundTime = currentlyPlayingPanel.Sound.StartSound(_audio[1], panelIndex);
             }
             
@@ -156,7 +156,7 @@ namespace PixelRainbows
         //Should be easy to fix this in case we add sub-panels or minigames.
         void Back()
         {
-            if (_soundTime >= 0)
+            if (_soundTime > 0)
                 _soundTime++;
             if (_extraSoundTime > 0)
                 _extraSoundTime++;
@@ -239,7 +239,7 @@ namespace PixelRainbows
                         currentlyPlayingPanel.Sound.CancelExtraSound(_audio[1], panelIndex);
                     currentlyPlayingPanel = lastPanel;
                     _soundTime = currentlyPlayingPanel.Sound.StartSound(_audio[0], panelIndex);
-                    if (currentlyPlayingPanel.Sound.HasMultipleSounds)
+                    if (currentlyPlayingPanel.Sound.hasMultipleSounds)
                         _extraSoundTime = currentlyPlayingPanel.Sound.StartExtraSound(_audio[1], panelIndex);
                 }
                 else

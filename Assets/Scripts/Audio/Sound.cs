@@ -2,7 +2,7 @@
 
 namespace Audio
 {
-    public class SchoolSound : AudioData
+    public class Sound : AudioData
     {
         [SerializeField]
         private ScriptableAudioEvent[] _audio;
@@ -22,7 +22,7 @@ namespace Audio
 
         public override int StartExtraSound(AudioSource audioSource, int panel)
         {
-            if(!HasMultipleSounds) return 0;
+            if(!hasMultipleSounds) return 0;
             _audio[1].Play(audioSource);
             ExtraPanelNumber = panel;
             return _lengthForExtra;
@@ -36,7 +36,7 @@ namespace Audio
 
         public override void CancelExtraSound(AudioSource audioSource, int endPanel)
         {
-            if(!HasMultipleSounds) return;
+            if(!hasMultipleSounds) return;
             ExtraEndPanelNumber = endPanel - 1;
             audioSource.Stop();
         }

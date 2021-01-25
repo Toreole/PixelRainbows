@@ -16,8 +16,8 @@
             <e p="AudioData.cs" t="Include" />
             <e p="MinMaxFloat.cs" t="Include" />
             <e p="MinMaxFloatAttribute.cs" t="Include" />
-            <e p="SchoolSound.cs" t="Include" />
             <e p="ScriptableAudioEvent.cs" t="Include" />
+            <e p="Sound.cs" t="Include" />
           </e>
           <e p="Butterfly.cs" t="Include" />
           <e p="ButterflyGame.cs" t="Include" />

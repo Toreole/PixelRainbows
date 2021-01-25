@@ -510,11 +510,40 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _thisPanel: 0
+  _cameraController: {fileID: 0}
   _delay: 0
   _playOnlyOnce: 0
+  _blockSound: 0
   _waitForMinigame: 0
+  _panelData: {transform: {fileID: 0}, spriteRenderer: {fileID: 0}, overrideTransition: 1,
+    transitionTime: 1, transitionCurve:
+      m_Curve:
+      - time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - time: 1
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+, placement: 0, subPanels: []
+, <SubPanelIndex>k__BackingField: 0, <Minigame>k__BackingField: {fileID: 0}, <Sound>k__BackingField: {fileID: 0}}
+  _panelManager: {fileID: 0}
+  _audio: []
   _panelContinuation: 0
-  _playedSound: {fileID: 11400000, guid: 9944fefd06200904b96eb8f3bb5f46c6, type: 2}
+  _panelDiff: 0
+  _playedSound: []
 --- !u!82 &261540588
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1481,11 +1510,40 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _thisPanel: 8
+  _cameraController: {fileID: 0}
   _delay: 1.5
   _playOnlyOnce: 0
+  _blockSound: 0
   _waitForMinigame: 0
+  _panelData: {transform: {fileID: 0}, spriteRenderer: {fileID: 0}, overrideTransition: 1,
+    transitionTime: 1, transitionCurve:
+      m_Curve:
+      - time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - time: 1
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+, placement: 0, subPanels: []
+, <SubPanelIndex>k__BackingField: 0, <Minigame>k__BackingField: {fileID: 0}, <Sound>k__BackingField: {fileID: 0}}
+  _panelManager: {fileID: 0}
+  _audio: []
   _panelContinuation: 0
-  _playedSound: {fileID: 11400000, guid: 768eb59d81b38cb4fbe4a6f5bc9bafa1, type: 2}
+  _panelDiff: 0
+  _playedSound: []
 --- !u!82 &377789133
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1911,6 +1969,7 @@ GameObject:
   - component: {fileID: 519420030}
   - component: {fileID: 519420031}
   - component: {fileID: 519420029}
+  - component: {fileID: 519420033}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -1948,6 +2007,9 @@ MonoBehaviour:
   whiteFadeInOutTime: 2
   titleFadeInOutTime: 1
   titleStayTime: 3
+  _audio:
+  - {fileID: 519420033}
+  - {fileID: 925211572}
 --- !u!20 &519420031
 Camera:
   m_ObjectHideFlags: 0
@@ -2001,10 +2063,107 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 925211573}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!82 &519420033
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 519420028}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &553336829
 GameObject:
   m_ObjectHideFlags: 0
@@ -2250,6 +2409,7 @@ GameObject:
   - component: {fileID: 598097815}
   - component: {fileID: 598097818}
   - component: {fileID: 598097817}
+  - component: {fileID: 598097819}
   m_Layer: 0
   m_Name: school
   m_TagString: Untagged
@@ -2433,11 +2593,57 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _thisPanel: 5
+  _cameraController: {fileID: 0}
   _delay: 0
   _playOnlyOnce: 0
+  _blockSound: 0
   _waitForMinigame: 0
+  _panelData: {transform: {fileID: 0}, spriteRenderer: {fileID: 0}, overrideTransition: 1,
+    transitionTime: 1, transitionCurve:
+      m_Curve:
+      - time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - time: 1
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+, placement: 0, subPanels: []
+, <SubPanelIndex>k__BackingField: 0, <Minigame>k__BackingField: {fileID: 0}, <Sound>k__BackingField: {fileID: 0}}
+  _panelManager: {fileID: 0}
+  _audio: []
   _panelContinuation: 0
-  _playedSound: {fileID: 11400000, guid: 2aaab791df93d894f9779f58c21958ea, type: 2}
+  _panelDiff: 0
+  _playedSound: []
+--- !u!114 &598097819
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 598097814}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a4988a43554100c4f83b2814228a2b20, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hasMultipleSounds: 0
+  _audio:
+  - {fileID: 11400000, guid: 2aaab791df93d894f9779f58c21958ea, type: 2}
+  _length: 0
+  _lengthForExtra: 0
 --- !u!1 &619565219
 GameObject:
   m_ObjectHideFlags: 0
@@ -3419,11 +3625,40 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _thisPanel: 10
+  _cameraController: {fileID: 0}
   _delay: 0
   _playOnlyOnce: 1
+  _blockSound: 0
   _waitForMinigame: 1
+  _panelData: {transform: {fileID: 0}, spriteRenderer: {fileID: 0}, overrideTransition: 1,
+    transitionTime: 1, transitionCurve:
+      m_Curve:
+      - time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - time: 1
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+, placement: 0, subPanels: []
+, <SubPanelIndex>k__BackingField: 0, <Minigame>k__BackingField: {fileID: 0}, <Sound>k__BackingField: {fileID: 0}}
+  _panelManager: {fileID: 0}
+  _audio: []
   _panelContinuation: 0
-  _playedSound: {fileID: 11400000, guid: 6c3b324fa5ce44c4f9e99a00e396a602, type: 2}
+  _panelDiff: 0
+  _playedSound: []
 --- !u!82 &823736557
 AudioSource:
   m_ObjectHideFlags: 0
@@ -3633,6 +3868,133 @@ Transform:
   m_Father: {fileID: 1596690541}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &925211571
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 925211573}
+  - component: {fileID: 925211572}
+  m_Layer: 0
+  m_Name: ExtraSounds
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!82 &925211572
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 925211571}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!4 &925211573
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 925211571}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 519420032}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &935688770
 GameObject:
   m_ObjectHideFlags: 0
@@ -3730,11 +4092,40 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _thisPanel: 13
+  _cameraController: {fileID: 0}
   _delay: 0
   _playOnlyOnce: 0
+  _blockSound: 0
   _waitForMinigame: 0
+  _panelData: {transform: {fileID: 0}, spriteRenderer: {fileID: 0}, overrideTransition: 1,
+    transitionTime: 1, transitionCurve:
+      m_Curve:
+      - time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - time: 1
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+, placement: 0, subPanels: []
+, <SubPanelIndex>k__BackingField: 0, <Minigame>k__BackingField: {fileID: 0}, <Sound>k__BackingField: {fileID: 0}}
+  _panelManager: {fileID: 0}
+  _audio: []
   _panelContinuation: 0
-  _playedSound: {fileID: 11400000, guid: 0e470195ebc323b4ca6aaaeeeca5e63e, type: 2}
+  _panelDiff: 0
+  _playedSound: []
 --- !u!82 &935688774
 AudioSource:
   m_ObjectHideFlags: 0
@@ -4258,11 +4649,40 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _thisPanel: 7
+  _cameraController: {fileID: 0}
   _delay: 0
   _playOnlyOnce: 0
+  _blockSound: 0
   _waitForMinigame: 0
+  _panelData: {transform: {fileID: 0}, spriteRenderer: {fileID: 0}, overrideTransition: 1,
+    transitionTime: 1, transitionCurve:
+      m_Curve:
+      - time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - time: 1
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+, placement: 0, subPanels: []
+, <SubPanelIndex>k__BackingField: 0, <Minigame>k__BackingField: {fileID: 0}, <Sound>k__BackingField: {fileID: 0}}
+  _panelManager: {fileID: 0}
+  _audio: []
   _panelContinuation: 0
-  _playedSound: {fileID: 11400000, guid: 80e960e64b461f240b937ad0a3369101, type: 2}
+  _panelDiff: 0
+  _playedSound: []
 --- !u!82 &1174568832
 AudioSource:
   m_ObjectHideFlags: 0
@@ -4456,11 +4876,40 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _thisPanel: 4
+  _cameraController: {fileID: 0}
   _delay: 0
   _playOnlyOnce: 0
+  _blockSound: 0
   _waitForMinigame: 0
+  _panelData: {transform: {fileID: 0}, spriteRenderer: {fileID: 0}, overrideTransition: 1,
+    transitionTime: 1, transitionCurve:
+      m_Curve:
+      - time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - time: 1
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+, placement: 0, subPanels: []
+, <SubPanelIndex>k__BackingField: 0, <Minigame>k__BackingField: {fileID: 0}, <Sound>k__BackingField: {fileID: 0}}
+  _panelManager: {fileID: 0}
+  _audio: []
   _panelContinuation: 0
-  _playedSound: {fileID: 11400000, guid: bff3125b625864249b3254dafa697960, type: 2}
+  _panelDiff: 0
+  _playedSound: []
 --- !u!82 &1241641658
 AudioSource:
   m_ObjectHideFlags: 0
@@ -5089,7 +5538,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1471615977}
   - component: {fileID: 1471615978}
-  - component: {fileID: 1471615980}
   - component: {fileID: 1471615979}
   m_Layer: 0
   m_Name: sleep
@@ -5174,111 +5622,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 1471615976}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 59dc314f00760ee438770e539be65c2a, type: 3}
+  m_Script: {fileID: 11500000, guid: a4988a43554100c4f83b2814228a2b20, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _thisPanel: 0
-  _delay: 0
-  _playOnlyOnce: 0
-  _waitForMinigame: 0
-  _panelContinuation: 2
-  _playedSound: {fileID: 11400000, guid: 672a8bf2ba25f7e419979cb29952824a, type: 2}
---- !u!82 &1471615980
-AudioSource:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1471615976}
-  m_Enabled: 1
-  serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
-  m_Volume: 1
-  m_Pitch: 1
-  Loop: 0
-  Mute: 0
-  Spatialize: 0
-  SpatializePostEffects: 0
-  Priority: 128
-  DopplerLevel: 1
-  MinDistance: 1
-  MaxDistance: 500
-  Pan2D: 0
-  rolloffMode: 0
-  BypassEffects: 0
-  BypassListenerEffects: 0
-  BypassReverbZones: 0
-  rolloffCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 1
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  panLevelCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  spreadCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  reverbZoneMixCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
+  hasMultipleSounds: 0
+  _audio:
+  - {fileID: 11400000, guid: 672a8bf2ba25f7e419979cb29952824a, type: 2}
+  _length: 3
+  _lengthForExtra: 0
 --- !u!1 &1483081825
 GameObject:
   m_ObjectHideFlags: 0
@@ -5291,6 +5642,7 @@ GameObject:
   - component: {fileID: 1483081826}
   - component: {fileID: 1483081829}
   - component: {fileID: 1483081828}
+  - component: {fileID: 1483081830}
   m_Layer: 0
   m_Name: morning brush teeth
   m_TagString: Untagged
@@ -5377,11 +5729,40 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _thisPanel: 3
+  _cameraController: {fileID: 0}
   _delay: 0
   _playOnlyOnce: 0
+  _blockSound: 0
   _waitForMinigame: 1
+  _panelData: {transform: {fileID: 0}, spriteRenderer: {fileID: 0}, overrideTransition: 1,
+    transitionTime: 1, transitionCurve:
+      m_Curve:
+      - time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - time: 1
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+, placement: 0, subPanels: []
+, <SubPanelIndex>k__BackingField: 0, <Minigame>k__BackingField: {fileID: 0}, <Sound>k__BackingField: {fileID: 0}}
+  _panelManager: {fileID: 0}
+  _audio: []
   _panelContinuation: 0
-  _playedSound: {fileID: 11400000, guid: 79120af6ed147464a88b48c95c842da0, type: 2}
+  _panelDiff: 0
+  _playedSound: []
 --- !u!82 &1483081829
 AudioSource:
   m_ObjectHideFlags: 0
@@ -5478,6 +5859,23 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &1483081830
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1483081825}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a4988a43554100c4f83b2814228a2b20, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hasMultipleSounds: 0
+  _audio:
+  - {fileID: 11400000, guid: 768eb59d81b38cb4fbe4a6f5bc9bafa1, type: 2}
+  _length: 2
+  _lengthForExtra: 0
 --- !u!1 &1493793049
 GameObject:
   m_ObjectHideFlags: 0
@@ -6304,11 +6702,40 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _thisPanel: 9
+  _cameraController: {fileID: 0}
   _delay: 0
   _playOnlyOnce: 0
+  _blockSound: 0
   _waitForMinigame: 0
+  _panelData: {transform: {fileID: 0}, spriteRenderer: {fileID: 0}, overrideTransition: 1,
+    transitionTime: 1, transitionCurve:
+      m_Curve:
+      - time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - time: 1
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+, placement: 0, subPanels: []
+, <SubPanelIndex>k__BackingField: 0, <Minigame>k__BackingField: {fileID: 0}, <Sound>k__BackingField: {fileID: 0}}
+  _panelManager: {fileID: 0}
+  _audio: []
   _panelContinuation: 0
-  _playedSound: {fileID: 11400000, guid: 2aaab791df93d894f9779f58c21958ea, type: 2}
+  _panelDiff: 0
+  _playedSound: []
 --- !u!82 &1618015833
 AudioSource:
   m_ObjectHideFlags: 0
@@ -6503,11 +6930,40 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _thisPanel: 12
+  _cameraController: {fileID: 0}
   _delay: 0
   _playOnlyOnce: 0
+  _blockSound: 0
   _waitForMinigame: 0
+  _panelData: {transform: {fileID: 0}, spriteRenderer: {fileID: 0}, overrideTransition: 1,
+    transitionTime: 1, transitionCurve:
+      m_Curve:
+      - time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - time: 1
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+, placement: 0, subPanels: []
+, <SubPanelIndex>k__BackingField: 0, <Minigame>k__BackingField: {fileID: 0}, <Sound>k__BackingField: {fileID: 0}}
+  _panelManager: {fileID: 0}
+  _audio: []
   _panelContinuation: 0
-  _playedSound: {fileID: 11400000, guid: a0fca73ea606a6644ba9a72d0c291db3, type: 2}
+  _panelDiff: 0
+  _playedSound: []
 --- !u!82 &1621732903
 AudioSource:
   m_ObjectHideFlags: 0
@@ -7701,11 +8157,40 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _thisPanel: 6
+  _cameraController: {fileID: 0}
   _delay: 0
   _playOnlyOnce: 0
+  _blockSound: 0
   _waitForMinigame: 0
+  _panelData: {transform: {fileID: 0}, spriteRenderer: {fileID: 0}, overrideTransition: 1,
+    transitionTime: 1, transitionCurve:
+      m_Curve:
+      - time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - time: 1
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+, placement: 0, subPanels: []
+, <SubPanelIndex>k__BackingField: 0, <Minigame>k__BackingField: {fileID: 0}, <Sound>k__BackingField: {fileID: 0}}
+  _panelManager: {fileID: 0}
+  _audio: []
   _panelContinuation: 2
-  _playedSound: {fileID: 11400000, guid: 9a4482187fd209d4995093712a9c5b91, type: 2}
+  _panelDiff: 0
+  _playedSound: []
 --- !u!82 &1887003558
 AudioSource:
   m_ObjectHideFlags: 0
@@ -8309,11 +8794,40 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _thisPanel: 2
+  _cameraController: {fileID: 0}
   _delay: 0
   _playOnlyOnce: 1
+  _blockSound: 0
   _waitForMinigame: 1
+  _panelData: {transform: {fileID: 0}, spriteRenderer: {fileID: 0}, overrideTransition: 1,
+    transitionTime: 1, transitionCurve:
+      m_Curve:
+      - time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - time: 1
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+, placement: 0, subPanels: []
+, <SubPanelIndex>k__BackingField: 0, <Minigame>k__BackingField: {fileID: 0}, <Sound>k__BackingField: {fileID: 0}}
+  _panelManager: {fileID: 0}
+  _audio: []
   _panelContinuation: 0
-  _playedSound: {fileID: 11400000, guid: a6f40aa8a7070794bab255d95abfea8c, type: 2}
+  _panelDiff: 0
+  _playedSound: []
 --- !u!82 &1979025202
 AudioSource:
   m_ObjectHideFlags: 0
