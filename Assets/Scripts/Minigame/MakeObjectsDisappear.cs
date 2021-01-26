@@ -41,9 +41,7 @@ namespace Minigame
             {
                 _enableMode = false;
             }
-            #if UNITY_EDITOR
-            WakeUp();
-            #endif
+       
         }
 
         // Update is called once per frame
@@ -156,6 +154,17 @@ namespace Minigame
         public override void CancelMinigame()
         {
             _tmpUGUI.text = "";
+        }
+
+        public override int UpdateProgress(int minimum, int maximum)
+        {
+            if (IsDone)
+                return maximum;
+            else
+            {
+                float progress = (float)_counter / _sprites.Length *maximum;
+                return (int)progress;
+            }
         }
     }
 }

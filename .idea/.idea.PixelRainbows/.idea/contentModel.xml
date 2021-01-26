@@ -29,6 +29,7 @@
             <e p="BrushTeeth.cs" t="Include" />
             <e p="DragBlanket.cs" t="Include" />
             <e p="DragToTarget.cs" t="Include" />
+            <e p="LoadingBar.cs" t="Include" />
             <e p="MakeObjectsDisappear.cs" t="Include" />
             <e p="MinigameBaseClass.cs" t="Include" />
             <e p="MinigameCollection.cs" t="Include" />

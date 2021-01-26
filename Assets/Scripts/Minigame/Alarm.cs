@@ -74,5 +74,13 @@ namespace Minigame
         {
             _tmpUGUI.text = "";
         }
+        
+        public override int UpdateProgress(int minimum, int maximum)
+        {
+            if (IsDone)
+                return maximum;
+            return minimum;
+           
+        }
     }
 }

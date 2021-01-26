@@ -217,5 +217,19 @@ namespace Minigame
                 _tmpUGUI.text = "";
             }
         }
+        
+        public override int UpdateProgress(int minimum, int maximum)
+        {
+            var myTransformPosition = transform.position;
+            var myStartPos = _startTarget.transform.position;
+            var myEndPos = _endTarget.transform.position;
+            if (IsDone)
+            {
+                return maximum;
+            }
+           // float progress = (Vector3.Distance(myStartPos, myTransformPosition)/Vector3.Distance(myStartPos, myEndPos))*100;
+            float progress =  (float)_counter / (1 + _maxAmount) *maximum;
+            return (int) progress;
+        }
     }
 }

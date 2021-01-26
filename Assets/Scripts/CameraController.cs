@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using Minigame;
 using UnityEngine;
 using UnityEngine.UI;
 using PixelRainbows.Panels;
@@ -12,6 +13,8 @@ namespace PixelRainbows
         protected PanelManager panelSource;
         [SerializeField]
         protected Button forwardButton, backwardButton;
+        [SerializeField]
+        protected LoadingBar _loadingBar;
         
         [Header("Chapter Transitions"), SerializeField]
         protected string nextScene;
@@ -30,6 +33,7 @@ namespace PixelRainbows
 
         private int panelIndex = 0;
         private PanelData lastPanel;
+        private bool _getProgress;
 
         private void Start() 
         {
@@ -86,6 +90,12 @@ namespace PixelRainbows
                     }
                 }
             }
+
+            if (_getProgress)
+            {
+                _loadingBar.current = lastPanel.Minigame.UpdateProgress(_loadingBar.Minimum, _loadingBar.Maximum);
+                _getProgress = !lastPanel.Minigame.IsDone;
+            }
         }
 #endif
         
@@ -119,6 +129,7 @@ namespace PixelRainbows
             {
                 forwardButton.interactable = false;
                 lastPanel.Minigame.WakeUp(); //mainly for animations and the sort.
+                _getProgress = true;
                 yield return new WaitUntil(() => lastPanel.Minigame.IsDone);
                 forwardButton.interactable = true;
             }
@@ -144,11 +155,13 @@ namespace PixelRainbows
             panelIndex--;
             if(lastPanel.Minigame)
                 lastPanel.Minigame.CancelMinigame();
+            _loadingBar.current = 0;
             StartCoroutine(DoTransition());
         }
 
         void Continue()
         {
+            _loadingBar.current = 0;
             //check if the panel has subpanels
             if(lastPanel.HasSubPanels)
             {
@@ -203,6 +216,7 @@ namespace PixelRainbows
             if(lastPanel.Minigame)
             {
                 lastPanel.Minigame.WakeUp();
+                _getProgress = true;
                 yield return new WaitUntil(() => lastPanel.Minigame.IsDone);
                 forwardButton.interactable = panelIndex < panelSource.PanelCount-1;
                 if(!forwardButton.interactable)

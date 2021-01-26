@@ -20,6 +20,11 @@ namespace PixelRainbows
             //this isnt really a minigame so yeah.
         }
 
+        public override int UpdateProgress(int minimum, int maximum)
+        {
+            return 0;
+        }
+
         public override void WakeUp()
         {
             anim.enabled = true;
