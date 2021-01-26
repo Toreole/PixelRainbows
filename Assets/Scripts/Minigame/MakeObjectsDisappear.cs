@@ -41,7 +41,7 @@ namespace Minigame
             {
                 _enableMode = false;
             }
-       
+            WakeUp();
         }
 
         // Update is called once per frame
@@ -57,6 +57,7 @@ namespace Minigame
             {
                 IsDone = true;
                 _tmpUGUI.text = $"{_winMessage}";
+                this.enabled = false;
             }
           
         }
@@ -160,11 +161,9 @@ namespace Minigame
         {
             if (IsDone)
                 return maximum;
-            else
-            {
-                float progress = (float)_counter / _sprites.Length *maximum;
-                return (int)progress;
-            }
+            float progress = _keepLastSprite ? (float)_counter / (_sprites.Length -1) *maximum : (float)_counter / _sprites.Length *maximum;
+            return (int)progress;
+            
         }
     }
 }
