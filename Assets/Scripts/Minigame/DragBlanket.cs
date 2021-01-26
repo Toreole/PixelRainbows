@@ -112,13 +112,14 @@ namespace Minigame
                     _blanket.enabled = false;
                     _spriteRenderer.enabled = false;
                     _collider2D.enabled = false;
+                    
                 }
                 else //if(IsDone && !_standingUp) no double checking.
                 {
                     Cursor.visible = true;
                     _collider2D.enabled = false;
                 }
-                this.enabled = false; //disable this script to stop this Update from running.
+                gameObject.SetActive(false);
             }
         }
 

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: AlarmClock
   m_EditorClassIdentifier: 
   _clips:
-  - {fileID: 8300000, guid: f0eaef3e9840ff1458ada2bc0e605bd8, type: 3}
+  - {fileID: 8300000, guid: de4e47c76b6a5654e9bb4f70e1edf55f, type: 3}
   _loop: 1
   _randomizeVolume: 0
   _volume: 0.33

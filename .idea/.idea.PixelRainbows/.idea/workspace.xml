@@ -40,14 +40,14 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/Minigame/Alarm.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Minigame/LoadingBar.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Minigame/BrushTeeth.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Minigame/DragBlanket.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Panels/PanelAnimator.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Minigame/PullObjectOutOfBag.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/CameraController.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Minigame/MinigameCollection.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Minigame/MinigameBaseClass.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Minigame/MakeObjectsDisappear.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Minigame/DragToTarget.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Minigame/PullObjectOutOfBag.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Minigame/DragBlanket.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Minigame/MakeObjectsDisappear.cs" />
       </list>
     </option>
   </component>
@@ -113,7 +113,7 @@
       <workItem from="1610301830122" duration="6934000" />
       <workItem from="1610308884075" duration="1412000" />
       <workItem from="1610390193188" duration="1310000" />
-      <workItem from="1611677928857" duration="8886000" />
+      <workItem from="1611677928857" duration="11209000" />
     </task>
     <servers />
   </component>
