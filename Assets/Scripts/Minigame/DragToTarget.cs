@@ -150,7 +150,10 @@ namespace Minigame
             if(_pushRepetitions != 0)
                 PushAgainst();
             if (IsDone)
-            {
+            { 
+                // Disable indicator
+                if(this.transform.childCount != 0) 
+                    transform.GetChild(0).gameObject.SetActive(false);
                 // Turn all objects off if length is not zero and the bool is true
                 if (_switchOffAndOn && _disableObjects.Length != 0)
                 {

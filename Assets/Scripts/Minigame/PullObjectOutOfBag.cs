@@ -137,6 +137,8 @@ namespace Minigame
             {
                 return maximum;
             }
+            // Distance of player to the start pos / start pos to end pos will result in the percentage
+            // of distance from start to finish
             float progress = Vector3.Distance(myStartPos, myTransformPosition)/Vector3.Distance(myStartPos, myEndPos)*100;
             return (int) progress;
         }

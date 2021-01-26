@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using PixelRainbows.Panels;
 using TMPro;
+using UnityEngine.Serialization;
 
 namespace PixelRainbows
 {
@@ -13,8 +14,8 @@ namespace PixelRainbows
         protected PanelManager panelSource;
         [SerializeField]
         protected Button forwardButton, backwardButton;
-        [SerializeField]
-        protected LoadingBar _loadingBar;
+        [FormerlySerializedAs("_loadingBar")] [SerializeField]
+        protected LoadingBar _progressBar;
         
         [Header("Chapter Transitions"), SerializeField]
         protected string nextScene;
@@ -91,9 +92,10 @@ namespace PixelRainbows
                 }
             }
 
+            // If its true, the minigame will continuosly update its current progress value and return it to the progressbar
             if (_getProgress)
             {
-                _loadingBar.current = lastPanel.Minigame.UpdateProgress(_loadingBar.Minimum, _loadingBar.Maximum);
+                _progressBar.current = lastPanel.Minigame.UpdateProgress(_progressBar.Minimum, _progressBar.Maximum);
                 _getProgress = !lastPanel.Minigame.IsDone;
             }
         }
@@ -155,13 +157,13 @@ namespace PixelRainbows
             panelIndex--;
             if(lastPanel.Minigame)
                 lastPanel.Minigame.CancelMinigame();
-            _loadingBar.current = 0;
+            _progressBar.current = 0;
             StartCoroutine(DoTransition());
         }
 
         void Continue()
         {
-            _loadingBar.current = 0;
+            _progressBar.current = 0;
             //check if the panel has subpanels
             if(lastPanel.HasSubPanels)
             {
