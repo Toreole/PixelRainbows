@@ -26,6 +26,7 @@ namespace PixelRainbows
         public int Duration => _panelContinuation;
         public bool IsBeingPlayed { get; set; } = false;
         public bool CanBePlayed => !_blockSound; //if this blocks sound, it can not be played.
+        public bool WaitForMinigame => _waitForMinigame;
         
         public void PlaySound(AudioSource source)
         {
