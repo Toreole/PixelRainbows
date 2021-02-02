@@ -1,5 +1,5 @@
 ﻿using System;
-using Audio;
+using PixelRainbows.Audio;
 using PixelRainbows.Panels;
 using TMPro;
 using Unity.Mathematics;

@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using UnityEngine;
+using UnityEngine.Audio;
 using UnityEngine.UI;
 using PixelRainbows.Panels;
 using TMPro;
@@ -12,6 +13,12 @@ namespace PixelRainbows
         protected PanelManager panelSource;
         [SerializeField]
         protected Button forwardButton, backwardButton;
+
+        [Header("Audio"), SerializeField]
+        protected int audioSourceCount = 4; //having 4 distinct audio sources should be plenty.
+        //[SerializeField]
+        //protected AudioMixerGroup sfxGroup; 
+        //for controlling volume, but since there are no sounds other than these sfx, its easier to only adjust the master volume.
         
         [Header("Chapter Transitions"), SerializeField]
         protected string nextScene;
@@ -30,14 +37,19 @@ namespace PixelRainbows
 
         private int panelIndex = 0;
         private PanelData lastPanel;
+        private AudioSource[] audioSources;
 
         private void Start() 
         {
-
+            //setup buttons.
             backwardButton.interactable = false;
             backwardButton.onClick.AddListener(Back);
             forwardButton.interactable = true;    
             forwardButton.onClick.AddListener(Continue);
+            //setup audio.
+            audioSources = new AudioSource[audioSourceCount];
+            for(int i = 0; i < audioSourceCount; i++)
+                audioSources[i] = gameObject.AddComponent<AudioSource>();
             //Load from the furthest game progress.
             if(GameProgress.LoadFromCurrent)
             {
@@ -57,6 +69,10 @@ namespace PixelRainbows
             //set the position to be at the panel, just in case.
             Vector3 position = lastPanel.transform.position.WithZ(transform.position.z);
             
+            //Initialize Sound for the first panel. //Has to be done manually since other sounds are bound to transitions.
+            if(lastPanel.PanelSound)
+                StartCoroutine(HandleSound(lastPanel.PanelSound));
+
             transform.position = position;
 
             chapterTitle.alpha = 0; //start with invisible title.
@@ -200,10 +216,20 @@ namespace PixelRainbows
             backwardButton.interactable = true;
             //Update the progress.
             GameProgress.Current = chapterNumber*100 + panelIndex;
+            //initialize Sound handling.
+            ActivateSound soundHandle = lastPanel.PanelSound;
+            //Sounds that dont have to wait for the minigame can be played right away.
+            if(soundHandle && !soundHandle.WaitForMinigame)
+                StartCoroutine(HandleSound(soundHandle));
+            //Initialize minigames.
             if(lastPanel.Minigame)
             {
                 lastPanel.Minigame.WakeUp();
+                //Play sounds that are independent of minigames.
                 yield return new WaitUntil(() => lastPanel.Minigame.IsDone);
+                //this is the last possible chance for the sound to be played. no additional IF because of existing failchecks.
+                if(soundHandle)
+                    StartCoroutine(HandleSound(soundHandle));
                 forwardButton.interactable = panelIndex < panelSource.PanelCount-1;
                 if(!forwardButton.interactable)
                     StartCoroutine(DoOutroFade());
@@ -265,6 +291,38 @@ namespace PixelRainbows
 #endregion
         }
 
+        ///<summary>Plays and Halts the sounds to play</summary>
+        IEnumerator HandleSound(ActivateSound sound)
+        {
+            int startIndex = panelIndex;
+            if(sound.IsBeingPlayed || !sound.CanBePlayed) //avoid playing the same sound twice.
+                yield break;
+            if(TryGetAudioSource(out AudioSource source))
+            {
+                //Default Behaviour: play the sound.
+                sound.PlaySound(source);
+
+                //Wait until we transition away from where the sound is played.
+                yield return new WaitUntil(() => panelIndex > startIndex + sound.Duration);
+                //stop the sound. //--NOTE: maybe fade in/out the volume on this.
+                source.Stop();
+                sound.IsBeingPlayed = false;
+            }
+        }
+
+        ///<summary>Tries to get the first available non-playing audio source. if none are eligible returns false (null)</summary>
+        private bool TryGetAudioSource(out AudioSource source)
+        {
+            for(int i = 0; i < audioSourceCount; i++)
+            {
+                if(audioSources[i].isPlaying)
+                    continue;
+                source = audioSources[i];
+                return true;
+            }
+            source = null;
+            return false;
+        }
 
         void DisableButtons()
         {

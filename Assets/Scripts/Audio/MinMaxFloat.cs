@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Audio
+namespace PixelRainbows.Audio
 {
 	/// <summary>
 	/// Class used to summarize use cases where we need a min and a max float

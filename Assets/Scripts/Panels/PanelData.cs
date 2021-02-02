@@ -40,6 +40,7 @@ namespace PixelRainbows.Panels
         public int SubPanelIndex { get; set; } = 0;
 
         public Minigame.MinigameBaseClass Minigame { get; set; }
+        public ActivateSound PanelSound { get; set; }
     }
 
     public enum PanelPlacement
