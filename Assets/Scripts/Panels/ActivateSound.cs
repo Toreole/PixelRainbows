@@ -1,12 +1,8 @@
-﻿using System;
-using Audio;
-using PixelRainbows;
-using PixelRainbows.Panels;
+﻿using PixelRainbows.Audio;
 using UnityEngine;
 
-namespace Panels
+namespace PixelRainbows
 {
-    [RequireComponent(typeof(AudioSource))]
     public class ActivateSound : MonoBehaviour
     {
         [SerializeField]
@@ -26,15 +22,19 @@ namespace Panels
         
         [SerializeField][Tooltip("Scriptable Sound that will be played once the panel is reached")]
         private ScriptableAudioEvent _playedSound;
+
+        public int Duration => _panelContinuation;
+        public bool IsBeingPlayed { get; set; } = false;
+        public bool CanBePlayed => !_blockSound; //if this blocks sound, it can not be played.
         
-        private void PlaySound(AudioSource source)
+        public void PlaySound(AudioSource source)
         {
             //failcheck.
             if(source.isPlaying || _blockSound)
                 return; 
             
             _blockSound = _playOnlyOnce;
-
+            IsBeingPlayed = true;
             _playedSound.Play(source);
         }
     }

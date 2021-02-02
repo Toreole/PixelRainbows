@@ -2,7 +2,7 @@
 using UnityEditor;
 using UnityEngine;
 
-namespace Audio
+namespace PixelRainbows.Audio
 {
 	/// <summary>
 	///  Attribute to work in junction with the <see cref="MinMaxFloat"/>

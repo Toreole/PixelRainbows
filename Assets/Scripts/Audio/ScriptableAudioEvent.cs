@@ -1,7 +1,7 @@
 ﻿using UnityEditor;
 using UnityEngine;
 
-namespace Audio
+namespace PixelRainbows.Audio
 {
 	/// <summary>
 	/// Scriptable Object that grouping multiple audio clips into one sfx which is playable at run and edit-time.
@@ -63,7 +63,7 @@ namespace Audio
 			source.pitch = _randomizePitch ? Random.Range(_minMaxPitch.MinValue, _minMaxPitch.MaxValue) : _pitch;
 			// Use either looped or unlooped clips
 			if (_clips.Length == 1)
-				source.loop = _loop ? source.loop = true : source.loop = false;
+				source.loop = _loop;// ? source.loop = true : source.loop = false; lol
 			
 			source.Play();
 			
