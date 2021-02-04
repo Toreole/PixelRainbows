@@ -1,0 +1,293 @@
+fileFormatVersion: 2
+guid: 53c999ef8b135924cbcdfa492e11784a
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -877463186361597510
+    second: blushes1_0
+  - first:
+      213: 3240156509848897653
+    second: blushes1_1
+  - first:
+      213: 5334733244507907804
+    second: blushes1_2
+  - first:
+      213: -6246444788794964524
+    second: blushes1_3
+  - first:
+      213: 631229730194827689
+    second: blushes1_4
+  - first:
+      213: -5861274850389345217
+    second: blushes1_5
+  - first:
+      213: -479465285959576949
+    second: blushes1_6
+  - first:
+      213: -2077203166046201993
+    second: blushes1_7
+  - first:
+      213: -1114299445534843919
+    second: blushes1_8
+  - first:
+      213: -6987866088569903478
+    second: blushes1_9
+  - first:
+      213: -8963153002018591621
+    second: blushes1_10
+  - first:
+      213: -8570436541134664548
+    second: blushes1_11
+  - first:
+      213: -5702347495242418969
+    second: blushes1_12
+  - first:
+      213: 1134418250293527059
+    second: blushes1_13
+  - first:
+      213: -4060069177129520280
+    second: blushes1_14
+  - first:
+      213: -1971369718348424028
+    second: blushes1_15
+  - first:
+      213: -3697744523553012405
+    second: blushes1_16
+  - first:
+      213: 3462622661586193278
+    second: blushes1_17
+  - first:
+      213: -5668046951182455577
+    second: blushes1_18
+  - first:
+      213: -4290260532539490666
+    second: blushes1_19
+  - first:
+      213: 108268027534948584
+    second: blushes1_20
+  - first:
+      213: -5623732055264202670
+    second: blushes1_21
+  - first:
+      213: 3605678003709900649
+    second: blushes1_22
+  - first:
+      213: 6468724639840249989
+    second: blushes1_23
+  - first:
+      213: -1542121405975388214
+    second: blushes1_24
+  - first:
+      213: 7146008745040301362
+    second: blushes1_25
+  - first:
+      213: 1393581628421971360
+    second: blushes1_26
+  - first:
+      213: 2268084779398471826
+    second: blushes1_27
+  - first:
+      213: 9157726931396502984
+    second: blushes1_28
+  - first:
+      213: -4141275877813374455
+    second: blushes1_29
+  - first:
+      213: -5705348456561701231
+    second: blushes1_30
+  - first:
+      213: 4994901403886272577
+    second: blushes1_31
+  - first:
+      213: 7335543685616917712
+    second: blushes1_32
+  - first:
+      213: -2836526356090319565
+    second: blushes1_33
+  - first:
+      213: -1259410996843102799
+    second: blushes1_34
+  - first:
+      213: -1167386344081722805
+    second: blushes1_35
+  - first:
+      213: -4413177224639511533
+    second: blushes1_36
+  - first:
+      213: 5175354334954055461
+    second: blushes1_37
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: -1
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: blushes1_0
+      rect:
+        serializedVersion: 2
+        x: 10
+        y: 6
+        width: 256
+        height: 136
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ab14f6981ef92d3f0800000000000000
+      internalID: -877463186361597510
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: blushes1_1
+      rect:
+        serializedVersion: 2
+        x: 300
+        y: 1
+        width: 247
+        height: 141
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 578863abd2957fc20800000000000000
+      internalID: 3240156509848897653
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: blushes1_2
+      rect:
+        serializedVersion: 2
+        x: 595
+        y: 5
+        width: 234
+        height: 138
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cd66c5a0f97c80a40800000000000000
+      internalID: 5334733244507907804
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
