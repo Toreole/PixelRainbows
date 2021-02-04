@@ -108,12 +108,12 @@ TextureImporter:
       name: Branch1_0
       rect:
         serializedVersion: 2
-        x: 0
+        x: 37
         y: 11
-        width: 1334
-        height: 521
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 1297
+        height: 520
+      alignment: 9
+      pivot: {x: 0.014575446, y: 0.8676471}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -131,10 +131,10 @@ TextureImporter:
         serializedVersion: 2
         x: 1464
         y: 201
-        width: 108
-        height: 118
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 107
+        height: 95
+      alignment: 9
+      pivot: {x: 0.17358398, y: 0.8869966}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
