@@ -1,19 +1,24 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
+using UnityEngine.Serialization;
 using UnityEngine;
 
 namespace PixelRainbows
 {
     public class PanelAnimator : Minigame.MinigameBaseClass
     {
-        [SerializeField, Tooltip("Animation Length in seconds. Required for the last panel in a scene. Otherwise optional.")]
-        private float animationLength = 0f;
+        [SerializeField, Tooltip("Any Additional Delay. Optional."), FormerlySerializedAs("animationLength"), Range(0f, 10f)]
+        private float delay = 0f;
 
+        private float animationLength;
         Animator anim;
         private void Awake() 
         {
             anim = GetComponent<Animator>(); //just double check    
             anim.enabled = false;
+            
+            //see how long the clip to be played is.
+            AnimatorClipInfo[] clipinfos = anim.GetCurrentAnimatorClipInfo(0);
+            animationLength = clipinfos[0].clip.length;
         }
         public override void CancelMinigame()
         {
@@ -29,7 +34,7 @@ namespace PixelRainbows
                 StartCoroutine(Wait());
             IEnumerator Wait()
             {
-                yield return new WaitForSeconds(animationLength); IsDone = true;
+                yield return new WaitForSeconds(animationLength + delay); IsDone = true;
             }
         }
     }
