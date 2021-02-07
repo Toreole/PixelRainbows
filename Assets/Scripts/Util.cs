@@ -20,5 +20,8 @@ namespace PixelRainbows
             val.z = z;
             return val;
         }
+
+        public static bool InRange(this int i, int lower, int upper)
+            => lower <= i && i <= upper;
     }
 }

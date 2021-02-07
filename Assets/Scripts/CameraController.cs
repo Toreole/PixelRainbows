@@ -1,6 +1,6 @@
 ﻿using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Audio;
 using UnityEngine.UI;
 using PixelRainbows.Panels;
 using TMPro;
@@ -38,6 +38,7 @@ namespace PixelRainbows
         private int panelIndex = 0;
         private PanelData lastPanel;
         private AudioSource[] audioSources;
+        private List<LaidBackSound> inactiveMultiPanelSounds;
 
         private void Start() 
         {
@@ -47,6 +48,7 @@ namespace PixelRainbows
             forwardButton.interactable = true;    
             forwardButton.onClick.AddListener(Continue);
             //setup audio.
+            inactiveMultiPanelSounds = new List<LaidBackSound>(5); //probably rare that more than 5 of these exist in any given scene.
             audioSources = new AudioSource[audioSourceCount];
             for(int i = 0; i < audioSourceCount; i++)
                 audioSources[i] = gameObject.AddComponent<AudioSource>();
@@ -160,7 +162,7 @@ namespace PixelRainbows
             panelIndex--;
             if(lastPanel.Minigame)
                 lastPanel.Minigame.CancelMinigame();
-            StartCoroutine(DoTransition());
+            StartCoroutine(DoTransition(false));
         }
 
         void Continue()
@@ -194,7 +196,8 @@ namespace PixelRainbows
             }
         }
 
-        IEnumerator DoTransition()
+        //-- Transition go both ways. forward and backward. maybe that wasnt the best idea ive ever had.
+        IEnumerator DoTransition(bool forwardMovement = true)
         {
             DisableButtons();
             PanelData targetPanel = panelSource.GetPanel(panelIndex);
@@ -218,11 +221,30 @@ namespace PixelRainbows
             GameProgress.Current = chapterNumber*100 + panelIndex;
             //initialize Sound handling.
             ActivateSound soundHandle = lastPanel.PanelSound;
+
+            //--Sounds that are on this very panel.
             //Sounds that dont have to wait for the minigame can be played right away.
-            if(soundHandle && !soundHandle.WaitForMinigame)
-                StartCoroutine(HandleSound(soundHandle));
+            if(forwardMovement)
+            {
+                if(soundHandle && !soundHandle.WaitForMinigame)
+                    StartCoroutine(HandleSound(soundHandle));
+            }
+            else //going backwards through panels:
+            {
+                //Cause panels to play.
+                for(int i = 0; i < inactiveMultiPanelSounds.Count; i++)
+                {
+                    var lbSound = inactiveMultiPanelSounds[i];
+                    if(panelIndex.InRange(lbSound.lowerBound, lbSound.upperBound))
+                    {
+                        Debug.Log($"Play multi sound {lbSound.panelSound.name}");
+                        StartCoroutine(HandleSound(lbSound));
+                    }
+                }
+            }
+
             //Initialize minigames.
-            if(lastPanel.Minigame)
+            if(lastPanel.Minigame) //-- lastPanel is the current panel from here on.
             {
                 lastPanel.Minigame.WakeUp();
                 //Play sounds that are independent of minigames.
@@ -303,10 +325,38 @@ namespace PixelRainbows
                 sound.PlaySound(source);
 
                 //Wait until we transition away from where the sound is played.
-                yield return new WaitUntil(() => panelIndex > startIndex + sound.Duration);
+                yield return new WaitUntil(() => !panelIndex.InRange(startIndex, startIndex + sound.Duration));
+                if(sound.Duration > 0) //more than 0 => multi-panel!
+                {
+                    Debug.Log("trying to add lbsound");
+                    var laidBackSound = new LaidBackSound(){
+                        lowerBound = startIndex,
+                        upperBound = startIndex + sound.Duration,
+                        panelSound = sound
+                    };
+                    //avoid adding a duplicate of the sound effect to the laidback sounds.
+                    if(!inactiveMultiPanelSounds.Exists(x => x.panelSound.Equals(sound)))
+                    {
+                        Debug.Log("Added lbsound.");
+                        inactiveMultiPanelSounds.Add(laidBackSound);
+                    }
+                }
                 //stop the sound. //--NOTE: maybe fade in/out the volume on this.
                 source.Stop();
                 sound.IsBeingPlayed = false;
+            }
+        }
+
+        ///<summary>Handles LaidBackSounds that are already registered with proper upper and lower bounds.</summary>
+        IEnumerator HandleSound(LaidBackSound lbSound)
+        {
+            if(TryGetAudioSource(out AudioSource source))
+            {
+                lbSound.panelSound.PlaySound(source);
+
+                yield return new WaitUntil(() => !panelIndex.InRange(lbSound.lowerBound, lbSound.upperBound));
+                source.Stop();
+                lbSound.panelSound.IsBeingPlayed = false;
             }
         }
 
@@ -328,6 +378,13 @@ namespace PixelRainbows
         {
             backwardButton.interactable = false;
             forwardButton.interactable = false;
+        }
+
+        [System.Serializable]
+        public struct LaidBackSound
+        {
+            public ActivateSound panelSound;
+            public int upperBound, lowerBound;
         }
 
         //void EnableButtons()
