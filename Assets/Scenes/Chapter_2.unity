@@ -3374,8 +3374,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 4515868832658927780, guid: 2cf88722002a9e94f8e00546b8534e3e,
+    type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -4656,8 +4657,9 @@ MonoBehaviour:
       m_Calls: []
   m_text: Menu
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: c48425a36e1becc498520996f229cc98, type: 2}
+  m_sharedMaterial: {fileID: -820820700310989103, guid: c48425a36e1becc498520996f229cc98,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -4681,8 +4683,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 24
-  m_fontSizeBase: 24
+  m_fontSize: 50
+  m_fontSizeBase: 50
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -7586,6 +7588,17 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalPosition.y
       value: 2.04
+      objectReference: {fileID: 0}
+    - target: {fileID: 1551053074490019718, guid: bc28092f07f989747980bcc82613debb,
+        type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: c48425a36e1becc498520996f229cc98,
+        type: 2}
+    - target: {fileID: 1551053074490019718, guid: bc28092f07f989747980bcc82613debb,
+        type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1632357868970067006, guid: bc28092f07f989747980bcc82613debb,
         type: 3}
@@ -11155,8 +11168,9 @@ MonoBehaviour:
       m_Calls: []
   m_text: Chapter 2
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: c48425a36e1becc498520996f229cc98, type: 2}
+  m_sharedMaterial: {fileID: -820820700310989103, guid: c48425a36e1becc498520996f229cc98,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -11219,7 +11233,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
+  m_hasFontAssetChanged: 1
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!1 &1447854346237323797
@@ -11576,8 +11590,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -127.1001, y: 128.09998}
-  m_SizeDelta: {x: 200.24295, y: 200.24295}
+  m_AnchoredPosition: {x: -174, y: 99.20499}
+  m_SizeDelta: {x: 348, y: 195}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &6687794116142575513
 GameObject:
@@ -11637,7 +11651,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: New Text
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: c48425a36e1becc498520996f229cc98, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -11701,7 +11715,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
+  m_hasFontAssetChanged: 1
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &6687794116142575527
@@ -11817,10 +11831,10 @@ RectTransform:
   m_Father: {fileID: 6687794115395047303}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 180}
-  m_AnchorMin: {x: 1, y: 0}
-  m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -1788, y: 128.09998}
-  m_SizeDelta: {x: 200.24295, y: 200.24295}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 174, y: 97.5}
+  m_SizeDelta: {x: 348, y: 195}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6687794117449566702
 CanvasRenderer:
