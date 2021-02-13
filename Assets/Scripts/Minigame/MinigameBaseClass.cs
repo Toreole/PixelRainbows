@@ -14,9 +14,9 @@ namespace Minigame
         /// </summary> 
         public bool IsDone {  get; protected set; } = false;
 
-        ///<summary>
-        /// Method to call after switching to a panel with a minigame.
-        /// </summary> 
+        /// <summary>
+        ///  Method to call after switching to a panel with a minigame.
+        ///  </summary>
         public abstract void WakeUp();
 
         ///<summary>
@@ -24,6 +24,14 @@ namespace Minigame
         /// minigame.
         /// </summary> 
         public abstract void CancelMinigame();
+
+
+        /// <summary>
+        ///  Method to call after gaining or losing progress in the minigame.
+        ///  </summary>
+        /// <param name="minimum"></param>
+        /// <param name="maximum"></param>
+        public abstract int UpdateProgress(int minimum, int maximum);
 
         // A List of required variables for the minigames
         protected static readonly int BrushTeethReqDone = Animator.StringToHash("BrushTeethReqDone");

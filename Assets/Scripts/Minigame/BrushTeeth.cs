@@ -122,5 +122,16 @@ namespace Minigame
                 _tmpUGUI.text = "";
             }
         }
+        
+        public override int UpdateProgress(int minimum, int maximum)
+        {
+            if (IsDone)
+            {
+                return maximum;
+            }
+
+            float progress = (float)(_leftCheck + _rightCheck) / (_repetitions * 2)*maximum;
+            return (int) progress;
+        }
     }
 }

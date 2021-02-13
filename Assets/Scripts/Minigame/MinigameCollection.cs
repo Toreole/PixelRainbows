@@ -49,5 +49,14 @@ namespace Minigame
                Done.CancelMinigame();
             }
         }
+        
+        public override int UpdateProgress(int minimum, int maximum)
+        {
+            if (_isDoneCount > 0)
+            {
+                return (maximum / _minigames.Length) * _isDoneCount;
+            }
+            return minimum;
+        }
     }
 }

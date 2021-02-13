@@ -1,9 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.InteropServices;
+using Minigame;
 using UnityEngine;
 using UnityEngine.UI;
 using PixelRainbows.Panels;
 using TMPro;
+using UnityEditor.UIElements;
 
 namespace PixelRainbows
 {
@@ -13,6 +16,9 @@ namespace PixelRainbows
         protected PanelManager panelSource;
         [SerializeField]
         protected Button forwardButton, backwardButton;
+
+        [SerializeField]
+        protected LoadingBar _progressBar;
 
         [Header("Audio"), SerializeField]
         protected int audioSourceCount = 4; //having 4 distinct audio sources should be plenty.
@@ -39,6 +45,7 @@ namespace PixelRainbows
         private PanelData lastPanel;
         private AudioSource[] audioSources;
         private List<LaidBackSound> inactiveMultiPanelSounds;
+        private bool _getProgress;
 
         private void Start() 
         {
@@ -106,7 +113,16 @@ namespace PixelRainbows
             }
         }
 #endif
-        
+        private IEnumerator Progress()
+        {
+            while (_progressBar.current != _progressBar.Maximum && _getProgress)
+            {
+                _progressBar.current = lastPanel.Minigame.UpdateProgress(_progressBar.Minimum, _progressBar.Maximum);
+                _getProgress = !lastPanel.Minigame.IsDone;
+                yield return null;
+            }
+            yield return null;
+        }   
         private IEnumerator DoIntroFade()
         {
             //Fade in the title.
@@ -137,6 +153,8 @@ namespace PixelRainbows
             {
                 forwardButton.interactable = false;
                 lastPanel.Minigame.WakeUp(); //mainly for animations and the sort.
+                _getProgress = true;
+                StartCoroutine(Progress());
                 yield return new WaitUntil(() => lastPanel.Minigame.IsDone);
                 forwardButton.interactable = true;
             }
@@ -162,11 +180,13 @@ namespace PixelRainbows
             panelIndex--;
             if(lastPanel.Minigame)
                 lastPanel.Minigame.CancelMinigame();
+            _progressBar.current = 0;
             StartCoroutine(DoTransition(false));
         }
 
         void Continue()
         {
+            _progressBar.current = 0;
             //check if the panel has subpanels
             if(lastPanel.HasSubPanels)
             {
@@ -247,6 +267,8 @@ namespace PixelRainbows
             if(lastPanel.Minigame) //-- lastPanel is the current panel from here on.
             {
                 lastPanel.Minigame.WakeUp();
+                _getProgress = true;
+                StartCoroutine(Progress());
                 //Play sounds that are independent of minigames.
                 yield return new WaitUntil(() => lastPanel.Minigame.IsDone);
                 //this is the last possible chance for the sound to be played. no additional IF because of existing failchecks.

@@ -48,8 +48,10 @@ namespace Minigame
         [SerializeField][Tooltip("Any message we want to display at the end?")]
         private string _winMessage;
         
+        [SerializeField] private GameObject _indicator;
+
         // Position of mouse while dragging
-        private Vector2 _pos;
+        private Vector3 _pos;
         
         // Position of the blanket before being dragged
         private Vector2 _originalPos;
@@ -172,6 +174,8 @@ namespace Minigame
                 // Disables this draggable objects sprite
                 if (_needsDisabling)
                     _spriteRenderer.enabled = false;
+                // Disable indicator to give another signal to the player
+                _indicator.SetActive(false);
                 // Make sprite undraggable after winning the game by disabling this
                 this.enabled = false;
             }
@@ -202,14 +206,17 @@ namespace Minigame
                 float maxX = Mathf.Max(leftPos.x, rightPos.x);
                 float minY = Mathf.Min(leftPos.y, rightPos.y);
                 float maxY = Mathf.Max(leftPos.y, rightPos.y);
+                float minZ = Mathf.Min(leftPos.z, rightPos.z);
+                float maxZ = Mathf.Max(leftPos.z, rightPos.z);
                 _pos.x = Mathf.Clamp(_pos.x, minX, maxX);
                 _pos.y = Mathf.Clamp(_pos.y, minY, maxY);
+                _pos.z = Mathf.Clamp(_pos.z, minZ, maxZ);
                
                 // Move position to pos
                 transform.position = _pos;
             }
 
-            var distToTarget = Vector2.Distance(transform.position, _target.transform.position);
+            var distToTarget = Vector3.Distance(transform.position, _target.transform.position);
             Debug.Log(distToTarget);
             // Win the game if the player reached a minimum distance
             if (distToTarget < _minimumDist && _pushRepetitions == 0)
@@ -245,6 +252,20 @@ namespace Minigame
             {
                 _tmpUGUI.text = "";
             }
+        }
+        
+        public override int UpdateProgress(int minimum, int maximum)
+        {
+            var myTransformPosition = transform.position;
+            var myStartPos = _leftRestraint.transform.position;
+            var myEndPos = _target.transform.position;
+            if (IsDone)
+            {
+                return maximum;
+            }
+            float progress = Vector3.Distance(myStartPos, myTransformPosition)/Vector3.Distance(myStartPos, myEndPos)*100;
+            Debug.Log(Vector3.Distance(myStartPos, myTransformPosition));
+            return (int) progress;        
         }
     }
 }

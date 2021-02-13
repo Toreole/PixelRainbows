@@ -286,6 +286,11 @@ PrefabInstance:
       propertyPath: _resetAnimGameObject
       value: 
       objectReference: {fileID: 3002474995615997822}
+    - target: {fileID: 8171336107114349365, guid: bfa3fa85f4da8734abecd52dd44691e9,
+        type: 3}
+      propertyPath: _animator
+      value: 
+      objectReference: {fileID: 4032405417898788805}
     - target: {fileID: 8171336107114349367, guid: bfa3fa85f4da8734abecd52dd44691e9,
         type: 3}
       propertyPath: m_Name
@@ -308,6 +313,12 @@ Transform:
 --- !u!1 &3002474995615997822 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8171336106452400734, guid: bfa3fa85f4da8734abecd52dd44691e9,
+    type: 3}
+  m_PrefabInstance: {fileID: 6398636491819722016}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &4032405417898788805 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 8014576237709353701, guid: bfa3fa85f4da8734abecd52dd44691e9,
     type: 3}
   m_PrefabInstance: {fileID: 6398636491819722016}
   m_PrefabAsset: {fileID: 0}

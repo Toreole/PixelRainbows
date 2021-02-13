@@ -14,7 +14,7 @@ namespace Minigame
         [SerializeField] private SpriteRenderer _blanket;
         [SerializeField][Tooltip("Top limit of the blanket")] private Transform _startTarget;
         [SerializeField][Tooltip("Bottom limit of the blanket")] private Transform _endTarget;
-
+        [SerializeField] private GameObject _indicator;
         [Header("Changable Variables")]
         [SerializeField] [Range(0.01f, 0.1f)][Tooltip("The speed at which the MC drags the blanket")] 
         private float _dragSpeed = 0.1f;
@@ -112,13 +112,15 @@ namespace Minigame
                     _blanket.enabled = false;
                     _spriteRenderer.enabled = false;
                     _collider2D.enabled = false;
+                    
                 }
                 else //if(IsDone && !_standingUp) no double checking.
                 {
                     Cursor.visible = true;
                     _collider2D.enabled = false;
                 }
-                this.enabled = false; //disable this script to stop this Update from running.
+                _indicator.SetActive(false);
+                this.enabled = false;
             }
         }
 
@@ -216,6 +218,20 @@ namespace Minigame
             {
                 _tmpUGUI.text = "";
             }
+        }
+        
+        public override int UpdateProgress(int minimum, int maximum)
+        {
+            var myTransformPosition = transform.position;
+            var myStartPos = _startTarget.transform.position;
+            var myEndPos = _endTarget.transform.position;
+            if (IsDone)
+            {
+                return maximum;
+            }
+           // float progress = (Vector3.Distance(myStartPos, myTransformPosition)/Vector3.Distance(myStartPos, myEndPos))*100;
+            float progress =  (float)_counter / (1 + _maxAmount) *maximum;
+            return (int) progress;
         }
     }
 }

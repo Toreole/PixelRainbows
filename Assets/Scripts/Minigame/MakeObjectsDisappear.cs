@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
+using System.Linq;
 using TMPro;
 using UnityEngine;
 
@@ -8,7 +9,7 @@ namespace Minigame
     {
         [SerializeField][Tooltip("Objects that we want to change. If their collider does not match, just reset collider.")]
         private GameObject[] _sprites;
-
+        
         [SerializeField] 
         private TextMeshProUGUI _tmpUGUI;
         
@@ -41,9 +42,7 @@ namespace Minigame
             {
                 _enableMode = false;
             }
-            #if UNITY_EDITOR
             WakeUp();
-            #endif
         }
 
         // Update is called once per frame
@@ -59,6 +58,7 @@ namespace Minigame
             {
                 IsDone = true;
                 _tmpUGUI.text = $"{_winMessage}";
+                this.enabled = false;
             }
           
         }
@@ -79,27 +79,32 @@ namespace Minigame
             if (_sprites.Contains(hit.collider.gameObject) && !_enableMode && !_switchMode)
             {
                 hit.collider.gameObject.SetActive(false);
+                if(hit.collider.transform.childCount != 0) 
+                    hit.collider.transform.GetChild(0).gameObject.SetActive(false);
                 _counter += 1;
             }
             // EnableMode: Enable clicked object's spriterenderer in the array
             else if (_sprites.Contains(hit.collider.gameObject) && _enableMode)
             {
                 var spriteRenderer = hit.collider.gameObject.GetComponent<SpriteRenderer>();
+                if(hit.collider.transform.childCount != 0) 
+                    hit.collider.transform.GetChild(0).gameObject.SetActive(false);
                 spriteRenderer.enabled = true;
                 _counter += 1;
             }
             // SwitchMode: Switch to the next object in the array
             else if (_sprites.Contains(hit.collider.gameObject) && _switchMode)
             {
-                if(_keepLastSprite && _counter + 2 == _sprites.Length && !_lastSpriteKeptAndDone)
+                hit.collider.gameObject.SetActive(false);
+                if(hit.collider.transform.childCount != 0) 
+                    hit.collider.transform.GetChild(0).gameObject.SetActive(false);
+                _counter += 1;
+                if(_keepLastSprite && _counter + 1 == _sprites.Length && !_lastSpriteKeptAndDone)
                 {
                     _lastSpriteKeptAndDone = true;
-                    hit.collider.gameObject.SetActive(false);
-                    _sprites[_counter + 1].gameObject.SetActive(true);
+                    _sprites[_counter].gameObject.SetActive(true);
                     return;  
                 }
-                _counter += 1;
-                hit.collider.gameObject.SetActive(false);
                 if (_counter < _sprites.Length)
                 {
                     _sprites[_counter].gameObject.SetActive(true);
@@ -156,6 +161,20 @@ namespace Minigame
         public override void CancelMinigame()
         {
             _tmpUGUI.text = "";
+        }
+
+        public override int UpdateProgress(int minimum, int maximum)
+        {
+            if(_switchMode && _sprites.Length <= 2 || !_switchMode && _sprites.Length <= 1)
+            {
+                return 0;
+            }
+            if (IsDone)
+                return maximum;
+            
+            float progress = _keepLastSprite ? (float)_counter / (_sprites.Length -1) *maximum : (float)_counter / _sprites.Length *maximum;
+            return (int)progress;
+            
         }
     }
 }
