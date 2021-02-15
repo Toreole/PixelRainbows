@@ -367,8 +367,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4281479730
-  m_fontColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -485,13 +485,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.5784977, g: 0.7684196, b: 0.9811321, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 5a81c1e106686154ebc787381d717184, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -565,7 +565,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Chapter 6
+  m_text: Kapitel 6
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: c48425a36e1becc498520996f229cc98, type: 2}
   m_sharedMaterial: {fileID: -820820700310989103, guid: c48425a36e1becc498520996f229cc98,
@@ -575,8 +575,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4281479730
-  m_fontColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -917,7 +917,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Chapter 3
+  m_text: Kapitel 3
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: c48425a36e1becc498520996f229cc98, type: 2}
   m_sharedMaterial: {fileID: -820820700310989103, guid: c48425a36e1becc498520996f229cc98,
@@ -927,8 +927,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4281479730
-  m_fontColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -1051,7 +1051,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Chapter 1
+  m_text: Kapitel 1
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: c48425a36e1becc498520996f229cc98, type: 2}
   m_sharedMaterial: {fileID: -820820700310989103, guid: c48425a36e1becc498520996f229cc98,
@@ -1061,8 +1061,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4281479730
-  m_fontColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -1762,11 +1762,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: '<u>Chapter 4:</u>
+  m_text: '<u>Kapitel 4:</u>
 
-    Chapter Title
-
-'
+    Das erste Kennenlernen'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: c48425a36e1becc498520996f229cc98, type: 2}
   m_sharedMaterial: {fileID: -820820700310989103, guid: c48425a36e1becc498520996f229cc98,
@@ -1900,7 +1898,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: EP
+  m_text: Epilog
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: c48425a36e1becc498520996f229cc98, type: 2}
   m_sharedMaterial: {fileID: -820820700310989103, guid: c48425a36e1becc498520996f229cc98,
@@ -1910,8 +1908,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4281479730
-  m_fontColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -2034,11 +2032,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: '<u>Chapter 2:</u>
-
-    Chapter Title
-
-'
+  m_text: "<u>Kapitel 2:</u>\nGanz neue Gef\xFChle"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: c48425a36e1becc498520996f229cc98, type: 2}
   m_sharedMaterial: {fileID: -820820700310989103, guid: c48425a36e1becc498520996f229cc98,
@@ -2361,8 +2355,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 2465455435281864274, guid: 887db047d782f484b9273f228d9fe59b,
-    type: 3}
+  m_Sprite: {fileID: 21300000, guid: f2b0d39a3a47443469cfe14ef31c6dad, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2476,8 +2469,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 2465455435281864274, guid: 887db047d782f484b9273f228d9fe59b,
-    type: 3}
+  m_Sprite: {fileID: 21300000, guid: 6c9742cceb6481e4386e966cc7213134, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2880,15 +2872,15 @@ RectTransform:
   m_GameObject: {fileID: 748499890}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 15.426}
-  m_LocalScale: {x: 0.93586, y: 0.93586, z: 0.93586}
+  m_LocalScale: {x: 0.8164799, y: 0.8164799, z: 0.8164799}
   m_Children: []
   m_Father: {fileID: 879030100}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 1072.2963, y: 599.79913}
-  m_SizeDelta: {x: 2292.6619, y: 1289.6228}
+  m_AnchoredPosition: {x: 961, y: 540}
+  m_SizeDelta: {x: 2374.4731, y: 1335.6411}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &748499892
 MonoBehaviour:
@@ -2984,8 +2976,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 2465455435281864274, guid: 887db047d782f484b9273f228d9fe59b,
-    type: 3}
+  m_Sprite: {fileID: 21300000, guid: 007d6536d4e66d142b09097af2330ac6, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -3059,9 +3050,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: '<u>Chapter 1:</u>
+  m_text: '<u>Kapitel 1:</u>
 
-    Chapter Title
+    Ein ganz normaler Schultag
 
 '
   m_isRightToLeft: 0
@@ -3165,8 +3156,8 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 856814979}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -99}
+  m_LocalScale: {x: 1.19433, y: 1.19433, z: 1.19433}
   m_Children:
   - {fileID: 2142615029}
   - {fileID: 1627458522}
@@ -3180,7 +3171,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: -90, y: -109}
   m_SizeDelta: {x: 800, y: 701.1}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &879030099
@@ -3284,14 +3275,14 @@ RectTransform:
   m_GameObject: {fileID: 882959666}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 15.426}
-  m_LocalScale: {x: 0.8999999, y: 0.8999999, z: 0.8999999}
+  m_LocalScale: {x: 0.8164799, y: 0.8164799, z: 0.8164799}
   m_Children: []
   m_Father: {fileID: 879030100}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 1067.2963, y: 601.9192}
+  m_AnchoredPosition: {x: 961, y: 540}
   m_SizeDelta: {x: 2374.4731, y: 1335.6411}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &882959668
@@ -3397,8 +3388,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4281479730
-  m_fontColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -3907,7 +3898,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Yes
+  m_text: Ja
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: c48425a36e1becc498520996f229cc98, type: 2}
   m_sharedMaterial: {fileID: -820820700310989103, guid: c48425a36e1becc498520996f229cc98,
@@ -4305,8 +4296,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 2465455435281864274, guid: 887db047d782f484b9273f228d9fe59b,
-    type: 3}
+  m_Sprite: {fileID: 21300000, guid: c5d54c4ee5bc59c4f9bd95533572e783, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -4380,9 +4370,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: '<u>Chapter 6:</u>
+  m_text: '<u>Kapitel 6:</u>
 
-    Chapter Title
+    Happy End?
 
 '
   m_isRightToLeft: 0
@@ -4528,8 +4518,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4281479730
-  m_fontColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -4811,7 +4801,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Chapter 5
+  m_text: kapitel 5
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: c48425a36e1becc498520996f229cc98, type: 2}
   m_sharedMaterial: {fileID: -820820700310989103, guid: c48425a36e1becc498520996f229cc98,
@@ -4821,8 +4811,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4281479730
-  m_fontColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -5086,7 +5076,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Back
+  m_text: "Zur\xFCck"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: c48425a36e1becc498520996f229cc98, type: 2}
   m_sharedMaterial: {fileID: -820820700310989103, guid: c48425a36e1becc498520996f229cc98,
@@ -5096,8 +5086,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4281479730
-  m_fontColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -5354,7 +5344,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: No
+  m_text: Nein
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: c48425a36e1becc498520996f229cc98, type: 2}
   m_sharedMaterial: {fileID: -820820700310989103, guid: c48425a36e1becc498520996f229cc98,
@@ -5498,8 +5488,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4281479730
-  m_fontColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -5634,8 +5624,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4281479730
-  m_fontColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -5839,11 +5829,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: '<u>Epilogue:</u>
-
-    Chapter Title
-
-'
+  m_text: "<u>Epilog:</u>\nDazugeh\xF6ren"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: c48425a36e1becc498520996f229cc98, type: 2}
   m_sharedMaterial: {fileID: -820820700310989103, guid: c48425a36e1becc498520996f229cc98,
@@ -5977,9 +5963,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Back
-
-'
+  m_text: "Zur\xFCck"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: c48425a36e1becc498520996f229cc98, type: 2}
   m_sharedMaterial: {fileID: -820820700310989103, guid: c48425a36e1becc498520996f229cc98,
@@ -5989,8 +5973,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4281479730
-  m_fontColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -6373,13 +6357,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 2465455435281864274, guid: 887db047d782f484b9273f228d9fe59b,
-    type: 3}
+  m_Sprite: {fileID: 21300000, guid: d4cf1375a6f7a914aab2917d9dc257d8, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -7150,9 +7133,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: '<u>Chapter 5:</u>
+  m_text: '<u>Kapitel 5:</u>
 
-    Chapter Title
+    Angst
 
 '
   m_isRightToLeft: 0
@@ -8025,7 +8008,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Chapter 2
+  m_text: Kapitel 2
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: c48425a36e1becc498520996f229cc98, type: 2}
   m_sharedMaterial: {fileID: -820820700310989103, guid: c48425a36e1becc498520996f229cc98,
@@ -8035,8 +8018,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4281479730
-  m_fontColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -8130,7 +8113,7 @@ RectTransform:
   m_GameObject: {fileID: 1947955708}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
   m_Children: []
   m_Father: {fileID: 504960602}
   m_RootOrder: 0
@@ -8159,7 +8142,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Do you really want to quit?
+  m_text: Willst du das Spiel beenden?
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: c48425a36e1becc498520996f229cc98, type: 2}
   m_sharedMaterial: {fileID: -820820700310989103, guid: c48425a36e1becc498520996f229cc98,
@@ -8169,8 +8152,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4278190080
-  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
+    rgba: 4283899814
+  m_fontColor: {r: 0.65199995, g: 0.123228, b: 0.33931643, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -8501,9 +8484,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: '<u>Chapter 3:</u>
+  m_text: '<u>Kapitel 3:</u>
 
-    Chapter Title
+    Unsicherheit
 
 '
   m_isRightToLeft: 0
@@ -8903,7 +8886,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Chapter 4
+  m_text: Kapitel 4
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: c48425a36e1becc498520996f229cc98, type: 2}
   m_sharedMaterial: {fileID: -820820700310989103, guid: c48425a36e1becc498520996f229cc98,
@@ -8913,8 +8896,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4281479730
-  m_fontColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -9151,7 +9134,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 0.000013351, y: 88}
+  m_AnchoredPosition: {x: 754, y: 88}
   m_SizeDelta: {x: 668.0489, y: 230.72159}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2093990242
@@ -9313,7 +9296,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 2465455435281864274, guid: 887db047d782f484b9273f228d9fe59b,
+  m_Sprite: {fileID: 1310375711914332745, guid: c5447799333e0ec48b5b43f0f9cc3ed7,
     type: 3}
   m_Type: 0
   m_PreserveAspect: 0
