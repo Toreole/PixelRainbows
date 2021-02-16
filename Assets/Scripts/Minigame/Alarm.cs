@@ -18,6 +18,7 @@ namespace Minigame
         private AudioSource _audioSource;
 
         // Gets the animator from an object
+        [SerializeField]
         private Animator _animator;
 
         // Resets the rotation after an animation back to zero
@@ -33,21 +34,20 @@ namespace Minigame
 
         [SerializeField]
         private string _winMessage;
-
-        private void Awake()
-        {
-            _animator = GetComponentInChildren<Animator>();
-        }
+        
 
         private void OnMouseDown()
         {
-            // On Mouse Down disable animator...
+            // Disable Indicator
+            if(transform.childCount != 0) 
+                transform.GetChild(0).gameObject.SetActive(false);
+            // On Mouse Down disable animator
             _animator.enabled = false;
-            // reset the animated object's euler rotation to 0...
+            // reset the animated object's euler rotation to 0
             _resetAnimGameObject.transform.localRotation = Quaternion.identity;
-            // stop the sound...
+            // stop the sound
             _audioSource.Stop();
-            // display winMessage...
+            // display winMessage
             _tmpUGUI.text = _winMessage;
             // set IsDone to true
             IsDone = true;
@@ -73,6 +73,11 @@ namespace Minigame
         public override void CancelMinigame()
         {
             _tmpUGUI.text = "";
+        }
+        
+        public override int UpdateProgress(int minimum, int maximum)
+        {
+            return 0;
         }
     }
 }

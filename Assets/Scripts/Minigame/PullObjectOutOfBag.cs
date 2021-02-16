@@ -15,6 +15,7 @@ namespace Minigame
         [SerializeField]
         private GameObject _startPos;
 
+        [SerializeField] private GameObject _indicator;
         // What item are we dragging out of the bag?
         [SerializeField]
         private string _item;
@@ -24,10 +25,10 @@ namespace Minigame
         private string _winMessage;
         
         // Position of mouse while dragging
-        private Vector2 _pos;
+        private Vector3 _pos;
         
         // Position of the blanket before being dragged
-        private Vector2 _originalPos;
+        private Vector3 _originalPos;
         
         // Minimum Distance between bag item and _minOutOfBagDist Object to win the game
         [SerializeField]
@@ -62,6 +63,7 @@ namespace Minigame
             if (IsDone)
             {
                 Cursor.visible = true;
+                _indicator.SetActive(false);
                 this.enabled = false;
             }
         }
@@ -86,8 +88,11 @@ namespace Minigame
                 float maxX = Mathf.Max(startPos.x, endPos.x); 
                 float minY = Mathf.Min(startPos.y, endPos.y); 
                 float maxY = Mathf.Max(startPos.y, endPos.y); 
+                float minZ = Mathf.Min(startPos.z, endPos.z);
+                float maxZ = Mathf.Max(startPos.z, endPos.z);
                 _pos.x = Mathf.Clamp(_pos.x, minX, maxX); 
                 _pos.y = Mathf.Clamp(_pos.y, minY, maxY);
+                _pos.z = Mathf.Clamp(_pos.z, minZ, maxZ);
                 
                 // Move object to the position
                 transform.position = _pos;
@@ -123,6 +128,21 @@ namespace Minigame
             {
                 _tmpUGUI.text = "";
             }
+        }
+
+        public override int UpdateProgress(int minimum, int maximum)
+        {
+            var myTransformPosition = transform.position;
+            var myStartPos = _startPos.transform.position;
+            var myEndPos = _minOutOfBagDist.transform.position;
+            if (IsDone)
+            {
+                return maximum;
+            }
+            // Distance of player to the start pos / start pos to end pos will result in the percentage
+            // of distance from start to finish
+            float progress = Vector3.Distance(myStartPos, myTransformPosition)/Vector3.Distance(myStartPos, myEndPos)*100;
+            return (int) progress;
         }
     }
 }
