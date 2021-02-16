@@ -1846,7 +1846,7 @@ Transform:
   m_LocalScale: {x: 0.9038249, y: 0.9269999, z: 0.9269999}
   m_Children: []
   m_Father: {fileID: 754467102}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &303642978
 SpriteRenderer:
@@ -2907,12 +2907,12 @@ PrefabInstance:
     - target: {fileID: 8230760320564529490, guid: 042e019ecdace4d4da94f141b730ad29,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8230760320564529490, guid: 042e019ecdace4d4da94f141b730ad29,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.71
+      value: 0.70999146
       objectReference: {fileID: 0}
     - target: {fileID: 8230760320564529490, guid: 042e019ecdace4d4da94f141b730ad29,
         type: 3}
@@ -2922,17 +2922,17 @@ PrefabInstance:
     - target: {fileID: 8230760320564529490, guid: 042e019ecdace4d4da94f141b730ad29,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 8230760320564529490, guid: 042e019ecdace4d4da94f141b730ad29,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 8230760320564529490, guid: 042e019ecdace4d4da94f141b730ad29,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 8230760320564529490, guid: 042e019ecdace4d4da94f141b730ad29,
         type: 3}
@@ -3683,7 +3683,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1958982767}
-  - {fileID: 1431165816}
   - {fileID: 1263596317}
   - {fileID: 303642977}
   - {fileID: 1594758464}
@@ -5504,6 +5503,57 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &1051586779
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1051586780}
+  - component: {fileID: 1051586781}
+  m_Layer: 0
+  m_Name: MakeObjectDisappear
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1051586780
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1051586779}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1842398334}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1051586781
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1051586779}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf73e711bede2344b97c2d8c0560a816, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _sprites:
+  - {fileID: 1118138507}
+  _tmpUGUI: {fileID: 6906902898766984614}
+  _message: 
+  _winMessage: 
+  _enableMode: 0
+  _switchMode: 0
+  _keepLastSprite: 0
 --- !u!1 &1052210944
 GameObject:
   m_ObjectHideFlags: 0
@@ -5721,6 +5771,12 @@ MonoBehaviour:
   _enableMode: 1
   _switchMode: 1
   _keepLastSprite: 1
+--- !u!1 &1118138507 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8230760319791985284, guid: 042e019ecdace4d4da94f141b730ad29,
+    type: 3}
+  m_PrefabInstance: {fileID: 534736335}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1122664947
 GameObject:
   m_ObjectHideFlags: 0
@@ -6587,7 +6643,7 @@ Transform:
   - {fileID: 255769765}
   - {fileID: 1840094581}
   m_Father: {fileID: 754467102}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1308502954
 GameObject:
@@ -7280,11 +7336,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1431165815}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 4.31, y: -0.57, z: 0}
-  m_LocalScale: {x: 0.8384902, y: 0.8384902, z: 0.8384902}
+  m_LocalPosition: {x: 10.125152, y: -0.14806059, z: 0}
+  m_LocalScale: {x: 1.0210123, y: 1.0210123, z: 1.0210123}
   m_Children: []
-  m_Father: {fileID: 754467102}
-  m_RootOrder: 1
+  m_Father: {fileID: 1994036617}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &1431165817
 BoxCollider2D:
@@ -8179,7 +8235,7 @@ Transform:
   m_Children:
   - {fileID: 910516208}
   m_Father: {fileID: 754467102}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &1594758465
 SpriteRenderer:
@@ -9197,6 +9253,7 @@ Transform:
   m_Children:
   - {fileID: 2101083053}
   - {fileID: 69372976}
+  - {fileID: 1051586780}
   m_Father: {fileID: 1981613951}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -9431,7 +9488,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _sprites:
   - {fileID: 1994036616}
-  - {fileID: 385659001}
+  - {fileID: 1263596315}
   _tmpUGUI: {fileID: 6906902898766984614}
   _message: 
   _winMessage: 
@@ -9579,7 +9636,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1981613950}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 19}
+  m_LocalPosition: {x: 0, y: -174, z: 19}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 246068905}
@@ -9633,7 +9690,8 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -3.7567854, y: -0.24, z: 0}
   m_LocalScale: {x: 0.7305704, y: 0.7305704, z: 0.7305704}
-  m_Children: []
+  m_Children:
+  - {fileID: 1431165816}
   m_Father: {fileID: 1958982767}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -11487,7 +11545,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!223 &6906902899514594694
 Canvas:
   m_ObjectHideFlags: 0
