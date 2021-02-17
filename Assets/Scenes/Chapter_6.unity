@@ -9520,7 +9520,7 @@ MonoBehaviour:
   backwardButton: {fileID: 1602020522886556188}
   progressBar: {fileID: 386152373}
   audioSourceCount: 4
-  nextScene: MainMenu
+  nextScene: Epilogue
   chapterNumber: 5
   chapterTitle: {fileID: 6389686834870217299}
   uiFade: {fileID: 622494102087684173}

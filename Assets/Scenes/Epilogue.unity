@@ -3858,7 +3858,7 @@ Transform:
   m_GameObject: {fileID: 1617159915}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.9306, y: 0.9306, z: 0.9306}
+  m_LocalScale: {x: 0.93, y: 0.93, z: 0.93}
   m_Children: []
   m_Father: {fileID: 1362028407}
   m_RootOrder: 0
@@ -5314,7 +5314,7 @@ MonoBehaviour:
     placement: 2
     subPanels: []
   - transform: {fileID: 1362028407}
-    spriteRenderer: {fileID: 1362028408}
+    spriteRenderer: {fileID: 1617159917}
     overrideTransition: 0
     transitionTime: 1
     transitionCurve:
@@ -5374,7 +5374,7 @@ MonoBehaviour:
     placement: 0
     subPanels: []
   - transform: {fileID: 442190421}
-    spriteRenderer: {fileID: 442190422}
+    spriteRenderer: {fileID: 2134016025}
     overrideTransition: 0
     transitionTime: 1
     transitionCurve:
@@ -5496,7 +5496,7 @@ MonoBehaviour:
   backwardButton: {fileID: 6906902899635811916}
   progressBar: {fileID: 1620346526}
   audioSourceCount: 4
-  nextScene: Chapter_3
+  nextScene: MainMenu
   chapterNumber: 6
   chapterTitle: {fileID: 1246653669241026051}
   uiFade: {fileID: 4702375579202604061}
