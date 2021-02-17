@@ -3115,7 +3115,7 @@ PrefabInstance:
     - target: {fileID: 7692866537824172348, guid: 79036b9372ef5984099f6bdb07f18875,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -7.56
+      value: -3.57
       objectReference: {fileID: 0}
     - target: {fileID: 7692866537824172348, guid: 79036b9372ef5984099f6bdb07f18875,
         type: 3}
@@ -5567,6 +5567,7 @@ GameObject:
   - component: {fileID: 1471615977}
   - component: {fileID: 1471615978}
   - component: {fileID: 1471615979}
+  - component: {fileID: 1471615980}
   m_Layer: 0
   m_Name: sleep
   m_TagString: Untagged
@@ -5657,6 +5658,23 @@ MonoBehaviour:
   _playOnlyOnce: 0
   _waitForMinigame: 0
   _panelContinuation: 2
+  _playedSound: {fileID: 11400000, guid: 672a8bf2ba25f7e419979cb29952824a, type: 2}
+--- !u!114 &1471615980
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1471615976}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59dc314f00760ee438770e539be65c2a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _delay: 0
+  _playOnlyOnce: 0
+  _waitForMinigame: 0
+  _panelContinuation: 3
   _playedSound: {fileID: 11400000, guid: 672a8bf2ba25f7e419979cb29952824a, type: 2}
 --- !u!1 &1483081825
 GameObject:
