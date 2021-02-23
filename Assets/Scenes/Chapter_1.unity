@@ -2100,7 +2100,7 @@ MonoBehaviour:
   current: 0
   _mask: {fileID: 231733959}
   _fill: {fileID: 1120066622}
-  _fillColor: {r: 1, g: 0.71534777, b: 0, a: 1}
+  _fillColor: {r: 1, g: 0.53333336, b: 0.87058824, a: 1}
 --- !u!114 &425100742
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -6826,7 +6826,7 @@ MonoBehaviour:
   current: 0
   _mask: {fileID: 1910364495}
   _fill: {fileID: 1812012134}
-  _fillColor: {r: 1, g: 0.71534777, b: 0, a: 1}
+  _fillColor: {r: 1, g: 0.53333336, b: 0.87058824, a: 1}
 --- !u!114 &1499583668
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10749,4 +10749,4 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1

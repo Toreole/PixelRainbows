@@ -11656,7 +11656,7 @@ MonoBehaviour:
   current: 0
   _mask: {fileID: 394628790}
   _fill: {fileID: 1369466437}
-  _fillColor: {r: 1, g: 0.71534777, b: 0, a: 1}
+  _fillColor: {r: 1, g: 0.53333336, b: 0.87058824, a: 1}
 --- !u!224 &2036742602
 RectTransform:
   m_ObjectHideFlags: 0
