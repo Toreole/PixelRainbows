@@ -2418,7 +2418,7 @@ Transform:
   m_GameObject: {fileID: 470638133}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -0.019989014, y: 0.019999027, z: 30.11}
-  m_LocalScale: {x: 0.8149912, y: 0.8149912, z: 0.8149912}
+  m_LocalScale: {x: 0.89649034, y: 0.89649034, z: 0.89649034}
   m_Children: []
   m_Father: {fileID: 1541165692}
   m_RootOrder: 4
@@ -5181,12 +5181,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _sprites:
+  - {fileID: 624002442}
   - {fileID: 940096415}
   _tmpUGUI: {fileID: 1602020521580334170}
   _message: 
   _winMessage: 
-  _enableMode: 1
-  _switchMode: 0
+  _enableMode: 0
+  _switchMode: 1
   _keepLastSprite: 1
 --- !u!4 &1057872551 stripped
 Transform:
@@ -5567,7 +5568,7 @@ Transform:
   m_GameObject: {fileID: 1207886297}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.04, y: 0.02, z: 0}
-  m_LocalScale: {x: 0.80362, y: 0.80362, z: 0.80362}
+  m_LocalScale: {x: 0.9113854, y: 0.9113854, z: 0.9113854}
   m_Children: []
   m_Father: {fileID: 949341651}
   m_RootOrder: 5
