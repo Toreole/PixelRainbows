@@ -16,7 +16,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: f74faae62e5f03147a943d0027498b0a, type: 3}
   _loop: 1
   _randomizeVolume: 0
-  _volume: 0.33
+  _volume: 0.244
   _minMaxVolume:
     MinValue: 0
     MaxValue: 0

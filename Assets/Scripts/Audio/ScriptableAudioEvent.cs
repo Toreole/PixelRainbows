@@ -20,10 +20,10 @@ namespace PixelRainbows.Audio
 		[SerializeField]
 		private bool _randomizeVolume;
 
-		[Tooltip("The fixed volume at which the sfx will be played")] [Range(0.33f, 2)] [SerializeField]
+		[Tooltip("The fixed volume at which the sfx will be played")] [Range(0.03f, 2)] [SerializeField]
 		private float _volume;
 		
-		[Tooltip("Minimum/maximum volume when using a random value")] [SerializeField] [MinMaxFloat(0.33f,2)]
+		[Tooltip("Minimum/maximum volume when using a random value")] [SerializeField] [MinMaxFloat(0.03f,2)]
 		private MinMaxFloat _minMaxVolume = default;
 
 		[Header("Pitch")] [Tooltip("Toggles whether the sfx is played at a fixed or a random range pitch")] [SerializeField]
